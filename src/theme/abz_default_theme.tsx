@@ -37,22 +37,22 @@ export const themeOptions: ThemeOptions = {
     fontFamily: "Nunito Sans",
     fontSize: 14,
     h1: {
-      fontFamily: "Nunito",
+      fontFamily: "Montserrat",
     },
     h2: {
-      fontFamily: "Nunito",
+      fontFamily: "Montserrat",
     },
     h3: {
-      fontFamily: "Nunito",
+      fontFamily: "Montserrat",
     },
     h4: {
-      fontFamily: "Nunito",
+      fontFamily: "Montserrat",
     },
     h5: {
-      fontFamily: "Nunito",
+      fontFamily: "Montserrat",
     },
     h6: {
-      fontFamily: "Nunito",
+      fontFamily: "Montserrat",
     },
     body1: {
       fontFamily: "Montserrat",
