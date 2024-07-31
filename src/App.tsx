@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ThemeProvider } from "@mui/material";
+import { Button } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import abzDefaultTheme from "./abz_default_theme";
+import Typography from "@mui/material/Typography";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={abzDefaultTheme}>
+      <CssBaseline />
+      <Typography variant="h1">Heading 1</Typography>
+      <Typography variant="h2">Heading 2</Typography>
+      <Typography variant="h3">Heading 3</Typography>
+      <Typography variant="h4">Heading 4</Typography>
+      <Typography variant="h5">Heading 5</Typography>
+      <Typography variant="h6">Heading 6</Typography>
+      <Typography variant="subtitle1">Subtitle 1</Typography>
+      <Typography variant="subtitle2">Subtitle 2</Typography>
+      <Typography variant="body1">Body 1</Typography>
+      <Typography variant="body2">Body 2</Typography>
+      <Typography variant="button" display={"block"} gutterBottom>
+        Button Text
+      </Typography>
+      <Typography variant="caption" display={"block"} gutterBottom>
+        Caption Text
+      </Typography>
+      <Typography variant="overline" display={"block"} gutterBottom>
+        Overline Text
+      </Typography>
+      <Button variant="contained">Sumbit</Button>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
