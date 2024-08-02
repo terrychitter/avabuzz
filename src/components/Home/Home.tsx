@@ -1,6 +1,6 @@
 import usePWAInstallPrompt from "../../usePWAInstallPrompt";
 import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import Link from "../CustomComponents/CustomLink";
 
 const Home = () => {
   const promptInstall = usePWAInstallPrompt();
