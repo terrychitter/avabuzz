@@ -1,4 +1,5 @@
 import { createTheme, ThemeOptions } from "@mui/material";
+import backgroundImage from "./background_tile.png";
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -11,7 +12,7 @@ export const themeOptions: ThemeOptions = {
       main: "#f15bb5d9",
     },
     background: {
-      default: "#1e1e1e",
+      default: `url(${backgroundImage})`,
       paper: "#252525",
     },
     text: {
@@ -67,6 +68,14 @@ export const themeOptions: ThemeOptions = {
     borderRadius: 5,
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundRepeat: "repeat",
+        },
+      },
+    },
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
@@ -82,6 +91,8 @@ export const themeOptions: ThemeOptions = {
     },
   },
 };
+
+console.log(backgroundImage);
 
 export const abzDefaultTheme = createTheme(themeOptions);
 
