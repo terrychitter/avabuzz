@@ -1,12 +1,15 @@
 import AuthLayout from "../CustomComponents/AuthLayout";
 import SignupForm from "../CustomComponents/SignupForm";
+import Page from "../HOC/Page";
 
 const Signup = () => {
   return (
-    <AuthLayout
-      heroContent="Create an Account"
-      formComponent={<SignupForm />}
-    />
+    <Page>
+      <AuthLayout
+        heroContent="Create an Account"
+        formComponent={<SignupForm />}
+      />
+    </Page>
   );
 };
 
