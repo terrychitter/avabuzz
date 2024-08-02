@@ -34,7 +34,7 @@ const SignupForm = () => {
       >
         <Box>
           <Typography variant="h4" sx={{ marginBottom: theme.spacing(1) }}>
-            Create
+            Create Account
           </Typography>
           <Typography variant="body1" sx={{ marginBottom: theme.spacing(3) }}>
             Create your account to be able to post, create or join groups and so
