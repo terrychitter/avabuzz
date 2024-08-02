@@ -5,10 +5,11 @@ import {
   useMediaQuery,
   useTheme,
   Paper,
+  Stack,
 } from "@mui/material";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
 import CustomBackground from "./CustomBackground/CustomBackground";
+import Logo from "./Logo";
 
 interface AuthLayoutProps {
   heroContent: ReactNode;
@@ -23,15 +24,17 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   const theme = useTheme();
 
   // Media query for advanced media queries
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <>
       <CustomBackground />
       <Grid container minHeight={"100vh"}>
-        {isLargeScreen && (
+        {isMediumScreen && (
+          // First grid item
           <Grid
             item
+            textAlign={"center"}
             xs={12}
             md={7}
             sx={{
@@ -41,84 +44,49 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              alignItems: "flex-start",
               paddingLeft: theme.spacing(5),
             }}
           >
-            <Box
+            <Box>
+              <Logo maxWidth="300px" width="100%" />
+            </Box>
+            <Typography
+              variant="h2"
+              component="h2"
               sx={{
-                position: "relative",
-                zIndex: 1,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "flex-start",
-                width: "100%",
-                paddingLeft: theme.spacing(5),
+                color: "white",
               }}
             >
-              <Typography
-                variant="h2"
-                component="h2"
-                sx={{
-                  color: "white",
-                  textAlign: "left",
-                }}
-              >
-                {heroContent}
-              </Typography>
-            </Box>
-            <Link to="/" style={{ textDecoration: "none" }}>
-              <Box
-                component="img"
-                src="./logo.png"
-                alt="Logo"
-                sx={{
-                  position: "absolute",
-                  top: 20,
-                  left: 20,
-                  zIndex: 1,
-                  width: "auto",
-                  height: "50px",
-                }}
-              />
-            </Link>
+              {heroContent}
+            </Typography>
           </Grid>
         )}
-        <Grid
-          item
-          xs={12}
-          md={isLargeScreen ? 5 : 12}
-          sx={{
-            minHeight: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+        {/* Second grid item */}
+        <Grid item xs={12} md={5}>
           <Paper
             sx={{
               paddingBlock: theme.spacing(3),
               paddingInline: {
-                xs: theme.spacing(2),
-                sm: theme.spacing(8),
-                md: theme.spacing(5),
+                xs: theme.spacing(3),
+                sm: theme.spacing(15),
+                md: theme.spacing(3),
                 lg: theme.spacing(7),
-              },
-              width: {
-                xs: "100%",
-                sm: "80%",
-                md: "100%",
-                lg: "100%",
               },
               minHeight: "100%",
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "center",
               flexDirection: "column",
-              borderRadius: 0, // Remove rounding on all screen sizes
+              borderRadius: 0,
             }}
           >
-            {formComponent}
+            <Stack gap={2}>
+              {!isMediumScreen && (
+                <Box textAlign={"center"}>
+                  <Logo maxWidth="200px" width="100%" />
+                </Box>
+              )}
+              {formComponent}
+            </Stack>
           </Paper>
         </Grid>
       </Grid>
