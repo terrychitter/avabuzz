@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "../CustomComponents/CustomLink";
 
 const Home = () => {
   return <Link to="/login">Login</Link>;

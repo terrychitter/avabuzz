@@ -8,7 +8,7 @@ export const themeOptions: ThemeOptions = {
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#9d51b9",
+      main: "#f15bb5d9",
     },
     background: {
       default: "#1e1e1e",
@@ -33,6 +33,7 @@ export const themeOptions: ThemeOptions = {
       main: "#4caf50",
     },
   },
+  // Typography themes
   typography: {
     fontFamily: "Nunito Sans",
     fontSize: 14,
@@ -61,6 +62,7 @@ export const themeOptions: ThemeOptions = {
       fontFamily: "Montserrat",
     },
   },
+  // Components themes
   shape: {
     borderRadius: 5,
   },
@@ -68,6 +70,14 @@ export const themeOptions: ThemeOptions = {
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true,
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.secondary.main,
+          textDecoration: "none",
+        }),
       },
     },
   },
