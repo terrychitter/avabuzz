@@ -23,72 +23,74 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   const theme = useTheme();
 
   // Media query for advanced media queries
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <>
       <CustomBackground />
       <Grid container minHeight={"100vh"}>
-        <Grid
-          item
-          xs={12}
-          md={7}
-          sx={{
-            height: isLargeScreen ? "100vh" : "40vh",
-            position: "relative",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: isLargeScreen ? "flex-start" : "center",
-            paddingLeft: isLargeScreen ? theme.spacing(5) : 0,
-          }}
-        >
-          <Box
+        {isLargeScreen && (
+          <Grid
+            item
+            xs={12}
+            md={7}
             sx={{
+              height: "100vh",
               position: "relative",
-              zIndex: 1,
+              overflow: "hidden",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              alignItems: isLargeScreen ? "flex-start" : "center",
-              width: "100%",
-              paddingLeft: isLargeScreen ? theme.spacing(5) : 0,
+              alignItems: "flex-start",
+              paddingLeft: theme.spacing(5),
             }}
           >
-            <Typography
-              variant={isLargeScreen ? "h2" : "h3"}
-              component="h2"
+            <Box
               sx={{
-                color: "white",
-                textAlign: isLargeScreen ? "left" : "center",
+                position: "relative",
+                zIndex: 1,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-start",
+                width: "100%",
+                paddingLeft: theme.spacing(5),
               }}
             >
-              {heroContent}
-            </Typography>
-          </Box>
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Box
-              component="img"
-              src="./logo.png"
-              alt="Logo"
-              sx={{
-                position: "absolute",
-                top: 20,
-                left: 20,
-                zIndex: 1,
-                width: "auto",
-                height: "50px",
-              }}
-            />
-          </Link>
-        </Grid>
+              <Typography
+                variant="h2"
+                component="h2"
+                sx={{
+                  color: "white",
+                  textAlign: "left",
+                }}
+              >
+                {heroContent}
+              </Typography>
+            </Box>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Box
+                component="img"
+                src="./logo.png"
+                alt="Logo"
+                sx={{
+                  position: "absolute",
+                  top: 20,
+                  left: 20,
+                  zIndex: 1,
+                  width: "auto",
+                  height: "50px",
+                }}
+              />
+            </Link>
+          </Grid>
+        )}
         <Grid
           item
           xs={12}
-          md={5}
+          md={isLargeScreen ? 5 : 12}
           sx={{
-            minheight: "100vh",
+            minHeight: "100vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -113,6 +115,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
               display: "flex",
               justifyContent: "space-between",
               flexDirection: "column",
+              borderRadius: 0, // Remove rounding on all screen sizes
             }}
           >
             {formComponent}
