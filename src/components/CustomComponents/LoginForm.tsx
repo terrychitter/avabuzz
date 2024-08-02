@@ -10,8 +10,10 @@ import Link from "./CustomLink";
 import { FieldValues, useForm } from "react-hook-form";
 
 const LoginForm = () => {
+  // Access the theme
   const theme = useTheme();
 
+  // Use react hook form
   const {
     register,
     control,
@@ -20,6 +22,7 @@ const LoginForm = () => {
     reset,
   } = useForm();
 
+  // Handle form submission
   const onSubmit = async (data: FieldValues) => {
     // TODO: Submit to API
     console.log("data", data);
@@ -44,7 +47,11 @@ const LoginForm = () => {
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <EmailInput register={register} errors={errors} />
-            <PasswordInput register={register} errors={errors} />
+            <PasswordInput
+              register={register}
+              errors={errors}
+              newPassword={false}
+            />
             <TmCnCheck control={control} errors={errors} />
             <Button
               disabled={isSubmitting}
