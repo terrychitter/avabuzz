@@ -1,5 +1,4 @@
 import "./CustomBackground.css";
-import { useTheme } from "@mui/material";
 
 const CustomBackground = () => {
   return (

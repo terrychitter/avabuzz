@@ -4,12 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import FormHelperText from "@mui/material/FormHelperText";
-import {
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-  useWatch,
-} from "react-hook-form";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface ConfirmPasswordInputProps {
   register: UseFormRegister<FieldValues>;

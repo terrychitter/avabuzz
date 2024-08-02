@@ -23,8 +23,6 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   const theme = useTheme();
 
   // Media query for advanced media queries
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
