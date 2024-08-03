@@ -73,6 +73,7 @@ export const themeOptions: ThemeOptions = {
         body: {
           backgroundImage: `url(${backgroundImage})`,
           backgroundRepeat: "repeat",
+          backgroundAttachment: "fixed",
         },
       },
     },
