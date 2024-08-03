@@ -1,7 +1,6 @@
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import ProfilePictureKit from "./ProfilePictureKit";
-import ProfileBackground from "../../assets/profile_background.gif";
 import UsernameTag from "./UsernameTag";
 import PublicIdTag from "./PublicIdTag";
 import { Box, useTheme } from "@mui/material";
@@ -16,7 +15,7 @@ const ProfileBanner = () => {
     <Paper
       sx={{
         height: { xs: "200px", md: "250px" },
-        background: `url(${ProfileBackground})`,
+        background: `url("/public/profile_background.gif")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
         backgroundPosition: "center",

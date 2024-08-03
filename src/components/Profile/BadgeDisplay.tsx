@@ -1,6 +1,4 @@
 import { Avatar, AvatarGroup, useTheme } from "@mui/material";
-import RamenBadge from "../../assets/ramen_badge.png";
-import SaladBadge from "../../assets/salad_badge.png";
 import Link from "../CustomComponents/CustomLink";
 
 const BadgeDisplay = () => {
@@ -16,8 +14,16 @@ const BadgeDisplay = () => {
   return (
     <Link to="/my-items/badges">
       <AvatarGroup max={2} sx={{ marginBlockEnd: theme.spacing(1) }}>
-        <Avatar alt="Ramen Badge" src={RamenBadge} sx={avatarStyles} />
-        <Avatar alt="Salad Badge" src={SaladBadge} sx={avatarStyles} />
+        <Avatar
+          alt="Ramen Badge"
+          src="public/ramen_badge.png"
+          sx={avatarStyles}
+        />
+        <Avatar
+          alt="Salad Badge"
+          src="public/salad_badge.png"
+          sx={avatarStyles}
+        />
       </AvatarGroup>
     </Link>
   );

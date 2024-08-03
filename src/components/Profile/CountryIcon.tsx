@@ -1,20 +1,8 @@
-import { Avatar } from "@mui/material";
 import React from "react";
+import MetaIcon from "./MetaIcon";
 
-interface CountryIconProps {
-  children?: React.ReactNode;
-}
-
-const CountryIcon: React.FC<CountryIconProps> = ({ children }) => {
-  const countryImagePath = "src/assets/countries/" + children + ".png";
-  console.log(countryImagePath);
-  return (
-    <Avatar
-      alt="{children}"
-      src={countryImagePath}
-      sx={{ width: 24, height: 24 }}
-    ></Avatar>
-  );
+const CountryIcon: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return <MetaIcon type="country" children={children} placement="right" />;
 };
 
 export default CountryIcon;
