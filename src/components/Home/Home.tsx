@@ -1,5 +1,5 @@
 import usePWAInstallPrompt from "../../usePWAInstallPrompt";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import Link from "../CustomComponents/CustomLink";
 import Page from "../HOC/Page";
 
@@ -8,10 +8,17 @@ const Home = () => {
   return (
     <>
       <Page>
-        <Button variant="contained" onClick={promptInstall} id="install-button">
-          Install App
-        </Button>
-        <Link to="/login">Login</Link>
+        <Stack direction={"row"} gap={2} p={2}>
+          <Button
+            variant="contained"
+            onClick={promptInstall}
+            id="install-button"
+          >
+            Install App
+          </Button>
+          <Link to="/login">Login</Link>
+          <Link to="/my-profile">Profile</Link>
+        </Stack>
       </Page>
     </>
   );
