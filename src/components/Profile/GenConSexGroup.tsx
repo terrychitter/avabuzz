@@ -1,6 +1,5 @@
 import { Stack } from "@mui/material";
 import CountryIcon from "./CountryIcon";
-import React from "react";
 
 const GenConSexGroup = () => {
   return (

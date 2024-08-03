@@ -1,5 +1,4 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
-import React from "react";
 
 const ProfileStats = () => {
   const theme = useTheme();
