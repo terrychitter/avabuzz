@@ -26,9 +26,9 @@ const MetaIcon: React.FC<MetaIconProps> = ({
   enterDelay = 0,
 }) => {
   const basePath = {
-    country: "/public/countries/",
-    sexuality: "/public/sexualities/",
-    gender: "/public/genders/",
+    country: "/countries/",
+    sexuality: "/sexualities/",
+    gender: "/genders/",
   }[type];
 
   const imagePath = `${basePath}${children}.png`;

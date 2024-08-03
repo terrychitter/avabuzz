@@ -7,23 +7,15 @@ const BadgeDisplay = () => {
   const avatarStyles = {
     width: 30,
     height: 30,
-    backgroundColor: theme.palette.common.white, // Use theme color for background
-    border: `1px solid ${theme.palette.divider}`, // Optional border color from theme
+    backgroundColor: theme.palette.common.white,
+    border: `1px solid ${theme.palette.divider}`,
   };
 
   return (
     <Link to="/my-items/badges">
       <AvatarGroup max={2} sx={{ marginBlockEnd: theme.spacing(1) }}>
-        <Avatar
-          alt="Ramen Badge"
-          src="public/ramen_badge.png"
-          sx={avatarStyles}
-        />
-        <Avatar
-          alt="Salad Badge"
-          src="public/salad_badge.png"
-          sx={avatarStyles}
-        />
+        <Avatar alt="Ramen Badge" src="/ramen_badge.png" sx={avatarStyles} />
+        <Avatar alt="Salad Badge" src="/salad_badge.png" sx={avatarStyles} />
       </AvatarGroup>
     </Link>
   );

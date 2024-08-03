@@ -15,7 +15,7 @@ const ProfileBanner = () => {
     <Paper
       sx={{
         height: { xs: "200px", md: "250px" },
-        background: `url("/public/profile_background.gif")`,
+        background: `url("/profile_background.gif")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "100%",
         backgroundPosition: "center",

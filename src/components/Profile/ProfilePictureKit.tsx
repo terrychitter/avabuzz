@@ -4,7 +4,7 @@ const ProfilePictureKit = () => {
   return (
     <Avatar
       alt="User Profile Picture"
-      src="public/profile_picture.jpg"
+      src="/profile_picture.jpg"
       sx={{
         border: "2px solid white",
         boxShadow: "5px 5px 5px 1px rgba(0, 0, 0, 0.5)",

@@ -1,13 +1,15 @@
 /* Disable text selection */
 *,
 img,
-a {
-    -webkit-user-select: none;
+a,
+button,
+.MuiButtonBase-root {
+    -webkit-user-select: none !important;
     /* Safari */
-    -moz-user-select: none;
+    -moz-user-select: none !important;
     /* Firefox */
-    -ms-user-select: none;
+    -ms-user-select: none !important;
     /* Internet Explorer/Edge */
-    user-select: none;
+    user-select: none !important;
     /* Standard */
 }
