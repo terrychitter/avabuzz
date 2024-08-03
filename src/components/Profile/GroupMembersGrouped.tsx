@@ -3,7 +3,6 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Link from "../CustomComponents/CustomLink";
 import { useTheme } from "@mui/material/styles";
-import { color } from "framer-motion";
 
 const GroupMembersGrouped = () => {
   const theme = useTheme();

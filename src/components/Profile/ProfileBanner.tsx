@@ -8,16 +8,20 @@ import SettingsButton from "./SettingsButton";
 import MyItemsButton from "./MyItemsButton";
 import BadgeDisplay from "./BadgeDisplay";
 
-const ProfileBanner = () => {
+interface ProfileBannerProps {
+  background?: string;
+}
+
+const ProfileBanner: React.FC<ProfileBannerProps> = ({ background }) => {
   const theme = useTheme();
 
   return (
     <Paper
       sx={{
         height: { xs: "200px", md: "250px" },
-        background: `url("/profile_background.gif")`,
+        background: `url(${background})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100%",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         paddingBlockStart: theme.spacing(2),
         paddingBlockEnd: theme.spacing(1),

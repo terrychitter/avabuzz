@@ -7,7 +7,7 @@ const ProfilePictureKit = () => {
       src="/profile_picture.jpg"
       sx={{
         border: "2px solid white",
-        boxShadow: "5px 5px 5px 1px rgba(0, 0, 0, 0.5)",
+        boxShadow: "5px 5px 5px 1px rgba(0, 0, 0, 0.3)",
         width: {
           xs: "6rem",
           sm: "8rem",
