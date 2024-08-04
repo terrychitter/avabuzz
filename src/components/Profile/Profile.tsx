@@ -8,7 +8,6 @@ import ProfileStats from "./ProfileStats";
 import GroupsAndEvents from "./GroupsAndEvents";
 import { Stack } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { ThemedContent } from "../HOC/ThemedContent";
 import UserContent from "./UserContent";
 const Profile = () => {
   const theme = useTheme();
