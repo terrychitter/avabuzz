@@ -12,38 +12,37 @@ import { ThemedContent } from "../HOC/ThemedContent";
 import UserContent from "./UserContent";
 const Profile = () => {
   const theme = useTheme();
-  const bannerUrl =
-    "https://media.giphy.com/media/YkOInyW8oZHPvI8aDW/giphy.gif?cid=790b7611jax7dqo80q5bjak6j902367dn37r5oz0tec96tse&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+  const bannerUrl = "/profile_background.gif";
   return (
     <Page>
       <MainContentContainer sx={{ paddingBlockEnd: theme.spacing(2) }}>
-        <ThemedContent imageUrl={bannerUrl}>
-          <Container>
-            <Stack
-              direction={"column"}
-              gap={theme.spacing(1)}
-              sx={{ width: "100%" }}
-            >
-              {/* Profile Banner */}
-              <ProfileBanner background={bannerUrl} />
-              {/* Profile Content */}
+        {/* <ThemedContent imageUrl={bannerUrl}> */}
+        <Container>
+          <Stack
+            direction={"column"}
+            gap={theme.spacing(1)}
+            sx={{ width: "100%" }}
+          >
+            {/* Profile Banner */}
+            <ProfileBanner background={bannerUrl} />
+            {/* Profile Content */}
 
-              {/* Profile Stats */}
-              <ContentPaper>
-                <ProfileStats />
-              </ContentPaper>
-              {/* Biography */}
-              <ContentPaper>
-                <Biography />
-              </ContentPaper>
-              <GroupsAndEvents />
-              {/* User Content */}
-              <ContentPaper>
-                <UserContent />
-              </ContentPaper>
-            </Stack>
-          </Container>
-        </ThemedContent>
+            {/* Profile Stats */}
+            <ContentPaper>
+              <ProfileStats />
+            </ContentPaper>
+            {/* Biography */}
+            <ContentPaper>
+              <Biography />
+            </ContentPaper>
+            <GroupsAndEvents />
+            {/* User Content */}
+            <ContentPaper>
+              <UserContent />
+            </ContentPaper>
+          </Stack>
+        </Container>
+        {/* </ThemedContent> */}
       </MainContentContainer>
     </Page>
   );

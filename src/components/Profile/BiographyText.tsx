@@ -1,6 +1,7 @@
-import { Paper, Typography, Link, useTheme } from "@mui/material";
+import { Paper, Link, useTheme } from "@mui/material";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ThemedMarkdown from "../HOC/ThemedMarkdown";
 
 const BiographyText = () => {
   const [expanded, setExpanded] = useState(false);
@@ -11,15 +12,10 @@ const BiographyText = () => {
     setExpanded(!expanded);
   };
 
-  const fullText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates at,
-  deserunt reiciendis repellat inventore odit! Architecto perspiciatis
-  eaque, odio maiores dicta nisi illo, aliquid vel consequuntur, minima
-  explicabo consequatur nulla. Lorem ipsum dolor sit amet consectetur
-  adipisicing elit. Voluptates at, deserunt reiciendis repellat inventore
-  odit! Architecto perspiciatis eaque, odio maiores dicta nisi illo, aliquid
-  vel consequuntur, minima explicabo consequatur nulla.`;
-
-  const truncatedText = fullText.slice(0, 200) + "...";
+  const fullText = `🍕🍔🍟🍦`;
+  const maxLength = 400;
+  const isTruncated = fullText.length > maxLength;
+  const truncatedText = `${fullText.slice(0, maxLength)}`;
 
   return (
     <Paper variant="outlined" sx={{ padding: 2 }}>
@@ -27,27 +23,27 @@ const BiographyText = () => {
         initial={{ height: 0, opacity: 0 }}
         animate={{
           height: expanded ? "auto" : 50,
-          opacity: expanded ? 1 : 0.5,
+          opacity: expanded ? 1 : 1,
         }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         style={{ overflow: "hidden" }}
       >
-        <Typography variant="body1">
-          {expanded ? fullText : truncatedText}
-        </Typography>
+        <ThemedMarkdown>{expanded ? fullText : truncatedText}</ThemedMarkdown>
       </motion.div>
-      <Link
-        component="button"
-        variant="body2"
-        onClick={handleToggle}
-        sx={{
-          display: "block",
-          marginTop: theme.spacing(1),
-          cursor: "pointer",
-        }}
-      >
-        {expanded ? "See Less" : "See More"}
-      </Link>
+      {isTruncated && (
+        <Link
+          component="button"
+          variant="body2"
+          onClick={handleToggle}
+          sx={{
+            display: "block",
+            marginTop: theme.spacing(1),
+            cursor: "pointer",
+          }}
+        >
+          {expanded ? "See Less" : "See More..."}
+        </Link>
+      )}
     </Paper>
   );
 };
