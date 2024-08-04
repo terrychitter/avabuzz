@@ -9,13 +9,14 @@ import GroupsAndEvents from "./GroupsAndEvents";
 import { Stack } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { ThemedContent } from "../HOC/ThemedContent";
+import UserContent from "./UserContent";
 const Profile = () => {
   const theme = useTheme();
   const bannerUrl =
     "https://media.giphy.com/media/YkOInyW8oZHPvI8aDW/giphy.gif?cid=790b7611jax7dqo80q5bjak6j902367dn37r5oz0tec96tse&ep=v1_gifs_search&rid=giphy.gif&ct=g";
   return (
     <Page>
-      <MainContentContainer>
+      <MainContentContainer sx={{ paddingBlockEnd: theme.spacing(2) }}>
         <ThemedContent imageUrl={bannerUrl}>
           <Container>
             <Stack
@@ -36,6 +37,10 @@ const Profile = () => {
                 <Biography />
               </ContentPaper>
               <GroupsAndEvents />
+              {/* User Content */}
+              <ContentPaper>
+                <UserContent />
+              </ContentPaper>
             </Stack>
           </Container>
         </ThemedContent>

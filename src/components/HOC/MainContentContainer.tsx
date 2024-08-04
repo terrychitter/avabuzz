@@ -5,15 +5,17 @@ import { useTheme } from "@mui/material";
 
 interface MainContentContainerProps {
   children?: React.ReactNode;
+  sx?: any;
 }
 
 const MainContentContainer: React.FC<MainContentContainerProps> = ({
   children,
+  sx,
 }) => {
   const theme = useTheme();
   return (
     <>
-      <Container component={"main"} maxWidth={"md"} sx={{ padding: 0 }}>
+      <Container component={"main"} maxWidth={"md"} sx={{ padding: 0, ...sx }}>
         <Stack direction={"column"} gap={theme.spacing(1)}>
           {children}
         </Stack>
