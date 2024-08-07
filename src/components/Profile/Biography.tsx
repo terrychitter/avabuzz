@@ -1,8 +1,8 @@
-import { Divider, Stack } from "@mui/material";
-import Button from "../CustomComponents/AnimatedButton";
-import GenConSexGroup from "./GenConSexGroup";
 import { Edit } from "@mui/icons-material";
+import { Stack } from "@mui/material";
+import Button from "../CustomComponents/AnimatedButton";
 import BiographyText from "./BiographyText";
+import GenConSexGroup from "./GenConSexGroup";
 
 const Biography = () => {
   return (
