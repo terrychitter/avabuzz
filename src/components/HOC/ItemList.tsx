@@ -32,7 +32,7 @@ const ItemList: React.FC<ItemListProps> = ({
   };
 
   return (
-    <Grid container spacing={2} sx={{ ...sx }}>
+    <Grid container spacing={1} sx={{ ...sx }}>
       {React.Children.count(children) > 0 ? (
         <>
           {React.Children.map(children, (child, index) => (

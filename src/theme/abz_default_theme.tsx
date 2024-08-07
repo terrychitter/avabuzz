@@ -12,8 +12,7 @@ export const themeOptions: ThemeOptions = {
       main: "#f15bb5d9",
     },
     background: {
-      default: `url(${backgroundImage})`,
-      paper: "#252525",
+      default: "#000000",
     },
     text: {
       primary: "#9e9e9e",
@@ -36,8 +35,9 @@ export const themeOptions: ThemeOptions = {
   },
   // Typography themes
   typography: {
+    htmlFontSize: 8,
     fontFamily: "Nunito Sans",
-    fontSize: 14,
+    fontSize: 6,
     h1: {
       fontFamily: "Montserrat",
     },
@@ -68,18 +68,9 @@ export const themeOptions: ThemeOptions = {
     borderRadius: 5,
   },
   components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundRepeat: "repeat",
-          backgroundAttachment: "fixed",
-        },
-      },
-    },
     MuiButtonBase: {
       defaultProps: {
-        disableRipple: true,
+        disableRipple: false,
       },
     },
     MuiLink: {

@@ -1,13 +1,7 @@
-import Box from "@mui/material/Box";
-import { useTheme } from "@mui/material/styles";
+import Post from "./Post";
 
 const PostList = () => {
-  const theme = useTheme();
-  const boxes = Array.from({ length: 0 }, (_, index) => (
-    <Box key={index} border={`1px solid ${theme.palette.text.secondary}`}>
-      Post {index + 1}
-    </Box>
-  ));
+  const boxes = Array.from({ length: 3 }, (_, index) => <Post key={index} />);
   return boxes;
 };
 

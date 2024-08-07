@@ -2,11 +2,11 @@ import React from "react";
 
 import { motion } from "framer-motion";
 
-export interface PageProps {
+export interface AnimatedPageProps {
   children?: React.ReactNode;
 }
 
-const Page: React.FC<PageProps> = ({ children }) => {
+const AnimatedPage: React.FC<AnimatedPageProps> = ({ children }) => {
   return (
     <motion.div
       key="page"
@@ -20,4 +20,4 @@ const Page: React.FC<PageProps> = ({ children }) => {
   );
 };
 
-export default Page;
+export default AnimatedPage;

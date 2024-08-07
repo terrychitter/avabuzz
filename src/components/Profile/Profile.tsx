@@ -1,22 +1,21 @@
-import Page from "../HOC/Page";
+import { Stack, useTheme } from "@mui/material";
 import Container from "@mui/material/Container";
+import ContentBox from "../HOC/ContentBox";
 import MainContentContainer from "../HOC/MainContentContainer";
-import ContentPaper from "../HOC/ContentPaper";
-import ProfileBanner from "./ProfileBanner";
+import AnimatedPage from "../HOC/Page";
 import Biography from "./Biography";
-import ProfileStats from "./ProfileStats";
 import GroupsAndEvents from "./GroupsAndEvents";
-import { Stack } from "@mui/material";
-import { useTheme } from "@mui/material";
+import ProfileBanner from "./ProfileBanner";
+import ProfileStats from "./ProfileStats";
 import UserContent from "./UserContent";
 const Profile = () => {
   const theme = useTheme();
   const bannerUrl = "/profile_background.gif";
   return (
-    <Page>
+    <AnimatedPage>
       <MainContentContainer sx={{ paddingBlockEnd: theme.spacing(2) }}>
         {/* <ThemedContent imageUrl={bannerUrl}> */}
-        <Container>
+        <Container sx={{ paddingInline: 0 }}>
           <Stack
             direction={"column"}
             gap={theme.spacing(1)}
@@ -27,23 +26,23 @@ const Profile = () => {
             {/* Profile Content */}
 
             {/* Profile Stats */}
-            <ContentPaper>
+            <ContentBox>
               <ProfileStats />
-            </ContentPaper>
+            </ContentBox>
             {/* Biography */}
-            <ContentPaper>
+            <ContentBox sx={{ paddingInline: 0 }}>
               <Biography />
-            </ContentPaper>
+            </ContentBox>
             <GroupsAndEvents />
             {/* User Content */}
-            <ContentPaper>
+            <ContentBox>
               <UserContent />
-            </ContentPaper>
+            </ContentBox>
           </Stack>
         </Container>
         {/* </ThemedContent> */}
       </MainContentContainer>
-    </Page>
+    </AnimatedPage>
   );
 };
 

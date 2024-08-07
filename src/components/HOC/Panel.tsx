@@ -23,7 +23,12 @@ const Panel: React.FC<PanelProps> = ({
       hidden={value !== index}
       id={`tabpanel-${index}`}
       aria-labelledby={`tab-${index}`}
-      sx={{ paddingBlock: theme.spacing(2), ...sx }}
+      sx={{
+        paddingBlock: theme.spacing(2),
+        minHeight: "500px",
+        overflow: "hidden",
+        ...sx,
+      }}
       {...other}
     >
       {children}

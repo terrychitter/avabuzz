@@ -12,13 +12,13 @@ const BiographyText = () => {
     setExpanded(!expanded);
   };
 
-  const fullText = `🍕🍔🍟🍦`;
+  const fullText = `This is my awesome biography`;
   const maxLength = 400;
   const isTruncated = fullText.length > maxLength;
   const truncatedText = `${fullText.slice(0, maxLength)}`;
 
   return (
-    <Paper variant="outlined" sx={{ padding: 2 }}>
+    <Paper sx={{ padding: 1, backgroundColor: "transparent !important" }}>
       <motion.div
         initial={{ height: 0, opacity: 0 }}
         animate={{

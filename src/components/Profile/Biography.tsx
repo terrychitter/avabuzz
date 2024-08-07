@@ -6,20 +6,19 @@ import BiographyText from "./BiographyText";
 
 const Biography = () => {
   return (
-    <>
+    <Stack gap={1}>
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
         alignItems={"center"}
       >
         <GenConSexGroup />
-        <Button variant="outlined" endIcon={<Edit />}>
+        <Button variant="outlined" size="small" endIcon={<Edit />}>
           Edit
         </Button>
       </Stack>
-      <Divider sx={{ marginBlock: 1 }} />
       <BiographyText />
-    </>
+    </Stack>
   );
 };
 

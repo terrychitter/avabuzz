@@ -1,6 +1,6 @@
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import ProfilePictureKit from "./ProfilePictureKit";
+import ProfilePictureKit from "../HOC/ProfilePictureKit";
 import UsernameTag from "./UsernameTag";
 import PublicIdTag from "./PublicIdTag";
 import { Box, useTheme } from "@mui/material";
