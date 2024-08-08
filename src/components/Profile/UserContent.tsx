@@ -34,7 +34,7 @@ const UserContent = () => {
         <Panel value={value} index={0}>
           <Box maxHeight={"500px"} overflow="auto">
             <ItemList
-              columns={{ xs: 1, sm: 2 }}
+              columns={{ xs: 1, md: 2 }}
               noItemsMessage="No posts to show"
             >
               {PostList()}

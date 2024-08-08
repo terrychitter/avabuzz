@@ -5,9 +5,9 @@ const QRCode = () => {
     <img
       src={avabuzzQR}
       alt="QR Code"
-      width="110px"
+      width="105px"
       height="auto"
-      style={{ borderRadius: "5px" }}
+      style={{ borderRadius: "5px", margin: "0 auto" }}
     />
   );
 };

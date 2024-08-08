@@ -12,13 +12,13 @@ const GroupsAndEvents = () => {
   return (
     <Grid container spacing={1} sx={{ opacity: 1 }}>
       {/* Groups */}
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} md={6}>
         <ThemedContent imageUrl={groupBackgroundUrl}>
           <Group background={groupBackgroundUrl} />
         </ThemedContent>
       </Grid>
       {/* Events */}
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} md={6}>
         <ThemedContent imageUrl={eventBackgroundUrl}>
           <Events background={eventBackgroundUrl} />
         </ThemedContent>

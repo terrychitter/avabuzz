@@ -8,12 +8,14 @@ declare module "@mui/material/styles" {
   interface Palette {
     custom: {
       lightBlack: string;
+      darkLightBlack: string;
     };
   }
 
   interface PaletteOptions {
     custom?: {
       lightBlack?: string;
+      darkLightBlack?: string;
     };
   }
 }
@@ -30,6 +32,7 @@ export const themeOptions: ThemeOptions = {
     },
     custom: {
       lightBlack: "#1e1e1e",
+      darkLightBlack: "#0a0a0a",
     },
     background: {
       default: "#000000",
@@ -83,7 +86,7 @@ export const themeOptions: ThemeOptions = {
     },
   },
   shape: {
-    borderRadius: 2,
+    borderRadius: 5,
   },
   components: {
     MuiCssBaseline: {

@@ -1,7 +1,6 @@
-import React from "react";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material";
+import Container from "@mui/material/Container";
+import React from "react";
 
 interface MainContentContainerProps {
   children?: React.ReactNode;
@@ -21,7 +20,6 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
         sx={{
           padding: "0 !important",
           minHeight: "100vh",
-          borderRadius: theme.shape.borderRadius,
           backgroundColor: theme.palette.custom.lightBlack,
           ...sx,
         }}
