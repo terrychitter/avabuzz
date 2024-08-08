@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import DownloadApp from "./DownloadApp";
-import theme from "../../theme/abz_default_theme";
 
 interface AsideProps {
   children?: React.ReactNode;

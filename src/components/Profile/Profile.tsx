@@ -1,17 +1,15 @@
-import styled from "@emotion/styled";
 import { Box, Grid, Stack, useMediaQuery, useTheme } from "@mui/material";
 import Container from "@mui/material/Container";
-import { useState } from "react";
+import Aside from "../CustomComponents/Aside";
+import NavDrawer from "../CustomComponents/NavDrawer";
 import ContentBox from "../HOC/ContentBox";
 import MainContentContainer from "../HOC/MainContentContainer";
 import AnimatedPage from "../HOC/Page";
-import Aside from "../CustomComponents/Aside";
 import Biography from "./Biography";
 import GroupsAndEvents from "./GroupsAndEvents";
 import ProfileBanner from "./ProfileBanner";
 import ProfileStats from "./ProfileStats";
 import UserContent from "./UserContent";
-import NavDrawer from "../CustomComponents/NavDrawer";
 
 const Profile = () => {
   // Get theme
