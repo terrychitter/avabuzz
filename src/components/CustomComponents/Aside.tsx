@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import DownloadApp from "../CustomComponents/DownloadApp";
+import DownloadApp from "./DownloadApp";
 import theme from "../../theme/abz_default_theme";
 
 interface AsideProps {
@@ -15,13 +15,12 @@ const Aside: React.FC<AsideProps> = ({ children }) => {
       paddingBlock={1}
       height={"100%"}
       sx={{
-        backgroundColor: theme.palette.custom.lightBlack,
         position: "sticky", // Make the sidebar sticky
         top: 0, // Stick the sidebar to the top of the viewport
         alignSelf: "start", // Ensure the sidebar aligns properly in the flex container
       }}
     >
-      <Stack direction={"row"}>
+      <Stack direction={{ xs: "column", sm: "row" }}>
         {children}
         <DownloadApp />
       </Stack>

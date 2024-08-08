@@ -10,6 +10,7 @@ import {
 import { ReactNode } from "react";
 import CustomBackground from "./CustomBackground/CustomBackground";
 import Logo from "./Logo";
+import NavDrawer from "./NavDrawer";
 
 interface AuthLayoutProps {
   heroContent: ReactNode;

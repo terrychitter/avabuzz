@@ -3,7 +3,6 @@ import theme from "../../theme/abz_default_theme";
 import ContentPaper from "../HOC/ContentPaper";
 import { useStandalone } from "../StandaloneContext";
 import QRCode from "./QRCode";
-import { AspectRatio, BorderAll, WidthFull } from "@mui/icons-material";
 
 const DownloadApp = () => {
   const { isStandalone } = useStandalone();
@@ -13,35 +12,24 @@ const DownloadApp = () => {
         <ContentPaper
           sx={{
             color: theme.palette.common.white,
-            backgroundColor: `${theme.palette.custom.darkLightBlack} !important`,
-            padding: 1,
+            padding: { xs: 2, md: 2 },
             width: "100%",
-            border: "1px solid rgba(255, 255, 255, 0.5)",
-            background:
-              "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
-            backgroundSize: "400% 400%",
-            animation: "gradient 5s ease infinite",
-            "@keyframes gradient": {
-              "0%": {
-                backgroundPosition: "0% 50%",
-              },
-              "50%": {
-                backgroundPosition: "100% 50%",
-              },
-              "100%": {
-                backgroundPosition: "0% 50%",
-              },
-            },
+            backgroundColor: theme.palette.common.black,
           }}
         >
           <Stack
             textAlign={{ sm: "center" }}
-            gap={1}
-            direction={{ sm: "column", md: "row" }}
-            alignItems={"center"}
+            gap={2}
+            direction={{ xs: "row", sm: "column", md: "row" }}
+            alignItems={"start"}
           >
             <QRCode />
-            <Typography component={"p"} variant="h5" fontWeight={"bold"}>
+            <Typography
+              component={"p"}
+              variant="h5"
+              fontWeight={"bold"}
+              textAlign={{ sm: "center", md: "left" }}
+            >
               Download our Mobile App!
             </Typography>
           </Stack>

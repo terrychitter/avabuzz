@@ -1,0 +1,48 @@
+import { SwipeableDrawer } from "@mui/material";
+import { Fab } from "@mui/material";
+import React from "react";
+import theme from "../../theme/abz_default_theme";
+import Aside from "./Aside";
+import { Menu } from "@mui/icons-material";
+
+const NavDrawer = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
+
+  return (
+    <>
+      <Fab
+        color="primary"
+        onClick={toggleDrawer(true)}
+        sx={{
+          position: "fixed",
+          bottom: 16,
+          right: 16,
+          zIndex: theme.zIndex.speedDial,
+        }}
+      >
+        <Menu />
+      </Fab>
+      <SwipeableDrawer
+        anchor="right"
+        open={open}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        PaperProps={{
+          style: {
+            paddingInline: theme.spacing(2),
+            paddingBlockStart: theme.spacing(1),
+            backgroundColor: theme.palette.common.black,
+          },
+        }}
+      >
+        <Aside />
+      </SwipeableDrawer>
+    </>
+  );
+};
+
+export default NavDrawer;
