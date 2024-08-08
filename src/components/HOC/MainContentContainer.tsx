@@ -15,10 +15,18 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
   const theme = useTheme();
   return (
     <>
-      <Container component={"main"} maxWidth={"md"} sx={{ padding: 0, ...sx }}>
-        <Stack direction={"column"} gap={theme.spacing(1)}>
-          {children}
-        </Stack>
+      <Container
+        component={"main"}
+        maxWidth={"md"}
+        sx={{
+          padding: "0 !important",
+          minHeight: "100vh",
+          borderRadius: theme.shape.borderRadius,
+          backgroundColor: theme.palette.custom.lightBlack,
+          ...sx,
+        }}
+      >
+        {children}
       </Container>
     </>
   );

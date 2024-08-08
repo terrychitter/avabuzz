@@ -13,7 +13,7 @@ const Biography = () => {
         alignItems={"center"}
       >
         <GenConSexGroup />
-        <Button variant="outlined" size="small" endIcon={<Edit />}>
+        <Button variant="outlined" endIcon={<Edit />}>
           Edit
         </Button>
       </Stack>

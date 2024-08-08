@@ -1,5 +1,22 @@
-import { createTheme, ThemeOptions } from "@mui/material";
+// theme.ts
+import { createTheme } from "@mui/material";
+import { ThemeOptions } from "@mui/material/styles";
 import backgroundImage from "./background_tile.png";
+
+// Extend Palette and PaletteOptions interfaces
+declare module "@mui/material/styles" {
+  interface Palette {
+    custom: {
+      lightBlack: string;
+    };
+  }
+
+  interface PaletteOptions {
+    custom?: {
+      lightBlack?: string;
+    };
+  }
+}
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -10,6 +27,9 @@ export const themeOptions: ThemeOptions = {
     },
     secondary: {
       main: "#f15bb5d9",
+    },
+    custom: {
+      lightBlack: "#1e1e1e",
     },
     background: {
       default: "#000000",
@@ -33,7 +53,6 @@ export const themeOptions: ThemeOptions = {
       main: "#4caf50",
     },
   },
-  // Typography themes
   typography: {
     htmlFontSize: 8,
     fontFamily: "Nunito Sans",
@@ -63,11 +82,49 @@ export const themeOptions: ThemeOptions = {
       fontFamily: "Montserrat",
     },
   },
-  // Components themes
   shape: {
-    borderRadius: 5,
+    borderRadius: 2,
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @media (min-width: 600px) { /* md breakpoint for MUI */
+          body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(${backgroundImage});
+            background-repeat: repeat;
+            background-attachment: fixed;
+            opacity: 0.5;
+            z-index: -1;
+          }
+        }
+
+        ::webkit-scrollbar-track
+        {
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+          border-radius: 10px;
+          background-color: transparent;
+        }
+
+        ::-webkit-scrollbar
+        {
+          width: 3px;
+          background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb
+        {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+          background-color: #555;
+        }
+      `,
+    },
     MuiButtonBase: {
       defaultProps: {
         disableRipple: false,
@@ -84,8 +141,6 @@ export const themeOptions: ThemeOptions = {
   },
 };
 
-console.log(backgroundImage);
+const theme = createTheme(themeOptions);
 
-export const abzDefaultTheme = createTheme(themeOptions);
-
-export default abzDefaultTheme;
+export default theme;

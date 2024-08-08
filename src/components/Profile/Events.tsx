@@ -42,7 +42,7 @@ const Events: React.FC<EventsProps> = ({ background }) => {
         </Stack>
         {/* Right side of the group */}
         <Box alignContent={"end"}>
-          <Link to="/groups/group_id">
+          <Link to="/post/:post_id">
             <Button>Check out</Button>
           </Link>
         </Box>

@@ -45,7 +45,7 @@ const Group: React.FC<GroupProps> = ({ background }) => {
         </Stack>
         {/* Right side of the group */}
         <Box alignContent={"end"}>
-          <Link to="/groups/group_id">
+          <Link to="/groups/:group_id">
             <Button>View Group</Button>
           </Link>
         </Box>

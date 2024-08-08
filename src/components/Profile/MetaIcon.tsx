@@ -33,8 +33,6 @@ const MetaIcon: React.FC<MetaIconProps> = ({
 
   const imagePath = `${basePath}${children}.png`;
 
-  console.log(imagePath);
-
   return (
     <Tooltip
       title={children}
