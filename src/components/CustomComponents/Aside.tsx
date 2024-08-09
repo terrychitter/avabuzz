@@ -10,13 +10,11 @@ const Aside: React.FC<AsideProps> = ({ children }) => {
   return (
     <Box
       component={"aside"}
-      paddingInline={{ sm: 1, md: 2 }}
-      paddingBlock={1}
       height={"100%"}
       sx={{
-        position: "sticky", // Make the sidebar sticky
-        top: 0, // Stick the sidebar to the top of the viewport
-        alignSelf: "start", // Ensure the sidebar aligns properly in the flex container
+        position: "sticky",
+        top: 0,
+        alignSelf: "start",
       }}
     >
       <Stack direction={{ xs: "column", sm: "row" }}>

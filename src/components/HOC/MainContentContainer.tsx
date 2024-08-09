@@ -31,6 +31,10 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
         <Grid container gap={0}>
           <Grid
             item
+            marginBlockStart={{ xs: 0, sm: 1 }}
+            paddingInline={{ xs: 0, sm: 1 }}
+            paddingBlock={{ xs: 0, sm: 1 }}
+            borderRadius={{ xs: 0, sm: 1 }}
             xs={12}
             sm={8}
             md={8}
@@ -47,6 +51,10 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
             // Aside Grid item
             <Grid
               item
+              paddingInline={1}
+              paddingBlock={1}
+              paddingBlockStart={{ sm: 2, md: 1 }}
+              borderRadius={1}
               xs={12}
               sm={4}
               md={4}

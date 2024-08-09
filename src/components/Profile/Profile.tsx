@@ -11,7 +11,8 @@ import UserContent from "./UserContent";
 
 const Profile = () => {
   // Banner URL
-  const bannerUrl = "/profile_banner.gif";
+  const bannerUrl =
+    "https://media.giphy.com/media/Vd3A2liqTP9KsQ1wgf/giphy.gif?cid=ecf05e47wmig0hm782epo8metf8e9r1864qgadyk6akxl9sb&ep=v1_gifs_related&rid=giphy.gif&ct=g";
 
   return (
     <AnimatedPage>
