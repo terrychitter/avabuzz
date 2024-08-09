@@ -10,7 +10,7 @@ const groupBackgroundUrl =
 
 const GroupsAndEvents = () => {
   return (
-    <Grid container spacing={1} sx={{ opacity: 1 }}>
+    <Grid container spacing={1}>
       {/* Groups */}
       <Grid item xs={12} md={6}>
         <ThemedContent imageUrl={groupBackgroundUrl}>

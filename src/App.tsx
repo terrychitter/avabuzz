@@ -1,14 +1,28 @@
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 import abzDefaultTheme from "./theme/abz_dark_theme";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { StandaloneProvider } from "./components/StandaloneContext";
-import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
-import Profile from "./components/Profile/Profile";
 import "./App.css";
+import { loadable } from "./utils/loadable";
+
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import DefaultLoader from "./components/CustomComponents/DefaultLoader";
+import { StandaloneProvider } from "./components/StandaloneContext";
+
+const Profile = loadable(() => import("./components/Profile/Profile"), {
+  fallback: <DefaultLoader />,
+});
+
+const Signup = loadable(() => import("./components/Signup/Signup"), {
+  fallback: <DefaultLoader />,
+});
+
+const Home = loadable(() => import("./components/Home/Home"), {
+  fallback: <DefaultLoader />,
+});
+
+const Login = loadable(() => import("./components/Login/Login"), {
+  fallback: <DefaultLoader />,
+});
 
 function App() {
   return (
