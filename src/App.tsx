@@ -24,6 +24,10 @@ const Login = loadable(() => import("./components/Login/Login"), {
   fallback: <DefaultLoader />,
 });
 
+const NotFound = loadable(() => import("./NotFound"), {
+  fallback: <DefaultLoader />,
+});
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
@@ -37,6 +41,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/create-account" element={<Signup />} />
             <Route path="/my-profile" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </StandaloneProvider>
