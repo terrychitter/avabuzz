@@ -29,7 +29,10 @@ const UserContent = () => {
           position: "sticky",
           top: 0,
           zIndex: 1000,
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: {
+            xs: theme.palette.background.default,
+            md: theme.palette.background.paper,
+          },
         }}
       >
         <Tab label="Posts" />

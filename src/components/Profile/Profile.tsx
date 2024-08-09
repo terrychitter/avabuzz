@@ -1,4 +1,5 @@
-import { Box, Stack, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Stack } from "@mui/material";
+import theme from "../../theme/abz_dark_theme";
 import ContentBox from "../HOC/ContentBox";
 import MainContentContainer from "../HOC/MainContentContainer";
 import AnimatedPage from "../HOC/Page";
@@ -31,7 +32,7 @@ const Profile = () => {
             </ContentBox>
             <GroupsAndEvents />
             {/* User Content */}
-            <Box flexGrow={1}>
+            <Box flexGrow={1} marginBlockStart={theme.spacing(3)}>
               <UserContent />
             </Box>
           </Stack>

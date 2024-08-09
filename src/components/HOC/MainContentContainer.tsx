@@ -1,9 +1,9 @@
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, useMediaQuery } from "@mui/material";
 import Container from "@mui/material/Container";
 import React from "react";
+import theme from "../../theme/abz_dark_theme";
 import Aside from "../CustomComponents/Aside";
 import NavDrawer from "../CustomComponents/NavDrawer";
-import theme from "../../theme/abz_dark_theme";
 
 interface MainContentContainerProps {
   children?: React.ReactNode;
@@ -29,7 +29,18 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
         }}
       >
         <Grid container gap={0}>
-          <Grid item xs={12} sm={8} md={8}>
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={8}
+            sx={{
+              backgroundColor: {
+                sx: "transparent",
+                md: theme.palette.background.paper,
+              },
+            }}
+          >
             {children}
           </Grid>
           {isSmallScreenOrLarger && (

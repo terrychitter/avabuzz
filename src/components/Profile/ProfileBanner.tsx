@@ -26,7 +26,6 @@ const ProfileBanner: React.FC<ProfileBannerProps> = ({ background }) => {
         paddingBlockStart: theme.spacing(2),
         paddingBlockEnd: theme.spacing(1),
         paddingInline: { xs: theme.spacing(1), md: theme.spacing(4) },
-        borderRadius: { xs: 0, sm: 2 },
       }}
     >
       {/* Left side of the banner */}
