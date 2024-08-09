@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import theme from "../../theme/abz_default_theme";
+import theme from "../../theme/abz_dark_theme";
 import ContentPaper from "../HOC/ContentPaper";
 import { useStandalone } from "../StandaloneContext";
 import QRCode from "./QRCode";
@@ -14,7 +14,6 @@ const DownloadApp = () => {
             color: theme.palette.common.white,
             padding: { xs: 2, md: 2 },
             width: "100%",
-            backgroundColor: theme.palette.common.black,
           }}
         >
           <Stack

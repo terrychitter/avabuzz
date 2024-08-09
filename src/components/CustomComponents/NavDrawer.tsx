@@ -1,7 +1,7 @@
 import { SwipeableDrawer } from "@mui/material";
 import { Fab } from "@mui/material";
 import React from "react";
-import theme from "../../theme/abz_default_theme";
+import theme from "../../theme/abz_dark_theme";
 import Aside from "./Aside";
 import { Menu } from "@mui/icons-material";
 

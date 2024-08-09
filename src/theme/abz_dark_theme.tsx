@@ -1,7 +1,6 @@
 // theme.ts
 import { createTheme } from "@mui/material";
 import { ThemeOptions } from "@mui/material/styles";
-import backgroundImage from "./background_tile.png";
 
 // Extend Palette and PaletteOptions interfaces
 declare module "@mui/material/styles" {
@@ -91,22 +90,6 @@ export const themeOptions: ThemeOptions = {
   components: {
     MuiCssBaseline: {
       styleOverrides: `
-        @media (min-width: 600px) { /* md breakpoint for MUI */
-          body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url(${backgroundImage});
-            background-repeat: repeat;
-            background-attachment: fixed;
-            opacity: 0.5;
-            z-index: -1;
-          }
-        }
-
         ::webkit-scrollbar-track
         {
           -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

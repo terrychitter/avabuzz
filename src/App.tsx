@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import abzDefaultTheme from "./theme/abz_default_theme";
+import abzDefaultTheme from "./theme/abz_dark_theme";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { StandaloneProvider } from "./components/StandaloneContext";

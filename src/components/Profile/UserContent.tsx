@@ -7,6 +7,7 @@ import ItemList from "../HOC/ItemList";
 import PostList from "../HOC/PostList";
 import CommentList from "../HOC/CommentList";
 import SwipeableViews from "react-swipeable-views";
+import theme from "../../theme/abz_dark_theme";
 
 const UserContent = () => {
   const [value, setValue] = React.useState(0);
@@ -16,7 +17,7 @@ const UserContent = () => {
   };
 
   return (
-    <Box maxHeight={"700px"} width={"100%"}>
+    <Box height="100%" display="flex" flexDirection="column">
       <Tabs
         value={value}
         onChange={handleChange}
@@ -24,41 +25,47 @@ const UserContent = () => {
         aria-label="user content tabs"
         variant="fullWidth"
         centered
+        sx={{
+          position: "sticky",
+          top: 0,
+          zIndex: 1000,
+          backgroundColor: theme.palette.background.default,
+        }}
       >
         <Tab label="Posts" />
         <Tab label="Comments" />
         <Tab label="Favorites" />
       </Tabs>
-      <SwipeableViews index={value} onChangeIndex={setValue}>
+      <SwipeableViews
+        index={value}
+        onChangeIndex={setValue}
+        style={{ height: "100% !important" }}
+      >
         {/* Posts Panel */}
-        <Panel value={value} index={0}>
-          <Box maxHeight={"500px"} overflow="auto">
-            <ItemList
-              columns={{ xs: 1, md: 2 }}
-              noItemsMessage="No posts to show"
-            >
-              {PostList()}
-            </ItemList>
-          </Box>
+        <Panel value={value} index={0} sx={{ height: "100%" }}>
+          <ItemList
+            columns={{ xs: 1, md: 2 }}
+            noItemsMessage="No posts to show"
+          >
+            {PostList()}
+          </ItemList>
         </Panel>
+
         {/* Comments Panel */}
-        <Panel value={value} index={1}>
-          <Box maxHeight={"500px"} overflow="auto">
-            <ItemList columns={{ xs: 1 }} noItemsMessage="No comments to show">
-              {CommentList()}
-            </ItemList>
-          </Box>
+        <Panel value={value} index={1} sx={{ height: "100%" }}>
+          <ItemList columns={{ xs: 1 }} noItemsMessage="No comments to show">
+            {CommentList()}
+          </ItemList>
         </Panel>
+
         {/* Favourites Panel */}
-        <Panel value={value} index={2}>
-          <Box maxHeight={"500px"} overflow="auto">
-            <ItemList
-              columns={{ xs: 1, sm: 2, lg: 3 }}
-              noItemsMessage="No favorites to show"
-            >
-              {PostList()}
-            </ItemList>
-          </Box>
+        <Panel value={value} index={2} sx={{ height: "100%" }}>
+          <ItemList
+            columns={{ xs: 1, sm: 2, lg: 3 }}
+            noItemsMessage="No favorites to show"
+          >
+            {PostList()}
+          </ItemList>
         </Panel>
       </SwipeableViews>
     </Box>
