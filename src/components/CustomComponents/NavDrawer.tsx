@@ -33,9 +33,7 @@ const NavDrawer = () => {
         onOpen={toggleDrawer(true)}
         PaperProps={{
           style: {
-            paddingInline: theme.spacing(2),
-            paddingBlockStart: theme.spacing(1),
-            backgroundColor: theme.palette.common.black,
+            backgroundColor: theme.palette.background.paper,
           },
         }}
       >

@@ -31,7 +31,7 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
         <Grid container gap={0}>
           <Grid
             item
-            marginBlockStart={{ xs: 0, sm: 1 }}
+            marginBlockStart={{ xs: 0, sm: 2, md: 1 }}
             paddingInline={{ xs: 0, sm: 1 }}
             paddingBlock={{ xs: 0, sm: 1 }}
             borderRadius={{ xs: 0, sm: 1 }}
@@ -41,7 +41,7 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
             sx={{
               backgroundColor: {
                 sx: "transparent",
-                md: theme.palette.background.paper,
+                sm: theme.palette.custom.darkerBlack,
               },
             }}
           >

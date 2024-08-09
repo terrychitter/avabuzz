@@ -31,7 +31,7 @@ const UserContent = () => {
           zIndex: 1000,
           backgroundColor: {
             xs: theme.palette.background.default,
-            md: theme.palette.background.paper,
+            sm: theme.palette.background.paper,
           },
         }}
       >

@@ -1,12 +1,12 @@
 import LoginForm from "../CustomComponents/LoginForm";
 import AuthLayout from "../CustomComponents/AuthLayout";
-import Page from "../HOC/Page";
+import AnimatedPage from "../HOC/Page";
 
 const Login = () => {
   return (
-    <Page>
+    <AnimatedPage>
       <AuthLayout heroContent="Welcome Back!" formComponent={<LoginForm />} />
-    </Page>
+    </AnimatedPage>
   );
 };
 

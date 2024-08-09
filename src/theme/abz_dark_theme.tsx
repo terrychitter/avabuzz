@@ -6,18 +6,19 @@ import { ThemeOptions } from "@mui/material/styles";
 declare module "@mui/material/styles" {
   interface Palette {
     custom: {
-      lightBlack: string;
-      darkLightBlack: string;
+      darkerBlack: string;
     };
   }
 
   interface PaletteOptions {
     custom?: {
-      lightBlack?: string;
-      darkLightBlack?: string;
+      darkerBlack?: string;
     };
   }
 }
+
+const black = "#171717";
+const darkerBlack = "#080808";
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -30,11 +31,11 @@ export const themeOptions: ThemeOptions = {
       main: "#f15bb5d9",
     },
     custom: {
-      lightBlack: "#1e1e1e",
-      darkLightBlack: "#0a0a0a",
+      darkerBlack: `${darkerBlack}`,
     },
     background: {
-      default: "#000000",
+      default: `${black}`,
+      paper: `${darkerBlack}`,
     },
     text: {
       primary: "#9e9e9e",
