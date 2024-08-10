@@ -22,7 +22,7 @@ const Aside: React.FC<AsideProps> = ({ children }) => {
         backgroundColor: theme.palette.background.paper,
       }}
     >
-      <Stack direction={{ xs: "column", sm: "row" }}>
+      <Stack direction={"column"} gap={1}>
         {children}
         <DownloadApp />
       </Stack>

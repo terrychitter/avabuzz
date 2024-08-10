@@ -2,16 +2,18 @@ import { Grid, useMediaQuery } from "@mui/material";
 import Container from "@mui/material/Container";
 import React from "react";
 import theme from "../../theme/abz_dark_theme";
-import Aside from "../CustomComponents/Aside";
+import Aside from "../CustomComponents/Aside/Aside";
 import NavDrawer from "../CustomComponents/NavDrawer";
 
 interface MainContentContainerProps {
   children?: React.ReactNode;
+  asideContent?: React.ReactNode;
   sx?: any;
 }
 
 const MainContentContainer: React.FC<MainContentContainerProps> = ({
   children,
+  asideContent,
   sx,
 }) => {
   // Get is small screen or larger
@@ -66,11 +68,11 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
                 overflow: "auto",
               }}
             >
-              <Aside />
+              <Aside>{asideContent}</Aside>
             </Grid>
           )}
         </Grid>
-        {!isSmallScreenOrLarger && <NavDrawer />}
+        {!isSmallScreenOrLarger && <NavDrawer content={asideContent} />}
       </Container>
     </>
   );

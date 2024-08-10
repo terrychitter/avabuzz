@@ -1,8 +1,8 @@
 import { Stack, Typography } from "@mui/material";
-import theme from "../../theme/abz_dark_theme";
-import ContentPaper from "../HOC/ContentPaper";
-import { useStandalone } from "../StandaloneContext";
-import QRCode from "./QRCode";
+import theme from "../../../theme/abz_dark_theme";
+import ContentPaper from "../../HOC/ContentPaper";
+import { useStandalone } from "../../StandaloneContext";
+import QRCode from "../QRCode";
 
 const DownloadApp = () => {
   const { isStandalone } = useStandalone();

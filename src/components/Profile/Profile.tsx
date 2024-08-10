@@ -8,6 +8,7 @@ import GroupsAndEvents from "./GroupsAndEvents";
 import ProfileBanner from "./ProfileBanner";
 import ProfileStats from "./ProfileStats";
 import UserContent from "./UserContent";
+import ProfileAsideContent from "./ProfileAsideContent";
 
 const Profile = () => {
   // Banner URL
@@ -16,7 +17,7 @@ const Profile = () => {
 
   return (
     <AnimatedPage>
-      <MainContentContainer>
+      <MainContentContainer asideContent={<ProfileAsideContent />}>
         <Stack direction={"column"} gap={{ xs: 0, md: 1 }} height={"100%"}>
           {/* Profile Banner */}
           <ProfileBanner background={bannerUrl} />

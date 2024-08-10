@@ -2,10 +2,14 @@ import { SwipeableDrawer } from "@mui/material";
 import { Fab } from "@mui/material";
 import React from "react";
 import theme from "../../theme/abz_dark_theme";
-import Aside from "./Aside";
+import Aside from "./Aside/Aside";
 import { Menu } from "@mui/icons-material";
 
-const NavDrawer = () => {
+interface NavDrawerProps {
+  content?: React.ReactNode;
+}
+
+const NavDrawer: React.FC<NavDrawerProps> = ({ content }) => {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -37,7 +41,7 @@ const NavDrawer = () => {
           },
         }}
       >
-        <Aside />
+        <Aside>{content}</Aside>
       </SwipeableDrawer>
     </>
   );
