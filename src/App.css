@@ -13,3 +13,7 @@ button,
     user-select: none !important;
     /* Standard */
 }
+
+body {
+    overflow-x: hidden;
+}

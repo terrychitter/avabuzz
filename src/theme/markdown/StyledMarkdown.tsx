@@ -12,7 +12,7 @@ const StyledMarkdown = styled("div")(({ theme }) => ({
     ...theme.typography.h1,
     marginBlockStart: 0,
     marginBlockEnd: theme.spacing(2),
-    fontSize: "2rem",
+    fontSize: "1.5rem",
     fontWeight: 700,
     color: theme.palette.text.primary,
   },
@@ -20,7 +20,7 @@ const StyledMarkdown = styled("div")(({ theme }) => ({
     ...theme.typography.h2,
     marginBlockStart: 0,
     marginBlockEnd: theme.spacing(2),
-    fontSize: "1.5rem",
+    fontSize: "1.17rem",
     fontWeight: 700,
     color: theme.palette.text.primary,
   },
@@ -28,7 +28,7 @@ const StyledMarkdown = styled("div")(({ theme }) => ({
     ...theme.typography.h3,
     marginBlockStart: 0,
     marginBlockEnd: theme.spacing(2),
-    fontSize: "1.17rem",
+    fontSize: "1rem",
     fontWeight: 700,
     color: theme.palette.text.primary,
   },
@@ -37,7 +37,6 @@ const StyledMarkdown = styled("div")(({ theme }) => ({
     marginBlockStart: 0,
     marginBlockEnd: theme.spacing(2),
     fontSize: "1rem",
-    fontWeight: 600,
     color: theme.palette.text.primary,
   },
   "& p": {
@@ -50,8 +49,7 @@ const StyledMarkdown = styled("div")(({ theme }) => ({
     textDecoration: "none",
     "&::before": {
       content: '"🔗"' /* Add the link emoji */,
-      marginRight:
-        "4px" /* Optional: add some spacing between the emoji and the text */,
+      marginRight: "4px",
     },
     "&:hover": {
       textDecoration: "underline",

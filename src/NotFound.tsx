@@ -1,5 +1,6 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { ArrowBack, Home } from "@mui/icons-material";
+import { Box, Stack, Typography, useTheme } from "@mui/material";
+import mascotImage from "/avabuzz_mascot/doughnut-11.png";
 import Button from "./components/CustomComponents/AnimatedButton";
 import Link from "./components/CustomComponents/CustomLink";
 
@@ -29,7 +30,7 @@ const NotFound = () => {
         gap={2}
       >
         <Stack direction={"column"} alignItems={"center"} gap={2}>
-          <img src="/avabuzz_mascot/doughnut-11.png" width={"50%"}></img>
+          <img src={mascotImage} width={"50%"} />
           <Stack gap={0} textAlign={"center"}>
             <Typography variant={"h4"} component={"h1"} fontWeight={"bold"}>
               404 Not Found
