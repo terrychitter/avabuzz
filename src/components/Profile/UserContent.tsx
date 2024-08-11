@@ -3,11 +3,11 @@ import Tabs from "@mui/material/Tabs";
 import Box from "@mui/material/Box";
 import React from "react";
 import Panel from "../HOC/Panel";
-import ItemList from "../HOC/ItemList";
 import PostList from "../HOC/PostList";
 import CommentList from "../HOC/CommentList";
 import SwipeableViews from "react-swipeable-views";
 import theme from "../../theme/abz_dark_theme";
+import ItemList from "../HOC/ItemList";
 
 const UserContent = () => {
   const [value, setValue] = React.useState(0);

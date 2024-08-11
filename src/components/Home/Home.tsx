@@ -16,8 +16,8 @@ const Home = () => {
           >
             Install App
           </Button>
-          <Link to="/login">Login</Link>
-          <Link to="/my-profile">Profile</Link>
+          <Link to="login">Login</Link>
+          <Link to="profile">Profile</Link>
         </Stack>
       </Page>
     </>

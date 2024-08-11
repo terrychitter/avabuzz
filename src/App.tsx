@@ -12,6 +12,13 @@ const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
 });
 
+const ProfileRoute = loadable(
+  () => import("./components/Profile/ProfileRoute"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 const Signup = loadable(() => import("./components/Signup/Signup"), {
   fallback: <DefaultLoader />,
 });
@@ -28,19 +35,28 @@ const NotFound = loadable(() => import("./NotFound"), {
   fallback: <DefaultLoader />,
 });
 
+const ProfileSettings = loadable(
+  () => import("./components/Profile/Settings/ProfileSettings"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
       <CssBaseline />
       <StandaloneProvider>
-        {" "}
         {/* Wrap your application with StandaloneProvider */}
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/create-account" element={<Signup />} />
-            <Route path="/my-profile" element={<Profile />} />
+            <Route path="login" element={<Login />} />
+            <Route path="create-account" element={<Signup />} />
+            <Route path="profile" element={<ProfileRoute />}>
+              <Route index element={<Profile />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

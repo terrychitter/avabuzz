@@ -5,10 +5,10 @@ import MainContentContainer from "../HOC/MainContentContainer";
 import AnimatedPage from "../HOC/Page";
 import Biography from "./Biography";
 import GroupsAndEvents from "./GroupsAndEvents";
+import ProfileAsideContent from "./ProfileAsideContent";
 import ProfileBanner from "./ProfileBanner";
 import ProfileStats from "./ProfileStats";
 import UserContent from "./UserContent";
-import ProfileAsideContent from "./ProfileAsideContent";
 
 const Profile = () => {
   // Banner URL

@@ -4,7 +4,7 @@ import Settings from "@mui/icons-material/Settings";
 
 const SettingsButton = () => {
   return (
-    <Link to={"/settings"}>
+    <Link to={"settings"}>
       <IconButton>
         <Settings sx={{ fontSize: "1.7rem" }} />
       </IconButton>

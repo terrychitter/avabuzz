@@ -125,6 +125,41 @@ export const themeOptions: ThemeOptions = {
         }),
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        root: {
+          backdropFilter: "blur(5px)",
+          padding: 20,
+        },
+      },
+    },
+    MuiDialogTitle: {
+      styleOverrides: {
+        root: {
+          textAlign: "center",
+        },
+      },
+    },
+    MuiDialogContent: {
+      styleOverrides: {
+        root: {
+          padding: 20,
+          textAlign: "center",
+        },
+      },
+    },
+    MuiDialogActions: {
+      styleOverrides: {
+        root: {
+          justifyContent: "center",
+          gap: 10,
+          padding: 20,
+          "& > * + *": {
+            marginLeft: "0 !important",
+          },
+        },
+      },
+    },
   },
 };
 

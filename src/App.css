@@ -15,5 +15,13 @@ button,
 }
 
 body {
+    min-height: 100vh;
     overflow-x: hidden;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
