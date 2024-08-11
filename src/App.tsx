@@ -58,6 +58,13 @@ const PrivacySettings = loadable(
   }
 );
 
+const Followers = loadable(
+  () => import("./components/Profile/Followers/Followers"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
@@ -70,6 +77,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="create-account" element={<Signup />} />
             <Route path="profile" element={<ProfileRoute />}>
+              <Route path="followers" element={<Followers />} />
               <Route index element={<Profile />} />
               <Route path="settings" element={<ProfileSettingsRoute />}>
                 <Route index element={<ProfileSettings />} />

@@ -125,6 +125,13 @@ export const themeOptions: ThemeOptions = {
         }),
       },
     },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          zIndex: 0,
+        },
+      },
+    },
     MuiDialog: {
       styleOverrides: {
         root: {

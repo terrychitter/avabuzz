@@ -20,6 +20,7 @@ const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
         p={1}
         position={"sticky"}
         top={0}
+        zIndex={100}
         sx={{
           backgroundColor: {
             xs: theme.palette.background.default,
