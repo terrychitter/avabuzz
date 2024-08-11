@@ -1,4 +1,5 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
+import Link from "../CustomComponents/CustomLink";
 
 const ProfileStats = () => {
   const theme = useTheme();
@@ -30,10 +31,12 @@ const ProfileStats = () => {
           marginInlineStart: "0 !important",
         }}
       >
-        <Typography sx={{ fontWeight: "bold" }}>0</Typography>
-        <Typography component="p" sx={{ fontSize: "0.9rem" }}>
-          Followers
-        </Typography>
+        <Link to="followers">
+          <Typography sx={{ fontWeight: "bold" }}>0</Typography>
+          <Typography component="p" sx={{ fontSize: "0.9rem" }}>
+            Followers
+          </Typography>
+        </Link>
       </Box>
       <Box
         textAlign="center"
@@ -42,10 +45,12 @@ const ProfileStats = () => {
           marginInlineStart: "0 !important",
         }}
       >
-        <Typography sx={{ fontWeight: "bold" }}>0</Typography>
-        <Typography component="p" sx={{ fontSize: "0.9rem" }}>
-          Following
-        </Typography>
+        <Link to="following">
+          <Typography sx={{ fontWeight: "bold" }}>0</Typography>
+          <Typography component="p" sx={{ fontSize: "0.9rem" }}>
+            Following
+          </Typography>
+        </Link>
       </Box>
     </Stack>
   );

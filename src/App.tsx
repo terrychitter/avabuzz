@@ -65,6 +65,13 @@ const Followers = loadable(
   }
 );
 
+const Following = loadable(
+  () => import("./components/Profile/Following/Folllowing"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
@@ -76,9 +83,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="create-account" element={<Signup />} />
+
+            {/* Profile */}
             <Route path="profile" element={<ProfileRoute />}>
-              <Route path="followers" element={<Followers />} />
               <Route index element={<Profile />} />
+              <Route path="followers" element={<Followers />} />
+              <Route path="following" element={<Following />} />
+
+              {/* Profile Settings */}
               <Route path="settings" element={<ProfileSettingsRoute />}>
                 <Route index element={<ProfileSettings />} />
                 <Route

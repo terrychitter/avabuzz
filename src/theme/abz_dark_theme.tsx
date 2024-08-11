@@ -121,6 +121,7 @@ export const themeOptions: ThemeOptions = {
       styleOverrides: {
         root: ({ theme }) => ({
           color: theme.palette.secondary.main,
+          fontWeight: "bold",
           textDecoration: "none",
         }),
       },

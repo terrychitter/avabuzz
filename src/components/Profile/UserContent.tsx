@@ -17,7 +17,7 @@ const UserContent = () => {
   };
 
   return (
-    <Box height="100%" display="flex" flexDirection="column">
+    <Box height="100%" display="flex" flexDirection="column" id="posts">
       <Tabs
         value={value}
         onChange={handleChange}
