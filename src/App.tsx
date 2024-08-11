@@ -7,6 +7,7 @@ import { loadable } from "./utils/loadable";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import { StandaloneProvider } from "./components/StandaloneContext";
+import ProfileSettingsRoute from "./components/Profile/Settings/ProfileSettingsRoute";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -42,6 +43,14 @@ const ProfileSettings = loadable(
   }
 );
 
+const NotificationSettings = loadable(
+  () =>
+    import("./components/Profile/Settings/Notifications/NotificationSettings"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
@@ -55,7 +64,13 @@ function App() {
             <Route path="create-account" element={<Signup />} />
             <Route path="profile" element={<ProfileRoute />}>
               <Route index element={<Profile />} />
-              <Route path="settings" element={<ProfileSettings />} />
+              <Route path="settings" element={<ProfileSettingsRoute />}>
+                <Route index element={<ProfileSettings />} />
+                <Route
+                  path="notifications"
+                  element={<NotificationSettings />}
+                />
+              </Route>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
