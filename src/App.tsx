@@ -51,6 +51,13 @@ const NotificationSettings = loadable(
   }
 );
 
+const PrivacySettings = loadable(
+  () => import("./components/Profile/Settings/Privacy/PrivacySettings"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
@@ -70,6 +77,7 @@ function App() {
                   path="notifications"
                   element={<NotificationSettings />}
                 />
+                <Route path="privacy" element={<PrivacySettings />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFound />} />

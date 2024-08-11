@@ -18,10 +18,7 @@ const ProfileSettings = () => {
               title="Account Management"
             />
             <SettingsLinkItem link="notifications" title="Notifications" />
-            <SettingsLinkItem
-              link="privacy-settings"
-              title="Privacy Settings"
-            />
+            <SettingsLinkItem link="privacy" title="Privacy Settings" />
             <SettingsLinkItem
               link="blocked-users"
               title="Manage Blocked Users"
