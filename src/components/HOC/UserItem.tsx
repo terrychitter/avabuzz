@@ -1,9 +1,8 @@
 import { Stack, Typography } from "@mui/material";
 import React from "react";
+import Link from "../CustomComponents/CustomLink";
 import ProfilePictureKit from "./ProfilePictureKit";
 import UsernameKit from "./UsernameKit";
-import Link from "../CustomComponents/CustomLink";
-import ThemedMarkdown from "./ThemedMarkdown";
 
 interface UserItemProps {
   actionButton?: React.ReactNode;
