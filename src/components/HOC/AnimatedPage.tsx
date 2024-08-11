@@ -1,6 +1,7 @@
 import React from "react";
 
 import { motion } from "framer-motion";
+import { Box } from "@mui/material";
 
 export interface AnimatedPageProps {
   children?: React.ReactNode;
@@ -15,7 +16,7 @@ const AnimatedPage: React.FC<AnimatedPageProps> = ({ children }) => {
       exit={{ x: "-20%", opacity: 0, transition: { duration: 0.2 } }}
       transition={{ delay: 0, duration: 0.3 }}
     >
-      <div>{children}</div>
+      <Box width={"100%"}>{children}</Box>
     </motion.div>
   );
 };

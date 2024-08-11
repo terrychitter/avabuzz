@@ -1,7 +1,7 @@
 import usePWAInstallPrompt from "../../usePWAInstallPrompt";
 import { Button, Stack } from "@mui/material";
 import Link from "../CustomComponents/CustomLink";
-import Page from "../HOC/Page";
+import Page from "../HOC/AnimatedPage";
 
 const Home = () => {
   const promptInstall = usePWAInstallPrompt();

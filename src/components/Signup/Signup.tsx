@@ -1,6 +1,6 @@
 import AuthLayout from "../CustomComponents/AuthLayout";
 import SignupForm from "../CustomComponents/SignupForm";
-import AnimatedPage from "../HOC/Page";
+import AnimatedPage from "../HOC/AnimatedPage";
 
 const Signup = () => {
   return (

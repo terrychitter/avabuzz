@@ -2,7 +2,7 @@ import { Box, Stack } from "@mui/material";
 import theme from "../../theme/abz_dark_theme";
 import ContentBox from "../HOC/ContentBox";
 import MainContentContainer from "../HOC/MainContentContainer";
-import AnimatedPage from "../HOC/Page";
+import AnimatedPage from "../HOC/AnimatedPage";
 import Biography from "./Biography";
 import GroupsAndEvents from "./GroupsAndEvents";
 import ProfileAsideContent from "./ProfileAsideContent";
