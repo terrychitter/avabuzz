@@ -3,7 +3,7 @@ import ContentPaperWithHeader from "../ContentPaperWithHeader";
 import Link from "../CustomLink";
 import AnimatedIconButton from "../../CustomComponents/AnimatedIconButton";
 import { Create, Image, VideoLibrary } from "@mui/icons-material";
-import theme from "../../../theme/abz_dark_theme";
+import { useTheme } from "@mui/material";
 
 type PostOptionProps = {
   to: string;
@@ -12,29 +12,38 @@ type PostOptionProps = {
   icon: React.ReactNode;
 };
 
-const PostOption = ({ to, bgColor, label, icon }: PostOptionProps) => (
-  <Stack direction={"column"} textAlign={"center"} gap={1}>
-    <Link to={to}>
-      <AnimatedIconButton
-        sx={{
-          width: "60px",
-          height: "60px",
-          backgroundColor: bgColor,
-          color: theme.palette.getContrastText(bgColor),
-          "&:hover": {
-            color: "#ffffff",
-          },
-        }}
-        size="large"
-      >
-        {icon}
-      </AnimatedIconButton>
-    </Link>
-    <Typography variant="body1" color="textSecondary">
-      {label}
-    </Typography>
-  </Stack>
-);
+const PostOption: React.FC<PostOptionProps> = ({
+  to,
+  bgColor,
+  label,
+  icon,
+}) => {
+  const theme = useTheme(); // Access the theme
+
+  return (
+    <Stack direction={"column"} textAlign={"center"} gap={1}>
+      <Link to={to}>
+        <AnimatedIconButton
+          sx={{
+            width: "60px",
+            height: "60px",
+            backgroundColor: bgColor,
+            color: theme.palette.getContrastText(bgColor), // Use theme here
+            "&:hover": {
+              color: "#ffffff",
+            },
+          }}
+          size="large"
+        >
+          {icon}
+        </AnimatedIconButton>
+      </Link>
+      <Typography variant="body1" color={theme.palette.text.secondary}>
+        {label}
+      </Typography>
+    </Stack>
+  );
+};
 
 const PostNow = () => {
   return (

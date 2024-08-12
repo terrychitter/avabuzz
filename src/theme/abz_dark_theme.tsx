@@ -1,5 +1,5 @@
 // theme.ts
-import { createTheme } from "@mui/material";
+import { createTheme, PaletteMode } from "@mui/material";
 import { ThemeOptions } from "@mui/material/styles";
 
 // Extend Palette and PaletteOptions interfaces
@@ -17,73 +17,93 @@ declare module "@mui/material/styles" {
   }
 }
 
-const black = "#171717";
-const darkerBlack = "#080808";
-
-export const themeOptions: ThemeOptions = {
-  palette: {
-    mode: "dark",
-    primary: {
-      main: "#CD65F0",
-      contrastText: "#ffffff",
-    },
-    secondary: {
-      main: "#f15bb5d9",
-    },
-    custom: {
-      darkerBlack: `${darkerBlack}`,
-    },
-    background: {
-      default: `${black}`,
-      paper: `${darkerBlack}`,
-    },
-    text: {
-      primary: "#9e9e9e",
-      secondary: "rgba(129,129,129,0.7)",
-      disabled: "rgba(86,86,86,0.5)",
-    },
-    error: {
-      main: "#d84238",
-      contrastText: "#c9c9c9",
-    },
-    warning: {
-      main: "#ff9800",
-    },
-    info: {
-      main: "#2196f3",
-    },
-    success: {
-      main: "#4caf50",
-    },
+// Define your dark and light palette options
+const darkPalette = {
+  mode: "dark" as PaletteMode,
+  primary: {
+    main: "#CD65F0",
+    contrastText: "#ffffff",
   },
+  secondary: {
+    main: "#f15bb5d9",
+  },
+  custom: {
+    darkerBlack: "#080808",
+  },
+  background: {
+    default: "#171717",
+    paper: "#080808",
+  },
+  text: {
+    primary: "#9e9e9e",
+    secondary: "rgba(129,129,129,0.7)",
+    disabled: "rgba(86,86,86,0.5)",
+  },
+  error: {
+    main: "#d84238",
+    contrastText: "#c9c9c9",
+  },
+  warning: {
+    main: "#ff9800",
+  },
+  info: {
+    main: "#2196f3",
+  },
+  success: {
+    main: "#4caf50",
+  },
+};
+
+const lightPalette = {
+  mode: "light" as PaletteMode,
+  primary: {
+    main: "#CD65F0",
+    contrastText: "#171717",
+  },
+  secondary: {
+    main: "#f15bb5d9",
+  },
+  custom: {
+    darkerBlack: "#ffffff",
+  },
+  background: {
+    default: "#f5f5f5",
+    paper: "#ffffff",
+  },
+  text: {
+    primary: "#171717",
+    secondary: "rgba(0,0,0,0.7)",
+    disabled: "rgba(0,0,0,0.5)",
+  },
+  error: {
+    main: "#d84238",
+    contrastText: "#ffffff",
+  },
+  warning: {
+    main: "#ff9800",
+  },
+  info: {
+    main: "#2196f3",
+  },
+  success: {
+    main: "#4caf50",
+  },
+};
+
+// Base theme options that can be shared
+const baseThemeOptions: ThemeOptions = {
   typography: {
     htmlFontSize: 8,
     fontFamily: "Nunito Sans",
     fontSize: 6,
-    h1: {
-      fontFamily: "Montserrat",
-    },
-    h2: {
-      fontFamily: "Montserrat",
-    },
-    h3: {
-      fontFamily: "Montserrat",
-    },
-    h4: {
-      fontFamily: "Montserrat",
-    },
-    h5: {
-      fontFamily: "Montserrat",
-    },
-    h6: {
-      fontFamily: "Montserrat",
-    },
-    body1: {
-      fontFamily: "Montserrat",
-    },
-    body2: {
-      fontFamily: "Montserrat",
-    },
+    h1: { fontFamily: "Montserrat" },
+    h2: { fontFamily: "Montserrat" },
+    h3: { fontFamily: "Montserrat" },
+    h4: { fontFamily: "Montserrat" },
+    h5: { fontFamily: "Montserrat" },
+    h6: { fontFamily: "Montserrat" },
+    body1: { fontFamily: "Montserrat" },
+    body2: { fontFamily: "Montserrat" },
   },
   shape: {
     borderRadius: 5,
@@ -91,21 +111,16 @@ export const themeOptions: ThemeOptions = {
   components: {
     MuiCssBaseline: {
       styleOverrides: `
-        ::webkit-scrollbar-track
-        {
+        ::-webkit-scrollbar-track {
           -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
           border-radius: 10px;
           background-color: transparent;
         }
-
-        ::-webkit-scrollbar
-        {
+        ::-webkit-scrollbar {
           width: 3px;
           background-color: transparent;
         }
-
-        ::-webkit-scrollbar-thumb
-        {
+        ::-webkit-scrollbar-thumb {
           border-radius: 10px;
           -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
           background-color: #555;
@@ -168,9 +183,27 @@ export const themeOptions: ThemeOptions = {
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          width: "fit-content",
+        },
+        label: {
+          paddingInline: 10,
+        },
+      },
+    },
   },
 };
 
-const theme = createTheme(themeOptions);
+// Create the dark theme
+export const darkTheme = createTheme({
+  ...baseThemeOptions,
+  palette: darkPalette,
+});
 
-export default theme;
+// Create the light theme
+export const lightTheme = createTheme({
+  ...baseThemeOptions,
+  palette: lightPalette,
+});

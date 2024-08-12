@@ -1,7 +1,7 @@
 import { Grid, useMediaQuery } from "@mui/material";
 import Container from "@mui/material/Container";
 import React from "react";
-import theme from "../../theme/abz_dark_theme";
+import { useTheme } from "@mui/system";
 import Aside from "../CustomComponents/Aside/Aside";
 import NavDrawer from "../CustomComponents/NavDrawer";
 
@@ -16,6 +16,7 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
   asideContent,
   sx,
 }) => {
+  const theme = useTheme();
   // Get is small screen or larger
   const isSmallScreenOrLarger = useMediaQuery(theme.breakpoints.up("sm"));
 

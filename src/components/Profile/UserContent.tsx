@@ -6,10 +6,12 @@ import Panel from "../HOC/Panel";
 import PostList from "../HOC/PostList";
 import CommentList from "../HOC/CommentList";
 import SwipeableViews from "react-swipeable-views";
-import theme from "../../theme/abz_dark_theme";
+import { useTheme } from "@mui/material";
 import ItemList from "../HOC/ItemList";
 
 const UserContent = () => {
+  const theme = useTheme();
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
