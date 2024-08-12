@@ -3,6 +3,7 @@ import ItemList from "../../HOC/ItemList";
 import MainContentContainer from "../../HOC/MainContentContainer";
 import AnimatedPage from "../../HOC/AnimatedPage";
 import UserList from "../../HOC/UserList";
+import { Button } from "@mui/material";
 
 const Followers = () => {
   return (
@@ -13,7 +14,8 @@ const Followers = () => {
             noItemsMessage="No followers to show"
             sx={{ gap: 2, paddingInline: 1 }}
           >
-            {UserList()}
+            {/* Call UserList as a function and spread the resulting array */}
+            {...UserList(() => <Button>Follow</Button>)}
           </ItemList>
         </NakedContentContainer>
       </MainContentContainer>

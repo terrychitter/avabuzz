@@ -72,6 +72,13 @@ const Following = loadable(
   }
 );
 
+const BlockedUsers = loadable(
+  () => import("./components/Profile/Settings/BlockedUsers/BlockedUsers"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <ThemeProvider theme={abzDefaultTheme}>
@@ -98,6 +105,7 @@ function App() {
                   element={<NotificationSettings />}
                 />
                 <Route path="privacy" element={<PrivacySettings />} />
+                <Route path="blocked-users" element={<BlockedUsers />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFound />} />

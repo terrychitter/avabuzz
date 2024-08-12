@@ -1,14 +1,11 @@
-import AnimatedButton from "../CustomComponents/AnimatedButton";
+import React from "react";
 import UserItem from "./UserItem";
 
-const UserList = () => {
+const UserList = (actionButton: () => React.ReactNode) => {
   const boxes = Array.from({ length: 10 }, (_, index) => (
-    <UserItem
-      key={index}
-      actionButton={<AnimatedButton>Follow</AnimatedButton>}
-    />
+    <UserItem key={index} actionButton={actionButton()} />
   ));
-  return boxes;
+  return boxes; // Return the array of elements
 };
 
 export default UserList;
