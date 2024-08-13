@@ -1,0 +1,42 @@
+[
+    {
+        "value": "asexual",
+        "name": "Asexual"
+    },
+    {
+        "value": "bisexual",
+        "name": "Bisexual"
+    },
+    {
+        "value": "gay",
+        "name": "Gay"
+    },
+    {
+        "value": "genderfluid",
+        "name": "Genderfluid"
+    },
+    {
+        "value": "genderqueer",
+        "name": "Genderqueer"
+    },
+    {
+        "value": "intersexual",
+        "name": "Intersexual"
+    },
+    {
+        "value": "lesbian",
+        "name": "Lesbian"
+    },
+    {
+        "value": "pansexual",
+        "name": "Pansexual"
+    },
+    {
+        "value": "straight",
+        "name": "Straight"
+    },
+    {
+        "value": "transgender",
+        "name": "Transgender"
+    }
+]

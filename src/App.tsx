@@ -88,6 +88,13 @@ const AppearanceSettings = loadable(
   }
 );
 
+const EditProfile = loadable(
+  () => import("./components/Profile/Edit/EditProfile"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
@@ -120,6 +127,7 @@ function App() {
               <Route index element={<Profile />} />
               <Route path="followers" element={<Followers />} />
               <Route path="following" element={<Following />} />
+              <Route path="edit" element={<EditProfile />} />
 
               {/* Profile Settings */}
               <Route path="settings" element={<ProfileSettingsRoute />}>

@@ -1,0 +1,27 @@
+[
+    {
+        "value": "male",
+        "name": "Male",
+        "imageURL": "/public/genders/male.png"
+    },
+    {
+        "value": "female",
+        "name": "Female",
+        "imageURL": "/public/genders/female.png"
+    },
+    {
+        "value": "non-binary",
+        "name": "Non-Binary",
+        "imageURL": "/public/genders/non-binary.png"
+    },
+    {
+        "value": "agender",
+        "name": "Agender",
+        "imageURL": "/public/genders/agender.png"
+    },
+    {
+        "value": "gender-fluid",
+        "name": "Gender fluid",
+        "imageURL": "/public/genders/gender-fluid.png"
+    }
+]
