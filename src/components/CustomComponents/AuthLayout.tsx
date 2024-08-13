@@ -1,18 +1,16 @@
 import {
   Box,
+  Container,
   Grid,
+  Stack,
   Typography,
   useMediaQuery,
   useTheme,
-  Paper,
-  Stack,
 } from "@mui/material";
 import { ReactNode } from "react";
-import CustomBackground from "./CustomBackground/CustomBackground";
-import Logo from "./Logo";
 
 interface AuthLayoutProps {
-  heroContent: ReactNode;
+  heroContent?: string;
   formComponent: ReactNode;
 }
 
@@ -24,73 +22,64 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   const theme = useTheme();
 
   // Media query for advanced media queries
-  const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const isLargerScreenOrMore = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
-    <>
-      <CustomBackground />
-      <Grid container minHeight={"100vh"}>
-        {isMediumScreen && (
-          // First grid item
-          <Grid
-            item
-            textAlign={"center"}
-            xs={12}
-            md={7}
-            sx={{
-              height: "100vh",
-              position: "relative",
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              paddingLeft: theme.spacing(5),
-            }}
+    <Grid container height={"100vh"}>
+      {isLargerScreenOrMore && (
+        <Grid
+          item
+          xs={12}
+          lg={7}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Stack
+            direction={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
           >
-            <Box>
-              <Logo maxWidth="300px" width="100%" />
-            </Box>
-            <Typography
-              variant="h2"
-              component="h2"
-              sx={{
-                color: "white",
-              }}
-            >
-              {heroContent}
-            </Typography>
-          </Grid>
-        )}
-        {/* Second grid item */}
-        <Grid item xs={12} md={5}>
-          <Paper
-            sx={{
-              paddingBlock: theme.spacing(3),
-              paddingInline: {
-                xs: theme.spacing(3),
-                sm: theme.spacing(15),
-                md: theme.spacing(3),
-                lg: theme.spacing(7),
-              },
-              minHeight: "100%",
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              borderRadius: 0,
-            }}
-          >
-            <Stack gap={2}>
-              {!isMediumScreen && (
-                <Box textAlign={"center"}>
-                  <Logo maxWidth="200px" width="100%" />
-                </Box>
-              )}
-              {formComponent}
-            </Stack>
-          </Paper>
+            <img src="/logo.png" width={"100%"} style={{ maxWidth: "300px" }} />
+            {heroContent && (
+              <Typography variant="h3" component="h2">
+                {heroContent}
+              </Typography>
+            )}
+          </Stack>
         </Grid>
+      )}
+      <Grid
+        item
+        xs={12}
+        lg
+        display={isLargerScreenOrMore ? "flex" : "block"}
+        paddingBlockStart={isLargerScreenOrMore ? 0 : theme.spacing(3)}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          gap={theme.spacing(3)}
+        >
+          {!isLargerScreenOrMore && (
+            <Box
+              component="img"
+              src="/logo.png"
+              alt="Logo"
+              sx={{
+                width: "100%",
+                maxWidth: { xs: "200px", sm: "250px", md: "200px" },
+              }}
+            />
+          )}
+
+          <Container maxWidth="sm">{formComponent}</Container>
+        </Stack>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
