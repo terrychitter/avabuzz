@@ -39,7 +39,7 @@ const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
           </Stack>
         </Typography>
       </Box>
-      <Box component={"main"} marginBlockStart={2} minHeight={"100vh"}>
+      <Box component={"main"} marginBlockStart={2}>
         {children}
       </Box>
     </>

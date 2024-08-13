@@ -19,6 +19,9 @@ const DefaultLoader: React.FC<DefaultLoaderProps> = ({
       alignItems={"center"}
       direction={"column"}
       gap={2}
+      position={"absolute"}
+      top={"50%"}
+      left={"50%"}
     >
       {type === "waveform" && (
         <l-waveform size="35" stroke="3.5" speed="1" color="white"></l-waveform>
