@@ -13,7 +13,7 @@ const GenConSexGroup = () => {
       sx={{ paddingInlineStart: theme.spacing(1) }}
     >
       <CountryIcon>south-africa</CountryIcon>
-      <SexualityIcon>progress</SexualityIcon>
+      <SexualityIcon>gay</SexualityIcon>
       <GenderIcon>male</GenderIcon>
     </Stack>
   );
