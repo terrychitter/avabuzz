@@ -1,10 +1,9 @@
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { useTheme } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import { IconUser } from "@tabler/icons-react";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface UsernameInputProps {
   tooltip?: boolean;

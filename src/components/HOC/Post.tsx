@@ -1,4 +1,3 @@
-import { ChatBubbleOutline, FavoriteBorder, Groups } from "@mui/icons-material";
 import {
   Box,
   CardActionArea,
@@ -7,9 +6,9 @@ import {
   CardHeader,
   Stack,
 } from "@mui/material";
-import { IconMessage, IconHeart, IconEye } from "@tabler/icons-react";
 import Card from "@mui/material/Card";
 import { useTheme } from "@mui/material/styles";
+import { IconEye, IconHeart, IconMessage } from "@tabler/icons-react";
 import Link from "../CustomComponents/CustomLink";
 import PostActionKit from "./PostActionKit";
 import ProfilePictureKit from "./ProfilePictureKit";

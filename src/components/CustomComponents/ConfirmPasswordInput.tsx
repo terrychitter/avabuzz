@@ -1,12 +1,11 @@
+import { useTheme } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import Lock from "@mui/icons-material/Lock";
+import FormHelperText from "@mui/material/FormHelperText";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import FormHelperText from "@mui/material/FormHelperText";
-import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { IconLock } from "@tabler/icons-react";
-import { useTheme } from "@mui/material";
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface ConfirmPasswordInputProps {
   register: UseFormRegister<FieldValues>;

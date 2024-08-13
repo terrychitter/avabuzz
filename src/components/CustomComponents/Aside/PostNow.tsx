@@ -1,14 +1,12 @@
-import { Stack, Typography } from "@mui/material";
-import ContentPaperWithHeader from "../ContentPaperWithHeader";
-import Link from "../CustomLink";
-import AnimatedIconButton from "../../CustomComponents/AnimatedIconButton";
-import { Create, Image, VideoLibrary } from "@mui/icons-material";
-import { useTheme } from "@mui/material";
+import { Stack, Typography, useTheme } from "@mui/material";
 import {
   IconLayoutCollage,
   IconVideo,
   IconWritingSign,
 } from "@tabler/icons-react";
+import AnimatedIconButton from "../../CustomComponents/AnimatedIconButton";
+import ContentPaperWithHeader from "../ContentPaperWithHeader";
+import Link from "../CustomLink";
 
 type PostOptionProps = {
   to: string;

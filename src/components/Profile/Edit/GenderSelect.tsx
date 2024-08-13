@@ -2,16 +2,16 @@ import {
   Box,
   FormControl,
   InputLabel,
+  ListItemIcon,
   MenuItem,
   Select,
+  SelectChangeEvent,
   Stack,
   Typography,
-  SelectChangeEvent,
-  ListItemIcon,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import GenderIcon from "../GenderIcon";
+import { useEffect, useState } from "react";
 import genders from "../../../../public/genders/genders.json";
+import GenderIcon from "../GenderIcon";
 
 // Gender menu item
 const GenderMenuItems = ({

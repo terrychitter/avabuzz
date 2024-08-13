@@ -1,6 +1,5 @@
-import React from "react";
-import MainContentContainer from "../../HOC/MainContentContainer";
 import NakedContentContainer from "../../CustomComponents/NakedContentContainer";
+import MainContentContainer from "../../HOC/MainContentContainer";
 import ProfileInformationForm from "./ProfileInformationForm";
 
 const EditProfile = () => {

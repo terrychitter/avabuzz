@@ -1,14 +1,13 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
-import ProfilePictureKit from "../../HOC/ProfilePictureKit";
-import ChangeAvatarButton from "./ChangeAvatarButton";
+import Link from "../../CustomComponents/CustomLink";
 import UsernameInput from "../../CustomComponents/UsernameInput";
+import ProfilePictureKit from "../../HOC/ProfilePictureKit";
+import BiographyEditTextArea from "./BiographyEditTextArea";
+import ChangeAvatarButton from "./ChangeAvatarButton";
 import GenderSelect from "./GenderSelect";
 import SexualOrientationSelect from "./SexualOrientationSelect";
-import BiographyEditTextArea from "./BiographyEditTextArea";
-import Link from "../../CustomComponents/CustomLink";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import { useTheme } from "@mui/material/styles";
 
 const ProfileInformationForm = () => {
   const theme = useTheme();
@@ -16,13 +15,6 @@ const ProfileInformationForm = () => {
   const methods = useForm<FieldValues>();
 
   // Handle form submission
-  const onSubmit = async (data: FieldValues) => {
-    // TODO: Submit to API
-    console.log("data", data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    methods.reset();
-  };
   return (
     <Container>
       <FormProvider {...methods}>

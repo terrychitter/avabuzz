@@ -1,15 +1,8 @@
-import PreviewIcon from "@mui/icons-material/Preview";
-import {
-  Dialog,
-  DialogTitle,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Dialog, DialogTitle, Stack, TextField } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { IconEye } from "@tabler/icons-react";
 import { useState } from "react";
 import AnimatedIconButton from "../../CustomComponents/AnimatedIconButton";
-import { IconEye } from "@tabler/icons-react";
 
 const BiographyEditTextArea = () => {
   const [biographyText, setBiographyText] = useState<string>("");
