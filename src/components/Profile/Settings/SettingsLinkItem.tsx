@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Typography } from "@mui/material";
-import { ArrowForward } from "@mui/icons-material";
+import { IconArrowRight } from "@tabler/icons-react";
 import { useTheme } from "@mui/system";
 import Link from "../../CustomComponents/CustomLink";
 
@@ -27,7 +27,7 @@ const SettingsLinkItem: React.FC<SettingsLinkItemProps> = ({ link, title }) => {
         >
           {title}
         </Typography>
-        <ArrowForward sx={{ color: theme.palette.text.primary }} />
+        <IconArrowRight />
       </Stack>
     </Link>
   );

@@ -1,12 +1,12 @@
 import Link from "../CustomComponents/CustomLink";
 import IconButton from "@mui/material/IconButton";
-import Diamond from "@mui/icons-material/Diamond";
+import { IconDiamondFilled } from "@tabler/icons-react";
 
 const MyItemsButton = () => {
   return (
     <Link to={"/my-items"}>
       <IconButton>
-        <Diamond sx={{ fontSize: "1.7rem" }} />
+        <IconDiamondFilled size={"1.7rem"} />
       </IconButton>
     </Link>
   );

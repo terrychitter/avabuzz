@@ -5,6 +5,8 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import FormHelperText from "@mui/material/FormHelperText";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import { IconLock } from "@tabler/icons-react";
+import { useTheme } from "@mui/material";
 
 interface ConfirmPasswordInputProps {
   register: UseFormRegister<FieldValues>;
@@ -17,7 +19,8 @@ const ConfirmPasswordInput: React.FC<ConfirmPasswordInputProps> = ({
   errors,
   watch,
 }) => {
-  const password = watch("password"); // Watch the password field value
+  const password = watch("password");
+  const theme = useTheme();
 
   return (
     <FormControl
@@ -40,7 +43,13 @@ const ConfirmPasswordInput: React.FC<ConfirmPasswordInputProps> = ({
         })}
         startAdornment={
           <InputAdornment position="start">
-            <Lock sx={{ color: errors.confirmPassword ? "error.main" : "" }} />
+            <IconLock
+              color={
+                errors.confirmPassword
+                  ? theme.palette.error.main
+                  : theme.palette.text.secondary
+              }
+            />
           </InputAdornment>
         }
         label="Confirm Password"

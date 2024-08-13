@@ -9,6 +9,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import AnimatedIconButton from "../../CustomComponents/AnimatedIconButton";
+import { IconEye } from "@tabler/icons-react";
 
 const BiographyEditTextArea = () => {
   const [biographyText, setBiographyText] = useState<string>("");
@@ -35,18 +36,12 @@ const BiographyEditTextArea = () => {
         />
         <Stack
           position={"absolute"}
-          direction={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}
           right={theme.spacing(0.5)}
           top={theme.spacing(0.5)}
         >
           <AnimatedIconButton onClick={handlePreviewDialogOpen}>
-            <PreviewIcon />
+            <IconEye />
           </AnimatedIconButton>
-          <Typography fontSize={"0.5rem"} marginBlockStart={-0.5}>
-            Preview
-          </Typography>
         </Stack>
       </Stack>
       <Dialog

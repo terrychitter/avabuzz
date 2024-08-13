@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Typography, Box, Tooltip } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import ContentCopy from "@mui/icons-material/ContentCopy";
+import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
-import { Check } from "@mui/icons-material";
 
 interface PublicIdTagProps {
   children?: React.ReactNode;
@@ -13,6 +13,7 @@ const MotionPaper = motion(Paper);
 
 const PublicIdTag: React.FC<PublicIdTagProps> = ({ children }) => {
   const [copied, setCopied] = useState(false);
+  const theme = useTheme();
 
   const handleCopyClick = () => {
     const textToCopy = typeof children === "string" ? children : "";
@@ -75,19 +76,17 @@ const PublicIdTag: React.FC<PublicIdTagProps> = ({ children }) => {
             leaveDelay={200}
           >
             {copied ? (
-              <Check
-                color="success"
-                sx={{ fontSize: "inherit", marginLeft: 1 }}
+              <IconCheck
+                color={theme.palette.success.main}
+                style={{ cursor: "pointer", marginLeft: 5 }}
+                aria-label="Copied"
+                size={"1rem"}
               />
             ) : (
-              <ContentCopy
-                sx={{
-                  cursor: "pointer",
-                  marginLeft: 1,
-                  fontSize: "inherit",
-                }}
+              <IconCopy
+                style={{ cursor: "pointer", marginLeft: 5 }}
                 aria-label="Copy public ID"
-                titleAccess="Copy public ID"
+                size={"1rem"}
               />
             )}
           </Tooltip>

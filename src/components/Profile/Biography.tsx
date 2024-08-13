@@ -1,9 +1,9 @@
-import { Edit } from "@mui/icons-material";
 import { Stack } from "@mui/material";
-import Button from "../CustomComponents/AnimatedButton";
+import { IconPencil } from "@tabler/icons-react";
+import AnimatedIconButton from "../CustomComponents/AnimatedIconButton";
+import Link from "../CustomComponents/CustomLink";
 import BiographyText from "./BiographyText";
 import GenConSexGroup from "./GenConSexGroup";
-import Link from "../CustomComponents/CustomLink";
 
 const Biography = () => {
   return (
@@ -15,9 +15,9 @@ const Biography = () => {
       >
         <GenConSexGroup />
         <Link to="edit">
-          <Button variant="outlined" endIcon={<Edit />}>
-            Edit
-          </Button>
+          <AnimatedIconButton>
+            <IconPencil size={"1.5rem"} />
+          </AnimatedIconButton>
         </Link>
       </Stack>
       <BiographyText />

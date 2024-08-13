@@ -4,6 +4,11 @@ import Link from "../CustomLink";
 import AnimatedIconButton from "../../CustomComponents/AnimatedIconButton";
 import { Create, Image, VideoLibrary } from "@mui/icons-material";
 import { useTheme } from "@mui/material";
+import {
+  IconLayoutCollage,
+  IconVideo,
+  IconWritingSign,
+} from "@tabler/icons-react";
 
 type PostOptionProps = {
   to: string;
@@ -58,19 +63,19 @@ const PostNow = () => {
           to="/post"
           bgColor="#99ff99"
           label="Post"
-          icon={<Create />}
+          icon={<IconWritingSign />}
         />
         <PostOption
           to="/post?image"
           bgColor="#80a8ff"
           label="Image"
-          icon={<Image />}
+          icon={<IconLayoutCollage />}
         />
         <PostOption
           to="/post?video"
           bgColor="#ff9980"
           label="Video"
-          icon={<VideoLibrary />}
+          icon={<IconVideo />}
         />
       </Stack>
     </ContentPaperWithHeader>

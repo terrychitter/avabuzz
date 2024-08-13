@@ -7,6 +7,7 @@ import {
   CardHeader,
   Stack,
 } from "@mui/material";
+import { IconMessage, IconHeart, IconEye } from "@tabler/icons-react";
 import Card from "@mui/material/Card";
 import { useTheme } from "@mui/material/styles";
 import Link from "../CustomComponents/CustomLink";
@@ -52,9 +53,14 @@ const Post = () => {
           justifyContent: "space-between",
         }}
       >
-        <Stack justifyContent={"center"} alignItems={"center"}>
-          <Groups color={"disabled"} />
-          <Box color={"disabled"}>12</Box>
+        <Stack
+          justifyContent={"center"}
+          alignItems={"center"}
+          direction={"row"}
+          gap={1}
+        >
+          <IconEye color={theme.palette.action.disabled} />
+          <Box color={theme.palette.action.disabled}>12</Box>
         </Stack>
         <Stack
           direction={"row"}
@@ -69,7 +75,7 @@ const Post = () => {
             alignContent={"center"}
             alignItems={"center"}
           >
-            <ChatBubbleOutline></ChatBubbleOutline>
+            <IconMessage />
             <Box component={"span"} fontSize={theme.typography.body1.fontSize}>
               2
             </Box>
@@ -80,7 +86,7 @@ const Post = () => {
             alignContent={"center"}
             alignItems={"center"}
           >
-            <FavoriteBorder></FavoriteBorder>
+            <IconHeart />
             <Box component={"span"} fontSize={theme.typography.body1.fontSize}>
               2
             </Box>

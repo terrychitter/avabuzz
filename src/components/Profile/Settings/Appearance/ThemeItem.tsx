@@ -1,12 +1,14 @@
-import { CheckCircle } from "@mui/icons-material";
+import { IconCircleCheck } from "@tabler/icons-react";
 import { Avatar, Chip, Stack, Typography } from "@mui/material";
 import React from "react";
+import { useTheme } from "@mui/system";
 
 interface ThemeItemProps {
   active?: boolean;
 }
 
 const ThemeItem: React.FC<ThemeItemProps> = ({ active = true }) => {
+  const theme = useTheme();
   return (
     <Stack
       direction={"row"}
@@ -20,7 +22,7 @@ const ThemeItem: React.FC<ThemeItemProps> = ({ active = true }) => {
           <Chip label="DARK" size="small" />
         </Stack>
       </Stack>
-      {active && <CheckCircle color="success" />}
+      {active && <IconCircleCheck color={theme.palette.success.main} />}
     </Stack>
   );
 };

@@ -1,8 +1,7 @@
-import { SwipeableDrawer, useTheme } from "@mui/material";
-import { Fab } from "@mui/material";
+import { Fab, SwipeableDrawer, useTheme } from "@mui/material";
+import { IconMenu } from "@tabler/icons-react";
 import React from "react";
 import Aside from "./Aside/Aside";
-import { Menu } from "@mui/icons-material";
 
 interface NavDrawerProps {
   content?: React.ReactNode;
@@ -28,7 +27,7 @@ const NavDrawer: React.FC<NavDrawerProps> = ({ content }) => {
           zIndex: theme.zIndex.speedDial,
         }}
       >
-        <Menu />
+        <IconMenu />
       </Fab>
       <SwipeableDrawer
         anchor="right"

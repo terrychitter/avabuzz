@@ -1,8 +1,8 @@
-import { ArrowBack, Home } from "@mui/icons-material";
-import { Box, Stack, Typography, useTheme } from "@mui/material";
-import mascotImage from "/avabuzz_mascot/doughnut-11.png";
+import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
+import { IconArrowLeft, IconHomeFilled } from "@tabler/icons-react";
 import Button from "./components/CustomComponents/AnimatedButton";
 import Link from "./components/CustomComponents/CustomLink";
+import mascotImage from "/avabuzz_mascot/doughnut-11.png";
 
 const NotFound = () => {
   const theme = useTheme();
@@ -16,7 +16,10 @@ const NotFound = () => {
           zIndex: 100,
         }}
       >
-        <Button startIcon={<ArrowBack />} onClick={() => window.history.back()}>
+        <Button
+          startIcon={<IconArrowLeft />}
+          onClick={() => window.history.back()}
+        >
           Go Back
         </Button>
       </Box>
@@ -41,9 +44,12 @@ const NotFound = () => {
           </Stack>
         </Stack>
         <Link to="/">
-          <Button variant="outlined" startIcon={<Home />}>
-            Go Home
-          </Button>
+          <IconButton>
+            <IconHomeFilled
+              color={theme.palette.primary.main}
+              size={theme.typography.h2.fontSize}
+            />
+          </IconButton>
         </Link>
       </Stack>
     </>

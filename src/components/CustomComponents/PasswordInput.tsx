@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import { useTheme } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
 import IconButton from "@mui/material/IconButton";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Lock from "@mui/icons-material/Lock";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import FormHelperText from "@mui/material/FormHelperText";
+import { IconEye, IconEyeOff, IconLock } from "@tabler/icons-react";
+import React, { useState } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import Link from "./CustomLink";
-import { useTheme } from "@mui/material";
 
 interface PasswordInputProps {
   register: UseFormRegister<FieldValues>;
@@ -72,7 +70,13 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           })}
           startAdornment={
             <InputAdornment position="start">
-              <Lock sx={{ color: errors.password ? "error.main" : "" }} />
+              <IconLock
+                color={
+                  errors.password
+                    ? theme.palette.error.main
+                    : theme.palette.text.secondary
+                }
+              />
             </InputAdornment>
           }
           endAdornment={
@@ -83,7 +87,11 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
-                {showPassword ? <Visibility /> : <VisibilityOff />}
+                {showPassword ? (
+                  <IconEye color={theme.palette.text.secondary} />
+                ) : (
+                  <IconEyeOff color={theme.palette.text.secondary} />
+                )}
               </IconButton>
             </InputAdornment>
           }

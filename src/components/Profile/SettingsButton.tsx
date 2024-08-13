@@ -1,12 +1,12 @@
 import Link from "../CustomComponents/CustomLink";
-import IconButton from "@mui/material/IconButton";
-import Settings from "@mui/icons-material/Settings";
+import { IconButton } from "@mui/material";
+import { IconSettingsFilled } from "@tabler/icons-react";
 
 const SettingsButton = () => {
   return (
     <Link to={"settings"}>
       <IconButton>
-        <Settings sx={{ fontSize: "1.7rem" }} />
+        <IconSettingsFilled size={"1.7rem"} />
       </IconButton>
     </Link>
   );

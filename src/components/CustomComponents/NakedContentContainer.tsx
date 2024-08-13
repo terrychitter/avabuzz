@@ -1,7 +1,7 @@
-import { ArrowBack } from "@mui/icons-material";
 import { Box, IconButton, Stack, Typography } from "@mui/material";
-import React from "react";
+import { IconArrowLeft } from "@tabler/icons-react";
 import { useTheme } from "@mui/system";
+import React from "react";
 
 interface NakedContentContainerProps {
   title: string;
@@ -31,7 +31,7 @@ const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
         <Typography variant={"h6"} component={"h1"} fontWeight={"normal"}>
           <Stack direction={"row"} alignItems={"center"}>
             <IconButton onClick={() => window.history.back()}>
-              <ArrowBack fontSize="inherit" />
+              <IconArrowLeft />
             </IconButton>
             <Box flexGrow={1} textAlign={"center"} marginInlineEnd={5}>
               {title}

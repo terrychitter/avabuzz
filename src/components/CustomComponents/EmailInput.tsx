@@ -1,6 +1,7 @@
-import TextField from "@mui/material/TextField";
+import { useTheme } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-import Email from "@mui/icons-material/Email";
+import TextField from "@mui/material/TextField";
+import { IconMail } from "@tabler/icons-react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 interface EmailInputProps {
@@ -9,6 +10,7 @@ interface EmailInputProps {
 }
 
 const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
+  const theme = useTheme();
   return (
     <TextField
       {...register("email", {
@@ -30,7 +32,13 @@ const EmailInput: React.FC<EmailInputProps> = ({ register, errors }) => {
         startAdornment: (
           <InputAdornment position="start">
             {/* Change color if error */}
-            <Email sx={{ color: errors.email ? "error.main" : "" }} />
+            <IconMail
+              color={
+                errors.email
+                  ? theme.palette.error.main
+                  : theme.palette.text.secondary
+              }
+            />
           </InputAdornment>
         ),
       }}

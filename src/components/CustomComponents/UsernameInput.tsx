@@ -4,6 +4,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 import { useTheme } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
+import { IconUser } from "@tabler/icons-react";
 
 interface UsernameInputProps {
   tooltip?: boolean;
@@ -31,8 +32,12 @@ const UsernameInput: React.FC<UsernameInputProps> = ({
         startAdornment: (
           <InputAdornment position="start">
             {/* Change color if error */}
-            <AccountCircle
-              sx={{ color: errors.username ? "error.main" : "" }}
+            <IconUser
+              color={
+                errors.username
+                  ? theme.palette.error.main
+                  : theme.palette.text.secondary
+              }
             />
           </InputAdornment>
         ),
