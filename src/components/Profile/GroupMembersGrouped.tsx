@@ -11,6 +11,7 @@ const GroupMembersGrouped = () => {
     "& .MuiAvatar-root": {
       width: 32,
       height: 32,
+      border: "none",
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,
       boxShadow: theme.shadows[4],

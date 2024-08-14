@@ -11,7 +11,6 @@ const DownloadApp = () => {
       {!isStandalone && (
         <ContentPaper
           sx={{
-            color: theme.palette.common.white,
             padding: { xs: 2, md: 2 },
             width: "100%",
             backgroundColor: theme.palette.background.paper,

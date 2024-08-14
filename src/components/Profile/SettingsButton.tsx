@@ -6,7 +6,7 @@ const SettingsButton = () => {
   return (
     <Link to={"settings"}>
       <IconButton>
-        <IconSettingsFilled size={"1.7rem"} />
+        <IconSettingsFilled size={"1.7rem"} color="white" />
       </IconButton>
     </Link>
   );

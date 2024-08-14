@@ -1,21 +1,22 @@
-import { Box, Stack } from "@mui/material";
-import { useTheme } from "@mui/material";
-import ContentBox from "../HOC/ContentBox";
-import MainContentContainer from "../HOC/MainContentContainer";
+import { Box, Stack, useTheme } from "@mui/material";
 import AnimatedPage from "../HOC/AnimatedPage";
+import MainContentContainer from "../HOC/MainContentContainer";
 import Biography from "./Biography";
+import GenConSexGroup from "./GenConSexGroup";
 import GroupsAndEvents from "./GroupsAndEvents";
 import ProfileAsideContent from "./ProfileAsideContent";
 import ProfileBanner from "./ProfileBanner";
 import ProfileStats from "./ProfileStats";
+import PublicIdTag from "./PublicIdTag";
 import UserContent from "./UserContent";
+import UsernameTag from "./UsernameTag";
 
 const Profile = () => {
   const theme = useTheme();
 
   // Banner URL
   const bannerUrl =
-    "https://media.giphy.com/media/Vd3A2liqTP9KsQ1wgf/giphy.gif?cid=ecf05e47wmig0hm782epo8metf8e9r1864qgadyk6akxl9sb&ep=v1_gifs_related&rid=giphy.gif&ct=g";
+    "https://media.giphy.com/media/YkOInyW8oZHPvI8aDW/giphy.gif?cid=790b7611cqr0sv24hs6r1n6p3rhl43cxsxhnh1qssk8ymtcx&ep=v1_gifs_search&rid=giphy.gif&ct=g";
 
   return (
     <AnimatedPage>
@@ -23,17 +24,28 @@ const Profile = () => {
         <Stack direction={"column"} gap={{ xs: 0, md: 1 }} height={"100%"}>
           {/* Profile Banner */}
           <ProfileBanner background={bannerUrl} />
-          {/* Profile Content */}
 
-          {/* Profile Stats */}
-          <Stack paddingInline={1} height={"100%"}>
-            <ContentBox>
+          {/* Profile Content */}
+          <Stack
+            direction={"column"}
+            paddingInline={theme.spacing(1)}
+            marginBlockStart={theme.spacing(1)}
+            marginBlockEnd={theme.spacing(2)}
+          >
+            <Stack
+              direction={"row"}
+              justifyContent={"space-between"}
+              alignContent={"center"}
+            >
+              <UsernameTag>txrry_x</UsernameTag>
+              <PublicIdTag>ABC-DEF</PublicIdTag>
+            </Stack>
+            <GenConSexGroup />
+            <Biography />
+            <Box marginBlock={theme.spacing(2)}>
               <ProfileStats />
-            </ContentBox>
-            {/* Biography */}
-            <ContentBox sx={{ paddingInline: 0 }}>
-              <Biography />
-            </ContentBox>
+            </Box>
+            {/* Groups and Events */}
             <GroupsAndEvents />
             {/* User Content */}
             <Box flexGrow={1} marginBlockStart={theme.spacing(3)}>

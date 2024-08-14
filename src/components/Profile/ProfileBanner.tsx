@@ -1,12 +1,9 @@
-import Paper from "@mui/material/Paper";
+import { Box, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import ProfilePictureKit from "../HOC/ProfilePictureKit";
-import UsernameTag from "./UsernameTag";
-import PublicIdTag from "./PublicIdTag";
-import { Box, useTheme } from "@mui/material";
-import SettingsButton from "./SettingsButton";
+import EditProfileButton from "./EditProfileButton";
 import MyItemsButton from "./MyItemsButton";
-import BadgeDisplay from "./BadgeDisplay";
+import SettingsButton from "./SettingsButton";
 
 interface ProfileBannerProps {
   background?: string;
@@ -16,49 +13,46 @@ const ProfileBanner: React.FC<ProfileBannerProps> = ({ background }) => {
   const theme = useTheme();
 
   return (
-    <Paper
-      sx={{
-        height: { xs: "200px", md: "250px" },
-        background: `url(${background})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        paddingBlockStart: theme.spacing(2),
-        paddingBlockEnd: theme.spacing(1),
-        paddingInline: { xs: theme.spacing(1), md: theme.spacing(4) },
-      }}
-    >
-      {/* Left side of the banner */}
-      <Stack
-        direction={"row"}
-        width={"100%"}
-        height={"100%"}
-        justifyContent={"space-between"}
+    <>
+      <Box
+        borderRadius={theme.spacing(2)}
+        marginBlockStart={theme.spacing(1)}
+        marginInline={theme.spacing(1)}
+        position={"relative"}
+        height={{
+          xs: theme.spacing(15),
+          md: theme.spacing(20),
+          lg: theme.spacing(25),
+        }}
+        sx={{
+          backgroundImage: `url(${background})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          padding: theme.spacing(1),
+        }}
       >
-        <Stack
-          direction={"column"}
-          height={"100%"}
-          justifyContent={"space-between"}
-          gap={theme.spacing(2)}
-        >
-          <Box>
-            <ProfilePictureKit />
-          </Box>
-          <Stack direction={"row"} gap={theme.spacing(1)}>
-            <UsernameTag>txrry_x</UsernameTag>
-            <PublicIdTag>XXX-XXX</PublicIdTag>
+        <Stack direction={"row"} justifyContent={"space-between"}>
+          <ProfilePictureKit />
+          <Stack
+            direction={"column"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+          >
+            <Stack direction={"column"} justifyContent={"space-between"}>
+              <Stack
+                direction={"row"}
+                marginInlineEnd={theme.spacing(-1)}
+                marginBlockStart={theme.spacing(-1)}
+              >
+                <EditProfileButton />
+                <MyItemsButton />
+                <SettingsButton />
+              </Stack>
+            </Stack>
           </Stack>
         </Stack>
-        {/* Right side of the banner */}
-        <Stack direction={"column"} justifyContent={"space-between"}>
-          <Stack direction={"row"}>
-            <MyItemsButton />
-            <SettingsButton />
-          </Stack>
-          <BadgeDisplay />
-        </Stack>
-      </Stack>
-    </Paper>
+      </Box>
+    </>
   );
 };
 

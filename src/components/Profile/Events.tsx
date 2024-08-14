@@ -1,10 +1,10 @@
-import { useTheme } from "@mui/material/styles";
-import ContentPaper from "../HOC/ContentPaper";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import { IconConfetti } from "@tabler/icons-react";
 import Button from "../CustomComponents/AnimatedButton";
 import Link from "../CustomComponents/CustomLink";
-import Typography from "@mui/material/Typography";
 
 interface EventsProps {
   background: string;
@@ -18,7 +18,7 @@ const Events: React.FC<EventsProps> = ({ background }) => {
   const theme = useTheme();
 
   return (
-    <ContentPaper
+    <Box
       sx={{
         height: "110px",
         backgroundImage: `url(${background}), ${gradient}`,
@@ -27,12 +27,14 @@ const Events: React.FC<EventsProps> = ({ background }) => {
         backgroundBlendMode: "overlay",
         filter: filter,
         border: `2px solid ${theme.palette.primary.main}`,
+        padding: theme.spacing(1),
+        borderRadius: theme.spacing(2),
       }}
     >
       <Stack direction={"row"} justifyContent={"space-between"} height={"100%"}>
         {/* Left side of the group */}
-        <Stack direction={"column"}>
-          <Typography fontSize={"0.7rem"}>Event</Typography>
+        <Stack direction={"column"} color={"white"}>
+          <IconConfetti size={"1.2rem"} />
           <Stack direction={"column"}>
             <Typography color={"primary"} fontWeight={"bold"}>
               Dance Competition!
@@ -47,7 +49,7 @@ const Events: React.FC<EventsProps> = ({ background }) => {
           </Link>
         </Box>
       </Stack>
-    </ContentPaper>
+    </Box>
   );
 };
 

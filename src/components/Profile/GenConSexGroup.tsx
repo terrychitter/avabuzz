@@ -7,11 +7,7 @@ import GenderIcon from "./GenderIcon";
 const GenConSexGroup = () => {
   const theme = useTheme();
   return (
-    <Stack
-      direction={"row"}
-      gap={theme.spacing(1)}
-      sx={{ paddingInlineStart: theme.spacing(1) }}
-    >
+    <Stack direction={"row"} gap={theme.spacing(0.5)}>
       <CountryIcon>south-africa</CountryIcon>
       <SexualityIcon>gay</SexualityIcon>
       <GenderIcon>male</GenderIcon>

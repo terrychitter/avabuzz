@@ -10,7 +10,7 @@ const GenderIcon: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       width={20}
       height={20}
       sx={{
-        marginBlockStart: 0.5,
+        marginBlockStart: 0.2,
         marginInlineStart: 0.2,
       }}
     />

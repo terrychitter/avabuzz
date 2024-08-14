@@ -6,7 +6,7 @@ const MyItemsButton = () => {
   return (
     <Link to={"/my-items"}>
       <IconButton>
-        <IconDiamondFilled size={"1.7rem"} />
+        <IconDiamondFilled size={"1.7rem"} color="white" />
       </IconButton>
     </Link>
   );

@@ -6,7 +6,7 @@ interface ProfilePictureKitProps {
 }
 
 const ProfilePictureKit: React.FC<ProfilePictureKitProps> = ({
-  pictureWidth = { xs: "6rem", sm: "8rem", md: "10rem" },
+  pictureWidth = { xs: "6rem", md: "8rem", lg: "9rem" },
 }) => {
   return (
     <Avatar
@@ -14,7 +14,7 @@ const ProfilePictureKit: React.FC<ProfilePictureKitProps> = ({
       src="/profile_picture.jpg"
       sx={{
         border: "2px solid white",
-        boxShadow: "5px 5px 5px 1px rgba(0, 0, 0, 0.3)",
+        boxShadow: "2px 2px 5px 1px rgba(0, 0, 0, 0.1)",
         width: pictureWidth,
         height: "auto",
       }}

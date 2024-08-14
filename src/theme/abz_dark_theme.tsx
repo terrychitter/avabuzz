@@ -60,6 +60,11 @@ const lightPalette = {
     main: "#CD65F0",
     contrastText: "#171717",
   },
+  text: {
+    primary: "#575757",
+    secondary: "rgba(0,0,0,0.7)",
+    disabled: "rgba(0,0,0,0.5)",
+  },
   secondary: {
     main: "#f15bb5d9",
   },
@@ -69,11 +74,6 @@ const lightPalette = {
   background: {
     default: "#f5f5f5",
     paper: "#ffffff",
-  },
-  text: {
-    primary: "#171717",
-    secondary: "rgba(0,0,0,0.7)",
-    disabled: "rgba(0,0,0,0.5)",
   },
   error: {
     main: "#d84238",
@@ -106,7 +106,7 @@ const baseThemeOptions: ThemeOptions = {
     body2: { fontFamily: "Varela Round" },
   },
   shape: {
-    borderRadius: 5,
+    borderRadius: 15,
   },
   components: {
     MuiCssBaseline: {

@@ -1,13 +1,14 @@
+import { useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import Box from "@mui/material/Box";
+import { IconHeart, IconMessage2, IconPhoto } from "@tabler/icons-react";
 import React from "react";
+import SwipeableViews from "react-swipeable-views";
+import CommentList from "../HOC/CommentList";
+import ItemList from "../HOC/ItemList";
 import Panel from "../HOC/Panel";
 import PostList from "../HOC/PostList";
-import CommentList from "../HOC/CommentList";
-import SwipeableViews from "react-swipeable-views";
-import { useTheme } from "@mui/material";
-import ItemList from "../HOC/ItemList";
 
 const UserContent = () => {
   const theme = useTheme();
@@ -37,9 +38,9 @@ const UserContent = () => {
           },
         }}
       >
-        <Tab label="Posts" />
-        <Tab label="Comments" />
-        <Tab label="Favorites" />
+        <Tab label={<IconPhoto />} />
+        <Tab label={<IconMessage2 />} />
+        <Tab label={<IconHeart />} />
       </Tabs>
       <SwipeableViews
         index={value}
