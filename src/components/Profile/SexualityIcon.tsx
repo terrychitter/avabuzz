@@ -1,5 +1,5 @@
 import React from "react";
-import MetaIcon from "./MetaIcon";
+import MetaIcon from "./ProfileMetaIcon";
 
 const SexualityIcon: React.FC<{ children: React.ReactNode }> = ({
   children,

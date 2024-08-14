@@ -1,5 +1,5 @@
 import React from "react";
-import MetaIcon from "./MetaIcon";
+import MetaIcon from "./ProfileMetaIcon";
 
 const CountryIcon: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return <MetaIcon type="country" children={children} placement="right" />;

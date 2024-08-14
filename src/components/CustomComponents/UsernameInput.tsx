@@ -1,9 +1,7 @@
-import { useTheme } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import { IconUser } from "@tabler/icons-react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
+import LimitedTextInput from "./LimitedTextInput";
 
 interface UsernameInputProps {
   tooltip?: boolean;
@@ -16,36 +14,15 @@ const UsernameInput: React.FC<UsernameInputProps> = ({
   errors,
   tooltip = true,
 }) => {
-  const theme = useTheme();
-
   const textField = (
-    <TextField
-      {...register("username", {
-        required: "Username is required",
-      })}
-      // Render error
-      error={Boolean(errors.username)}
-      // Render helper text
-      helperText={errors.username?.message?.toString()}
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            {/* Change color if error */}
-            <IconUser
-              color={
-                errors.username
-                  ? theme.palette.error.main
-                  : theme.palette.text.secondary
-              }
-            />
-          </InputAdornment>
-        ),
-      }}
-      fullWidth
+    <LimitedTextInput
+      register={register}
+      errors={errors}
+      name="username"
       label="Username"
-      variant="outlined"
-      type="text"
-      sx={{ marginBlockEnd: theme.spacing(2) }}
+      maxLength={20}
+      minLength={5}
+      startIcon={<IconUser />}
     />
   );
 

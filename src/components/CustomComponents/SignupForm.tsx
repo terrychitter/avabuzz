@@ -1,13 +1,13 @@
+import { CircularProgress, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import UsernameInput from "./UsernameInput";
-import EmailInput from "./EmailInput";
+import { FieldValues, FormProvider, useForm } from "react-hook-form";
+import AnimatedButton from "./AnimatedButton";
 import ConfirmPasswordInputGroup from "./ConfirmPasswordInputGroup";
-import Button from "./AnimatedButton";
 import Link from "./CustomLink";
-import Box from "@mui/material/Box";
-import { CircularProgress, useTheme } from "@mui/material";
-import { FieldValues, useForm, FormProvider } from "react-hook-form";
+import EmailInput from "./EmailInput";
+import UsernameInput from "./UsernameInput";
 
 const SignupForm = () => {
   // Access the theme
@@ -53,7 +53,7 @@ const SignupForm = () => {
               register={methods.register}
               errors={methods.formState.errors}
             />
-            <Button
+            <AnimatedButton
               disabled={methods.formState.isSubmitting}
               fullWidth
               type="submit"
@@ -64,7 +64,7 @@ const SignupForm = () => {
               }
             >
               {methods.formState.isSubmitting ? null : "Create Account"}
-            </Button>
+            </AnimatedButton>
           </form>
         </Box>
         <Box

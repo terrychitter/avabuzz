@@ -2,12 +2,16 @@ import React from "react";
 import { Palette } from "color-thief-react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { adjustVibrancy } from "../../utils/ColorUtils";
-import { useTheme } from "@mui/material";
+import { Skeleton, useTheme } from "@mui/material";
 
 interface ThemedContentProps {
   children?: React.ReactNode;
   imageUrl: string;
 }
+
+const ThemedContentSkeleton = () => {
+  return <Skeleton variant="rectangular" width="100%" height="100%" />;
+};
 
 export const ThemedContent: React.FC<ThemedContentProps> = ({
   children,
@@ -24,7 +28,7 @@ export const ThemedContent: React.FC<ThemedContentProps> = ({
       quality={1000}
     >
       {({ data, loading, error }) => {
-        if (loading) return <div>Loading...</div>;
+        if (loading) return <ThemedContentSkeleton />;
         if (error) return <div>Error loading image</div>;
 
         // Make the color more vibrant
