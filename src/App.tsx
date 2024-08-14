@@ -10,6 +10,7 @@ import { StandaloneProvider } from "./components/StandaloneContext";
 import ProfileSettingsRoute from "./components/Profile/Settings/ProfileSettingsRoute";
 import { Button } from "@mui/material";
 import { useState } from "react";
+import MainNavBar from "./components/Navbar/MainNavBar";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -101,12 +102,13 @@ function App() {
   const toggleTheme = () => {
     setIsDarkMode((prevMode: any) => !prevMode);
   };
+
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
       <StandaloneProvider>
-        {/* Wrap your application with StandaloneProvider */}
         <Router>
+          <MainNavBar /> {/* This will be displayed on all pages */}
           <Routes>
             <Route
               path="/"
