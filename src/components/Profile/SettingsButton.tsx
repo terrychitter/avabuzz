@@ -4,7 +4,7 @@ import { IconSettingsFilled } from "@tabler/icons-react";
 
 const SettingsButton = () => {
   return (
-    <Link to={"settings"}>
+    <Link to={"/settings"}>
       <IconButton>
         <IconSettingsFilled size={"1.7rem"} color="white" />
       </IconButton>

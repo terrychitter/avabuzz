@@ -1,16 +1,15 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
-import { darkTheme, lightTheme } from "./theme/abz_dark_theme";
 import "./App.css";
+import { darkTheme, lightTheme } from "./theme/abz_dark_theme";
 import { loadable } from "./utils/loadable";
 
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import DefaultLoader from "./components/CustomComponents/DefaultLoader";
-import { StandaloneProvider } from "./components/StandaloneContext";
-import ProfileSettingsRoute from "./components/Profile/Settings/ProfileSettingsRoute";
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import MainNavBar from "./components/Navbar/MainNavBar";
+import { StandaloneProvider } from "./components/StandaloneContext";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -96,6 +95,10 @@ const EditProfile = loadable(
   }
 );
 
+const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+};
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
@@ -108,12 +111,12 @@ function App() {
       <CssBaseline />
       <StandaloneProvider>
         <Router>
-          <MainNavBar /> {/* This will be displayed on all pages */}
           <Routes>
             <Route
               path="/"
               element={
                 <>
+                  <MainNavBar />
                   <Home />
                   <Button onClick={toggleTheme}>
                     Change to {isDarkMode ? "Light" : "Dark"} Mode
@@ -125,24 +128,52 @@ function App() {
             <Route path="create-account" element={<Signup />} />
 
             {/* Profile */}
-            <Route path="profile" element={<ProfileRoute />}>
+            <Route
+              path="profile"
+              element={
+                <>
+                  <MainNavBar />
+                  <ProfileRoute />
+                </>
+              }
+            >
               <Route index element={<Profile />} />
               <Route path="followers" element={<Followers />} />
               <Route path="following" element={<Following />} />
-              <Route path="edit" element={<EditProfile />} />
-
-              {/* Profile Settings */}
-              <Route path="settings" element={<ProfileSettingsRoute />}>
-                <Route index element={<ProfileSettings />} />
-                <Route path="appearance" element={<AppearanceSettings />} />
-                <Route
-                  path="notifications"
-                  element={<NotificationSettings />}
-                />
-                <Route path="privacy" element={<PrivacySettings />} />
-                <Route path="blocked-users" element={<BlockedUsers />} />
-              </Route>
             </Route>
+
+            {/* Profile Edit */}
+            <Route
+              path="profile-edit"
+              element={
+                <>
+                  <EditProfile />
+                </>
+              }
+            />
+
+            {/* Settings */}
+            <Route
+              path="settings/*"
+              element={
+                <SettingsLayout>
+                  <Routes>
+                    <Route index element={<ProfileSettings />} />
+                    <Route path="appearance" element={<AppearanceSettings />} />
+                    <Route
+                      path="notifications"
+                      element={<NotificationSettings />}
+                    />
+                    <Route path="privacy" element={<PrivacySettings />} />
+                    <Route path="blocked-users" element={<BlockedUsers />} />
+                    {/* Catch-all for 404 inside settings */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </SettingsLayout>
+              }
+            />
+
+            {/* Catch-all for 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
