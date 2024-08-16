@@ -40,14 +40,14 @@ const NotFound = () => {
             </Typography>
           </Stack>
         </Stack>
-        <Link to="/">
-          <IconButton>
+        <IconButton>
+          <Link to="/">
             <IconHomeFilled
               color={theme.palette.primary.main}
               size={theme.typography.h2.fontSize}
             />
-          </IconButton>
-        </Link>
+          </Link>
+        </IconButton>
       </Stack>
     </>
   );

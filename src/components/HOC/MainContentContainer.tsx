@@ -3,7 +3,6 @@ import Container from "@mui/material/Container";
 import React from "react";
 import { useTheme } from "@mui/system";
 import Aside from "../CustomComponents/Aside/Aside";
-import NavDrawer from "../CustomComponents/NavDrawer";
 
 interface MainContentContainerProps {
   children?: React.ReactNode;
@@ -70,7 +69,6 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
           )}
         </Grid>
       </Container>
-      {!isSmallScreenOrLarger && <NavDrawer content={asideContent} />}
     </>
   );
 };

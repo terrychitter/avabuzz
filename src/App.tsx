@@ -1,11 +1,9 @@
-import "./App.css";
-import { loadable } from "./utils/loadable";
-import { Button } from "@mui/material";
-import { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
 import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import MainNavBar from "./components/Navbar/MainNavBar";
 import { StandaloneProvider } from "./components/StandaloneContext";
+import { loadable } from "./utils/loadable";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -96,12 +94,6 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode: any) => !prevMode);
-  };
-
   return (
     <StandaloneProvider>
       <Router>
@@ -112,9 +104,6 @@ function App() {
               <>
                 <MainNavBar />
                 <Home />
-                <Button onClick={toggleTheme}>
-                  Change to {isDarkMode ? "Light" : "Dark"} Mode
-                </Button>
               </>
             }
           />
