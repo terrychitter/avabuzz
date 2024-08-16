@@ -1,7 +1,5 @@
-import PostNow from "../CustomComponents/Aside/PostNow";
-
 const ProfileAsideContent = () => {
-  return <PostNow />;
+  return <></>;
 };
 
 export default ProfileAsideContent;

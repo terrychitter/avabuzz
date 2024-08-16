@@ -55,6 +55,8 @@ const PostNow = () => {
         paddingInline={2}
         direction={{ xs: "row", sm: "column", md: "row" }}
         justifyContent={"center"}
+        textAlign={"center"}
+        alignItems={"center"}
         gap={{ xs: 4, sm: 2, md: 4 }}
       >
         <PostOption
