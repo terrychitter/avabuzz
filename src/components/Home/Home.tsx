@@ -10,7 +10,6 @@ const Home = () => {
         <MainContentContainer>
           <Stack direction={"row"} gap={2} p={2}>
             <Link to="login">Login</Link>
-            <Link to="profile">Profile</Link>
           </Stack>
         </MainContentContainer>
       </Page>

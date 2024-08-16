@@ -34,6 +34,7 @@ const MainContentContainer: React.FC<MainContentContainerProps> = ({
           <Grid
             item
             paddingInline={{ xs: 0, sm: 1 }}
+            paddingBlockEnd={{ xs: 5, sm: 0 }}
             borderRadius={{ xs: 0, sm: 1 }}
             xs={12}
             sm={8}

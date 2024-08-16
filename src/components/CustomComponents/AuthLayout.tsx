@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { ReactNode } from "react";
 import logo from "/icons/logo.png";
+import Link from "./CustomLink";
 
 interface AuthLayoutProps {
   heroContent?: string;
@@ -41,7 +42,9 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <img src={logo} width={"100%"} style={{ maxWidth: "300px" }} />
+            <Link to="/">
+              <img src={logo} width={"100%"} style={{ maxWidth: "300px" }} />
+            </Link>
             {heroContent && (
               <Typography variant="h3" component="h2">
                 {heroContent}
@@ -66,15 +69,17 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
           gap={theme.spacing(3)}
         >
           {!isLargerScreenOrMore && (
-            <Box
-              component="img"
-              src={logo}
-              alt="Logo"
-              sx={{
-                width: "100%",
-                maxWidth: { xs: "200px", sm: "250px", md: "200px" },
-              }}
-            />
+            <Link to="/">
+              <Box
+                component="img"
+                src={logo}
+                alt="Logo"
+                sx={{
+                  width: "100%",
+                  maxWidth: { xs: "200px", sm: "250px", md: "200px" },
+                }}
+              />
+            </Link>
           )}
 
           <Container maxWidth="sm">{formComponent}</Container>

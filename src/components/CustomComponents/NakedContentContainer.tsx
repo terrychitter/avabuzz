@@ -24,7 +24,7 @@ const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
         sx={{
           backgroundColor: {
             xs: theme.palette.background.default,
-            sm: theme.palette.background.paper,
+            sm: "inherit",
           },
         }}
       >
