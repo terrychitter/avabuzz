@@ -72,8 +72,7 @@ const lightPalette = {
     darkerBlack: "#ffffff",
   },
   background: {
-    default: "#f5f5f5",
-    paper: "#ffffff",
+    default: "#FFFFFF",
   },
   error: {
     main: "#d84238",
