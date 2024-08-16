@@ -1,6 +1,6 @@
 import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
 import { IconArrowLeft, IconHomeFilled } from "@tabler/icons-react";
-import Button from "./components/CustomComponents/AnimatedButton";
+import AnimatedIconButton from "./components/CustomComponents/AnimatedIconButton";
 import Link from "./components/CustomComponents/CustomLink";
 import mascotImage from "/avabuzz_mascot/doughnut-11.png";
 
@@ -16,12 +16,9 @@ const NotFound = () => {
           zIndex: 100,
         }}
       >
-        <Button
-          startIcon={<IconArrowLeft />}
-          onClick={() => window.history.back()}
-        >
-          Go Back
-        </Button>
+        <AnimatedIconButton onClick={() => window.history.back()}>
+          <IconArrowLeft color={theme.palette.text.primary} />
+        </AnimatedIconButton>
       </Box>
       <Stack
         width={"100%"}
