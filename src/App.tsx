@@ -4,6 +4,7 @@ import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import MainNavBar from "./components/Navbar/MainNavBar";
 import { StandaloneProvider } from "./components/StandaloneContext";
 import { loadable } from "./utils/loadable";
+import Load from "./Load";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -107,6 +108,7 @@ function App() {
               </>
             }
           />
+          <Route path="load" element={<Load />} />
           <Route path="login" element={<Login />} />
           <Route path="create-account" element={<Signup />} />
 

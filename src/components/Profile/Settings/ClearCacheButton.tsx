@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import AnimatedButton from "../../CustomComponents/AnimatedButton";
 import DefaultLoader from "../../CustomComponents/DefaultLoader";
+import { useTheme } from "@mui/material/styles";
 
 // Returns approximate size of a single cache (in bytes)
 function cacheSize(c: Cache): Promise<number> {
@@ -55,6 +56,7 @@ const clearCache = async () => {
 };
 
 const ClearCacheButton = () => {
+  const theme = useTheme();
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [processOpen, setProcessOpen] = useState(false);
   const [cacheSize, setCacheSize] = useState("0.00");
@@ -138,14 +140,15 @@ const ClearCacheButton = () => {
         </DialogActions>
       </Dialog>
       <Dialog
-        maxWidth="xs"
+        maxWidth="lg"
         open={processOpen}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         PaperProps={{
           style: {
-            backgroundColor: "transparent !important",
+            backgroundColor: theme.palette.background.default,
             boxShadow: "none",
+            padding: 50,
           },
         }}
       >
