@@ -11,14 +11,37 @@ interface CustomLinkProps extends Omit<MuiLinkProps, "component" | "to"> {
   sx?: MuiLinkProps["sx"];
 }
 
-const Link: React.FC<CustomLinkProps> = ({ to, sx, ...muiLinkProps }) => {
+const Link: React.FC<CustomLinkProps> = ({
+  to,
+  sx,
+  children,
+  ...muiLinkProps
+}) => {
+  const handleClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    // Stop propagation if the event is from an interactive child element
+    if (event.target instanceof HTMLElement) {
+      // Use event.currentTarget for the link element itself
+      const closestInteractiveElement = event.target.closest(
+        "[data-link-interactive]"
+      );
+      if (closestInteractiveElement) {
+        event.stopPropagation();
+      }
+    }
+  };
+
   return (
     <MuiLink
       component={RouterLink}
       to={to}
       sx={{ color: "inherit", ...sx }}
+      onClick={handleClick}
       {...muiLinkProps}
-    />
+    >
+      {children}
+    </MuiLink>
   );
 };
 

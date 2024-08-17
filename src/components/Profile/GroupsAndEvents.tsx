@@ -33,7 +33,7 @@ const GroupsAndEvents = () => {
         </Grid>
       )}
       {!isMediumScreenOrLarger && (
-        <CustomCarousel height={"110px"}>
+        <CustomCarousel infinite>
           <ThemedContent imageUrl={groupBackgroundUrl}>
             <Group background={groupBackgroundUrl} />
           </ThemedContent>

@@ -49,10 +49,7 @@ const UserContent = () => {
       >
         {/* Posts Panel */}
         <Panel value={value} index={0} sx={{ height: "100%" }}>
-          <ItemList
-            columns={{ xs: 1, md: 2 }}
-            noItemsMessage="No posts to show"
-          >
+          <ItemList columns={{ xs: 1 }} noItemsMessage="No posts to show">
             {PostList()}
           </ItemList>
         </Panel>

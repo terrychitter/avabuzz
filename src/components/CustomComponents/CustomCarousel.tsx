@@ -1,41 +1,97 @@
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { IconPointFilled } from "@tabler/icons-react";
 import React from "react";
-import Carousel from "react-material-ui-carousel";
+import Carousel, { CarouselProps } from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-interface CustomCarouselProps extends React.ComponentProps<typeof Carousel> {
+// Define the props interface for the custom dot component
+interface CustomDotProps {
+  onClick: () => void;
+  active: boolean;
+}
+
+interface CustomCarouselProps extends Omit<CarouselProps, "responsive"> {
   children: React.ReactNode;
-  height?: string | number;
 }
 
 const CustomCarousel: React.FC<CustomCarouselProps> = ({
   children,
-  height,
-  autoPlay = false, // Set default value
-  animation = "slide", // Set default value
-  navButtonsAlwaysInvisible = true, // Set default value
-  indicators = true, // Set default value
-  IndicatorIcon = <IconPointFilled size={"0.9rem"} />, // Set default value
-  indicatorContainerProps = {
-    style: {
-      marginTop: useTheme().spacing(0), // Set default value with theme
-    },
-  },
-  ...props // Spread remaining props here
+  ...props
 }) => {
-  return (
-    <Carousel
-      autoPlay={autoPlay}
-      animation={animation}
-      navButtonsAlwaysInvisible={navButtonsAlwaysInvisible}
-      indicators={indicators}
-      height={height}
-      IndicatorIcon={IndicatorIcon}
-      indicatorContainerProps={indicatorContainerProps}
-      {...props} // Pass down the remaining props to Carousel
+  const theme = useTheme();
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 600 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 600, min: 0 },
+      items: 1,
+    },
+  };
+
+  // Implement the CustomDot component with the correct type for props
+  const CustomDot = ({ onClick, active }: CustomDotProps) => (
+    <button
+      onClick={onClick}
+      style={{
+        border: "none",
+        background: "transparent",
+        cursor: "pointer",
+        padding: "0",
+        marginInline: "-8px",
+        marginBlockEnd: "-1px",
+        opacity: active ? 1 : 0.5,
+      }}
     >
-      {children}
-    </Carousel>
+      <IconPointFilled
+        size={"1rem"}
+        color={
+          active
+            ? theme.palette.getContrastText(theme.palette.background.default)
+            : theme.palette.getContrastText(theme.palette.background.default)
+        }
+      />
+    </button>
+  );
+
+  return (
+    <Box position={"relative"}>
+      <style>
+        {`
+          .custom-dot-list-style {
+            display: flex;
+            justify-content: center;
+            margin-bottom: -18px;
+            gap: 10px;
+          }
+
+          .custom-dot-list-style > * {
+            margin-right: 5px;
+          }
+        `}
+      </style>
+      <Carousel
+        responsive={responsive}
+        swipeable
+        showDots
+        renderDotsOutside
+        arrows={false}
+        customDot={<CustomDot onClick={() => {}} active={false} />}
+        dotListClass="custom-dot-list-style"
+        {...props}
+      >
+        {children}
+      </Carousel>
+    </Box>
   );
 };
 
