@@ -14,6 +14,7 @@ import Link from "../../CustomComponents/CustomLink";
 import PostActionKit from "../PostActionKit";
 import ProfilePictureKit from "../ProfilePictureKit";
 import UsernameKit from "../UsernameKit";
+import PostHashtagsGroup from "./PostHashtagsGroup";
 
 interface PostProperties {
   children: React.ReactNode;
@@ -34,6 +35,9 @@ const Post: React.FC<PostProperties> = ({ children }) => {
       <CardActionArea>
         <CardContent sx={{ padding: 0 }}>{children}</CardContent>
       </CardActionArea>
+      <PostHashtagsGroup
+        hashtags={["wow", "amazing", "tastes", "grass", "bad", "ew"]}
+      />
       <CardActions
         sx={{
           paddingInline: theme.spacing(2),
