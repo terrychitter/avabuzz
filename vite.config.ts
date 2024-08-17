@@ -50,5 +50,8 @@ export default defineConfig({
   server: {
     port: 9091,
     host: true 
+  },
+  optimizeDeps: {
+    exclude: ['date-fns']
   }
 })

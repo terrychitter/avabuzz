@@ -15,29 +15,88 @@ import PostActionKit from "../PostActionKit";
 import ProfilePictureKit from "../ProfilePictureKit";
 import UsernameKit from "../UsernameKit";
 import PostHashtagsGroup from "./PostHashtagsGroup";
+import GeneralPost from "./GeneralPost";
+import ImagePost from "./ImagePost";
+import { format } from "date-fns";
 
 interface PostProperties {
-  children: React.ReactNode;
+  post: {
+    userPublicId: string;
+    profilePictureUrl: string;
+    profileBadgeUrl: string;
+    postId: number;
+    username: string;
+    date: Date;
+    type: string;
+    text: string;
+    hashtags: string[];
+    viewCount: number;
+    likeCount: number;
+    commentCount: number;
+    mediaUrls: string[];
+  };
 }
 
-const Post: React.FC<PostProperties> = ({ children }) => {
+const formatPostDate = (date: Date): string => {
+  const postYear: number = date.getFullYear();
+  const currentYear: number = new Date().getFullYear();
+
+  if (postYear === currentYear) {
+    return format(date, "dd MMM");
+  } else {
+    return format(date, "dd MMM yyyy");
+  }
+};
+
+const formatNumber = (number: number) => {
+  if (number >= 1_000_000) {
+    return `${(number / 1_000_000).toFixed(1)}M`.replace(/\.0$/, "");
+  } else if (number >= 1_000) {
+    return `${(number / 1_000).toFixed(1)}K`.replace(/\.0$/, "");
+  } else {
+    return number.toString();
+  }
+};
+
+const Post: React.FC<PostProperties> = ({ post }) => {
   const theme = useTheme();
   return (
     <Card variant="outlined" sx={{ minHeight: 150 }}>
-      <Link to="/profile">
+      <Link to={`/profile/${post.userPublicId}`}>
         <CardHeader
-          avatar={<ProfilePictureKit pictureWidth={{ xs: "3rem" }} />}
-          title={<UsernameKit />}
+          avatar={
+            <ProfilePictureKit
+              pictureWidth={{ xs: "3rem" }}
+              pictureUrl={post.profilePictureUrl}
+            />
+          }
+          title={
+            <UsernameKit
+              username={post.username}
+              badgeUrl={post.profileBadgeUrl}
+            />
+          }
           action={<PostActionKit />}
-          subheader="Sep 14, 2016"
+          subheader={formatPostDate(post.date)}
         />
       </Link>
       <CardActionArea>
-        <CardContent sx={{ padding: 0 }}>{children}</CardContent>
+        <CardContent sx={{ padding: 0 }}>
+          {post.type === "general" ? (
+            <GeneralPost
+              postText={post.text}
+              link={`/posts/${post.postId.toString()}`}
+            />
+          ) : post.type === "image" ? (
+            <ImagePost
+              images={post.mediaUrls}
+              postText={post.text}
+              link={`/posts/${post.postId.toString()}`}
+            />
+          ) : null}
+        </CardContent>
       </CardActionArea>
-      <PostHashtagsGroup
-        hashtags={["wow", "amazing", "tastes", "grass", "bad", "ew"]}
-      />
+      <PostHashtagsGroup hashtags={post.hashtags} />
       <CardActions
         sx={{
           paddingInline: theme.spacing(2),
@@ -48,10 +107,12 @@ const Post: React.FC<PostProperties> = ({ children }) => {
           justifyContent={"center"}
           alignItems={"center"}
           direction={"row"}
-          gap={1}
+          gap={0.5}
         >
           <IconEye color={theme.palette.action.disabled} />
-          <Box color={theme.palette.action.disabled}>12</Box>
+          <Box color={theme.palette.action.disabled}>
+            {formatNumber(post.viewCount)}
+          </Box>
         </Stack>
         <Stack
           direction={"row"}
@@ -67,12 +128,12 @@ const Post: React.FC<PostProperties> = ({ children }) => {
             alignItems={"center"}
           >
             <Box marginBlockStart="7px !important">
-              <Link to="/posts/:post_id#comments">
+              <Link to={`/posts/${post.postId}#comments`}>
                 <IconMessage />
               </Link>
             </Box>
             <Box component={"span"} fontSize={theme.typography.body1.fontSize}>
-              2
+              {formatNumber(post.commentCount)}
             </Box>
           </Stack>
           <Stack
@@ -83,7 +144,7 @@ const Post: React.FC<PostProperties> = ({ children }) => {
           >
             <IconHeart />
             <Box component={"span"} fontSize={theme.typography.body1.fontSize}>
-              2
+              {formatNumber(post.likeCount)}
             </Box>
           </Stack>
         </Stack>

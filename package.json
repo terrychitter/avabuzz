@@ -19,6 +19,7 @@
     "@types/react-swipeable-views": "^0.13.5",
     "blurhash": "^2.0.5",
     "color-thief-react": "^2.1.0",
+    "date-fns": "^3.6.0",
     "framer-motion": "^11.3.19",
     "https-localhost": "^4.7.1",
     "ldrs": "^1.0.2",

@@ -3,21 +3,21 @@ import CustomCarousel from "../../CustomComponents/CustomCarousel";
 import Link from "../../CustomComponents/CustomLink";
 import ThemedMarkdown from "../ThemedMarkdown";
 import Post from "./Post";
+import React from "react";
 
-const postText = `Look at my awesome post ☝️`;
+interface ImagePostProperties {
+  postText: string;
+  images: string[];
+  link: string;
+}
 
-const images = [
-  "https://picsum.photos/1000",
-  "https://picsum.photos/1001",
-  "https://picsum.photos/1002",
-  "https://picsum.photos/1003",
-  "https://picsum.photos/1004",
-  "https://picsum.photos/1005",
-];
-
-const ImagePost = () => {
+const ImagePost: React.FC<ImagePostProperties> = ({
+  postText,
+  images,
+  link,
+}) => {
   return (
-    <Post>
+    <>
       {images.length > 1 ? (
         <Box marginBlockEnd={3}>
           <CustomCarousel arrows swipeable={false}>
@@ -38,7 +38,7 @@ const ImagePost = () => {
         </Box>
       )}
       <Box paddingInline={1} marginBlockStart={1}>
-        <Link to="/posts/:post_id">
+        <Link to={link}>
           <Typography
             display={"-webkit-box"}
             overflow={"hidden"}
@@ -53,7 +53,7 @@ const ImagePost = () => {
           </Typography>
         </Link>
       </Box>
-    </Post>
+    </>
   );
 };
 

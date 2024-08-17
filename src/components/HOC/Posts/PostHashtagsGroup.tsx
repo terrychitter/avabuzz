@@ -10,7 +10,7 @@ const PostHashtagsGroup: React.FC<PostHashtagsGroupProps> = ({ hashtags }) => {
   return (
     <Stack paddingInline={2} direction={"row"} gap={0.5} flexWrap={"wrap"}>
       {hashtags.map((tag, index) => (
-        <Link to="/hastags/:hashtag">
+        <Link to={`/hastags/${tag}`}>
           <Chip key={index} label={`#${tag}`} size="small" />
         </Link>
       ))}
