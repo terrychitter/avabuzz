@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/material";
+import React from "react";
 import CustomCarousel from "../../CustomComponents/CustomCarousel";
 import Link from "../../CustomComponents/CustomLink";
 import ThemedMarkdown from "../ThemedMarkdown";
-import Post from "./Post";
-import React from "react";
 
 interface ImagePostProperties {
   postText: string;

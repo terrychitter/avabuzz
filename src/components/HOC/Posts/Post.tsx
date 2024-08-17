@@ -62,24 +62,23 @@ const Post: React.FC<PostProperties> = ({ post }) => {
   const theme = useTheme();
   return (
     <Card variant="outlined" sx={{ minHeight: 150 }}>
-      <Link to={`/profile/${post.userPublicId}`}>
-        <CardHeader
-          avatar={
-            <ProfilePictureKit
-              pictureWidth={{ xs: "3rem" }}
-              pictureUrl={post.profilePictureUrl}
-            />
-          }
-          title={
-            <UsernameKit
-              username={post.username}
-              badgeUrl={post.profileBadgeUrl}
-            />
-          }
-          action={<PostActionKit />}
-          subheader={formatPostDate(post.date)}
-        />
-      </Link>
+      <CardHeader
+        avatar={
+          <ProfilePictureKit
+            link={`/profile/${post.userPublicId}`}
+            pictureWidth={{ xs: "3rem" }}
+            pictureUrl={post.profilePictureUrl}
+          />
+        }
+        title={
+          <UsernameKit
+            username={post.username}
+            badgeUrl={post.profileBadgeUrl}
+          />
+        }
+        action={<PostActionKit />}
+        subheader={formatPostDate(post.date)}
+      />
       <CardActionArea>
         <CardContent sx={{ padding: 0 }}>
           {post.type === "general" ? (
