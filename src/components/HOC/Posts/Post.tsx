@@ -19,7 +19,7 @@ import GeneralPost from "./GeneralPost";
 import ImagePost from "./ImagePost";
 import { format } from "date-fns";
 
-interface PostProperties {
+export interface PostProps {
   post: {
     userPublicId: string;
     profilePictureUrl: string;
@@ -58,7 +58,7 @@ const formatNumber = (number: number) => {
   }
 };
 
-const Post: React.FC<PostProperties> = ({ post }) => {
+const Post: React.FC<PostProps> = ({ post }) => {
   const theme = useTheme();
   return (
     <Card variant="outlined" sx={{ minHeight: 150 }}>

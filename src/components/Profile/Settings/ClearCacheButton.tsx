@@ -121,10 +121,10 @@ const ClearCacheButton = () => {
             variant="contained"
             onClick={toggleConfirmDialog}
             sx={(theme) => ({
-              color: theme.palette.action.disabled, // Text color of a disabled button
-              backgroundColor: theme.palette.action.disabledBackground, // Background color of a disabled button
+              color: theme.palette.action.disabled,
+              backgroundColor: theme.palette.action.disabledBackground,
               "&:hover": {
-                backgroundColor: theme.palette.action.disabledBackground, // Maintain disabled background on hover
+                backgroundColor: theme.palette.action.disabledBackground,
               },
             })}
           >
