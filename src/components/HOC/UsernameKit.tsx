@@ -2,12 +2,12 @@ import { Avatar, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 interface UsernameKitProperties {
-  username: string;
+  username?: string;
   badgeUrl?: string;
 }
 
 const UsernameKit: React.FC<UsernameKitProperties> = ({
-  username,
+  username = "txrry_x",
   badgeUrl,
 }) => {
   const theme = useTheme();
