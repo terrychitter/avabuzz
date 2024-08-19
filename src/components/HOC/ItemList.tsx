@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material/styles";
 interface ItemListProps {
   children?: React.ReactNode | React.ReactNode[];
   noItemsMessage?: string;
+  showEndDivider?: boolean;
   columns?: {
     xs: number;
     sm?: number;
@@ -19,6 +20,7 @@ const ItemList: React.FC<ItemListProps> = ({
   children,
   noItemsMessage = "No items",
   columns = { xs: 1 },
+  showEndDivider = true,
   sx,
 }) => {
   const theme = useTheme();
@@ -40,15 +42,17 @@ const ItemList: React.FC<ItemListProps> = ({
               {child}
             </Grid>
           ))}
-          <Grid item xs={12}>
-            <Box display="flex" justifyContent="center" width="100%">
-              <Divider sx={{ width: "60%", maxWidth: "200px" }}>
-                <Typography color={theme.palette.text.secondary}>
-                  End
-                </Typography>
-              </Divider>
-            </Box>
-          </Grid>
+          {showEndDivider && (
+            <Grid item xs={12}>
+              <Box display="flex" justifyContent="center" width="100%">
+                <Divider sx={{ width: "60%", maxWidth: "200px" }}>
+                  <Typography color={theme.palette.text.secondary}>
+                    End
+                  </Typography>
+                </Divider>
+              </Box>
+            </Grid>
+          )}
         </>
       ) : (
         <Grid

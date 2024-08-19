@@ -100,7 +100,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path="/home"
             element={
               <>
                 <MainNavBar />

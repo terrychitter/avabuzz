@@ -17,7 +17,7 @@ import UsernameKit from "../UsernameKit";
 import PostHashtagsGroup from "./PostHashtagsGroup";
 import GeneralPost from "./GeneralPost";
 import ImagePost from "./ImagePost";
-import { format } from "date-fns";
+import { formatNumber, formatDate } from "../../../utils/formatters";
 
 export interface PostProps {
   post: {
@@ -36,27 +36,6 @@ export interface PostProps {
     mediaUrls: string[];
   };
 }
-
-const formatPostDate = (date: Date): string => {
-  const postYear: number = date.getFullYear();
-  const currentYear: number = new Date().getFullYear();
-
-  if (postYear === currentYear) {
-    return format(date, "dd MMM");
-  } else {
-    return format(date, "dd MMM yyyy");
-  }
-};
-
-const formatNumber = (number: number) => {
-  if (number >= 1_000_000) {
-    return `${(number / 1_000_000).toFixed(1)}M`.replace(/\.0$/, "");
-  } else if (number >= 1_000) {
-    return `${(number / 1_000).toFixed(1)}K`.replace(/\.0$/, "");
-  } else {
-    return number.toString();
-  }
-};
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const theme = useTheme();
@@ -77,7 +56,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
           />
         }
         action={<PostActionKit />}
-        subheader={formatPostDate(post.date)}
+        subheader={formatDate(post.date)}
       />
       <CardActionArea>
         <CardContent sx={{ padding: 0 }}>

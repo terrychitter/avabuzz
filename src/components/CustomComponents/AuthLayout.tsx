@@ -42,7 +42,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Link to="/">
+            <Link to="/home">
               <img src={logo} width={"100%"} style={{ maxWidth: "300px" }} />
             </Link>
             {heroContent && (
@@ -69,7 +69,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
           gap={theme.spacing(3)}
         >
           {!isLargerScreenOrMore && (
-            <Link to="/">
+            <Link to="/home">
               <Box
                 component="img"
                 src={logo}

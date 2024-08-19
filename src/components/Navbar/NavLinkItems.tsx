@@ -79,7 +79,7 @@ const NavItem = ({
 };
 
 export const HomeNavItem = () => (
-  <NavItem to="/" activeIcon={IconHomeFilled} inactiveIcon={IconHome} />
+  <NavItem to="/home" activeIcon={IconHomeFilled} inactiveIcon={IconHome} />
 );
 
 export const DiscoverNavItem = () => (
