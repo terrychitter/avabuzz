@@ -1,31 +1,26 @@
-import { Container, Skeleton, Stack } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Skeleton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 
 const Debug = () => {
+  const theme = useTheme();
+  const isMediumScreenOrLarger = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <Container>
-      <Stack direction={"column"} gap={1}>
-        <Stack direction={"row"} width={"100%"} gap={1}>
-          <Skeleton
-            animation={"wave"}
-            variant="circular"
-            width={"50px"}
-            height={"50px"}
-          />
-          <Stack direction={"column"}>
-            <Skeleton
-              variant="text"
-              width={"150px"}
-              sx={{ fontSize: "1rem" }}
-            />
-            <Skeleton
-              variant="text"
-              width={"100px"}
-              sx={{ fontSize: "1rem" }}
-            />
-          </Stack>
-        </Stack>
-        <Skeleton animation={"wave"} variant="rounded" height={"200px"} />
-      </Stack>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={6}>
+          <Skeleton variant="rounded" animation={"wave"} height={110} />
+        </Grid>
+        {isMediumScreenOrLarger && (
+          <Grid item xs={12} md={6}>
+            <Skeleton variant="rounded" animation={"wave"} height={110} />
+          </Grid>
+        )}
+      </Grid>
     </Container>
   );
 };

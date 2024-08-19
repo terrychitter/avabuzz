@@ -27,6 +27,36 @@ const PostActionKit = () => {
     setAnchorEl(null);
   };
 
+  const handleShare = () => {
+    console.log("Share button clicked!");
+    handleMenuClose(); // Close the menu immediately
+
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "Avabuzz",
+          text: "Check out this post on Avabuzz!",
+          url: window.location.href,
+        })
+        .then(() => {
+          console.log("Thanks for sharing!");
+        })
+        .catch((error) => {
+          navigator.clipboard
+            .writeText(window.location.href)
+            .then(() => {
+              console.log("URL copied to clipboard!");
+            })
+            .catch((error) => {
+              console.error("Error copying URL to clipboard:", error);
+            });
+          console.error("Error sharing:", error);
+        });
+    } else {
+      console.error("Web Share API is not supported in your browser.");
+    }
+  };
+
   const ShareButton = () => {
     return (
       <Box display={"flex"} alignItems={"center"} gap={1}>
@@ -72,7 +102,7 @@ const PostActionKit = () => {
           "aria-labelledby": "post-action-menu",
         }}
       >
-        <MenuItem onClick={handleMenuClose}>
+        <MenuItem onClick={handleShare}>
           <ShareButton />
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>

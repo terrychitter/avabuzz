@@ -1,15 +1,43 @@
-import { Box, Stack, useTheme } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Skeleton,
+  Stack,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import { loadable } from "../../utils/loadable";
 import AnimatedPage from "../HOC/AnimatedPage";
 import MainContentContainer from "../HOC/MainContentContainer";
 import Biography from "./Biography";
 import GenConSexGroup from "./GenConSexGroup";
-import GroupsAndEvents from "./GroupsAndEvents";
 import ProfileAsideContent from "./ProfileAsideContent";
 import ProfileBanner from "./ProfileBanner";
 import ProfileStats from "./ProfileStats";
 import PublicIdTag from "./PublicIdTag";
 import UserContent from "./UserContent";
 import UsernameTag from "./UsernameTag";
+
+const GroupsAndEventsSkeleton = () => {
+  const theme = useTheme();
+  const isMediumScreenOrLarger = useMediaQuery(theme.breakpoints.up("md"));
+  return (
+    <Grid container spacing={2}>
+      <Grid item xs={12} md={6}>
+        <Skeleton variant="rounded" animation={"wave"} height={110} />
+      </Grid>
+      {isMediumScreenOrLarger && (
+        <Grid item xs={12} md={6}>
+          <Skeleton variant="rounded" animation={"wave"} height={110} />
+        </Grid>
+      )}
+    </Grid>
+  );
+};
+
+const GroupsAndEvents = loadable(() => import("./GroupsAndEvents"), {
+  fallback: <GroupsAndEventsSkeleton />,
+});
 
 const Profile = () => {
   const theme = useTheme();
