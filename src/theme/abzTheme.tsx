@@ -37,7 +37,7 @@ const darkPalette = {
   text: {
     primary: "#9e9e9e",
     secondary: "rgba(129,129,129,0.7)",
-    disabled: "rgba(86,86,86,0.5)",
+    disabled: "rgba(86,86,86, 0.5)",
   },
   error: {
     main: "#d84238",
@@ -190,6 +190,32 @@ const baseThemeOptions: ThemeOptions = {
         },
         label: {
           paddingInline: 10,
+        },
+      },
+    },
+    MuiTab: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          paddingInline: 5,
+
+          "&.Mui-selected": {
+            fontWeight: 900,
+            fontSize: "0.85rem",
+          },
+          "&.Mui-selected svg": {
+            stroke: "currentColor",
+            strokeWidth: 2.5,
+          },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          display: "none",
         },
       },
     },
