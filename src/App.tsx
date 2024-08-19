@@ -5,6 +5,7 @@ import MainNavBar from "./components/Navbar/MainNavBar";
 import { StandaloneProvider } from "./components/StandaloneContext";
 import { loadable } from "./utils/loadable";
 import Debug from "./Debug";
+import Startup from "./components/CustomComponents/Startup/Startup";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -99,6 +100,7 @@ function App() {
     <StandaloneProvider>
       <Router>
         <Routes>
+          <Route path="/startup" element={<Startup />} />
           <Route
             path="/home"
             element={
