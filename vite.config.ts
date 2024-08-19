@@ -14,6 +14,7 @@ export default defineConfig({
         name: "Avabuzz",
         short_name: "Avabuzz",
         description: "Avabuzz is a social media platform for Avakin Life players alike.",
+        start_url: "/home",
         theme_color: "#171717",
         background_color: "#171717",
         display: "standalone",
