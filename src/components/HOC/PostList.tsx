@@ -72,12 +72,7 @@ const PostList = () => {
       viewCount: 1520,
       likeCount: 1200,
       commentCount: 1200000,
-      mediaUrls: [
-        "https://picsum.photos/2000",
-        "https://picsum.photos/2002",
-        "https://picsum.photos/2001",
-        "https://picsum.photos/2003",
-      ],
+      mediaUrls: ["https://picsum.photos/2000", "https://picsum.photos/2002"],
     },
   ];
 

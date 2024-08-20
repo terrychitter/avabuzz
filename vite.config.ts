@@ -7,16 +7,21 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        globPatterns: ['**/*']
       },
+      includeAssets: [
+        "**/*",
+      ],
       manifest: {
         name: "Avabuzz",
         short_name: "Avabuzz",
         description: "Avabuzz is a social media platform for Avakin Life players alike.",
-        start_url: "/startup",
+        start_url: "/",
         theme_color: "#171717",
         background_color: "#171717",
+        orientation: "portrait-primary",
         display: "standalone",
         icons: [
           {
@@ -44,9 +49,16 @@ export default defineConfig({
             "purpose": "maskable"
           }
         ]
+      },
+      devOptions: {
+        enabled: true
       }
     })
   ],
+  build: {
+    outDir: 'build',
+    emptyOutDir: true
+  },
   server: {
     port: 9091,
     host: true 

@@ -3,6 +3,7 @@ import React from "react";
 import CustomCarousel from "../../CustomComponents/CustomCarousel";
 import Link from "../../CustomComponents/CustomLink";
 import ThemedMarkdown from "../ThemedMarkdown";
+import ImageError from "./ImageError";
 
 interface ImagePostProperties {
   postText: string;
@@ -15,27 +16,49 @@ const ImagePost: React.FC<ImagePostProperties> = ({
   images,
   link,
 }) => {
+  const [imgError, setImgError] = React.useState(false);
+
+  const handleImageError = () => {
+    setImgError(true);
+  };
+
   return (
     <>
       {images.length > 1 ? (
         <Box marginBlockEnd={3}>
           <CustomCarousel arrows swipeable={false}>
-            {images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt="Random"
-                width="100%"
-                style={{ aspectRatio: 1, objectFit: "contain" }}
-              />
-            ))}
+            {imgError ? (
+              <ImageError key="error" />
+            ) : (
+              images.map((image, index) => (
+                <Box key={index} sx={{ aspectRatio: 1 }}>
+                  <img
+                    src={image}
+                    alt="Random"
+                    width="100%"
+                    style={{ aspectRatio: 1, objectFit: "contain" }}
+                    onError={handleImageError}
+                  />
+                </Box>
+              ))
+            )}
           </CustomCarousel>
         </Box>
       ) : (
-        <Box width={{ xs: "100%", md: "50%" }} margin={{ md: "auto" }}>
-          <img src={images[0]} alt="Random" width="100%" />
+        <Box width={"100%"} sx={{ aspectRatio: 1 }}>
+          {imgError ? (
+            <ImageError key="error" />
+          ) : (
+            <img
+              src={images[0]}
+              alt="Random"
+              width="100%"
+              onError={handleImageError}
+            />
+          )}
         </Box>
       )}
+
       <Box paddingInline={1} marginBlockStart={1}>
         <Link to={link}>
           <Typography

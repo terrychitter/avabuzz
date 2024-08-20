@@ -6,6 +6,7 @@ import { StandaloneProvider } from "./components/StandaloneContext";
 import { loadable } from "./utils/loadable";
 import Debug from "./Debug";
 import Startup from "./components/CustomComponents/Startup/Startup";
+import OfflinePage from "./OfflinePage";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -101,6 +102,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/startup" element={<Startup />} />
+          <Route path="/offline" element={<OfflinePage />} />
           <Route
             path="/home"
             element={
