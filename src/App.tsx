@@ -96,6 +96,13 @@ const SettingsLayout = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
+const HashtagPage = loadable(
+  () => import("./components/HOC/Hashtags/HashtagPage"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <StandaloneProvider>
@@ -115,6 +122,9 @@ function App() {
           <Route path="debug" element={<Debug />} />
           <Route path="login" element={<Login />} />
           <Route path="create-account" element={<Signup />} />
+
+          {/* Hashtag */}
+          <Route path="/hashtags/:hashtag" element={<HashtagPage />} />
 
           {/* Profile */}
           <Route

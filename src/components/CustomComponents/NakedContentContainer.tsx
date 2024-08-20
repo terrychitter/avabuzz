@@ -6,11 +6,13 @@ import React from "react";
 interface NakedContentContainerProps {
   title: string;
   children?: React.ReactNode;
+  headerContent?: React.ReactNode;
 }
 
 const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
   title,
   children,
+  headerContent,
 }) => {
   const theme = useTheme();
   return (
@@ -39,6 +41,7 @@ const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
           </Stack>
         </Typography>
       </Box>
+      <Box paddingInline={theme.spacing(2)}>{headerContent}</Box>
       <Box component={"main"} marginBlockStart={2}>
         {children}
       </Box>
