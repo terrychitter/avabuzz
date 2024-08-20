@@ -24,7 +24,7 @@ const JoinHashtag: React.FC<ButtonProps> = ({ onClick }) => {
       sx={{ paddingBlock: 0 }}
       onClick={onClick}
     >
-      Join
+      Follow
     </AnimatedButton>
   );
 };
@@ -45,7 +45,7 @@ const JoinedHashtag: React.FC<ButtonProps> = ({ onClick }) => {
       sx={{ paddingBlock: 0 }}
       onClick={onClick}
     >
-      Joined
+      Followed
     </AnimatedButton>
   );
 };

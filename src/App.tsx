@@ -103,6 +103,13 @@ const HashtagPage = loadable(
   }
 );
 
+const FollowedHashtags = loadable(
+  () => import("./components/Home/FollowedHashtags/FollowedHashtags"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
+
 function App() {
   return (
     <StandaloneProvider>
@@ -123,7 +130,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="create-account" element={<Signup />} />
 
-          {/* Hashtag */}
+          {/* Hashtags */}
+          <Route path="/followed-hashtags" element={<FollowedHashtags />} />
           <Route path="/hashtags/:hashtag" element={<HashtagPage />} />
 
           {/* Profile */}

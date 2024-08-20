@@ -22,7 +22,7 @@ const FollowingFeed = () => {
             alignItems={"center"}
             gap={theme.spacing(0.5)}
           >
-            <Link to="/following-hashtags">See all</Link>
+            <Link to="/followed-hashtags">See all</Link>
             <IconArrowBadgeRightFilled
               size={"1rem"}
               style={{ marginBlockStart: theme.spacing(-0.2) }}
