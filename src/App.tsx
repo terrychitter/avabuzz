@@ -110,6 +110,10 @@ const FollowedHashtags = loadable(
   }
 );
 
+const Search = loadable(() => import("./components/Home/Search"), {
+  fallback: <DefaultLoader />,
+});
+
 function App() {
   return (
     <StandaloneProvider>
@@ -129,6 +133,9 @@ function App() {
           <Route path="debug" element={<Debug />} />
           <Route path="login" element={<Login />} />
           <Route path="create-account" element={<Signup />} />
+
+          {/* Search */}
+          <Route path="/search" element={<Search />} />
 
           {/* Hashtags */}
           <Route path="/followed-hashtags" element={<FollowedHashtags />} />

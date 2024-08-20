@@ -4,7 +4,7 @@ import { useTheme } from "@mui/system";
 import React from "react";
 
 interface NakedContentContainerProps {
-  title: string;
+  title: React.ReactNode;
   children?: React.ReactNode;
   headerContent?: React.ReactNode;
 }
@@ -35,7 +35,7 @@ const NakedContentContainer: React.FC<NakedContentContainerProps> = ({
             <IconButton onClick={() => window.history.back()}>
               <IconArrowLeft />
             </IconButton>
-            <Box flexGrow={1} textAlign={"center"} marginInlineEnd={5}>
+            <Box flexGrow={1} marginInlineEnd={5}>
               {title}
             </Box>
           </Stack>
