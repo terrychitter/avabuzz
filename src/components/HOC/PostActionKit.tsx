@@ -13,7 +13,7 @@ import {
   IconShare,
 } from "@tabler/icons-react";
 import { useState } from "react";
-import AnimatedButton from "../CustomComponents/AnimatedButton";
+import FollowButton from "../CustomComponents/FollowButton";
 
 const PostActionKit = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -89,7 +89,7 @@ const PostActionKit = () => {
 
   return (
     <Stack direction={"row"} spacing={0} alignItems={"center"}>
-      <AnimatedButton size="small">Follow</AnimatedButton>
+      <FollowButton />
       <IconButton aria-label="settings" onClick={handleMenuOpen}>
         <IconDotsVertical size={"1rem"} />
       </IconButton>

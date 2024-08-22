@@ -78,9 +78,10 @@ const HashtagContentHeader: React.FC<HashtagContentHeaderProps> = ({
     <>
       <Stack direction={"row"}>
         <Stack
-          direction={"row"}
+          direction={"column"}
           justifyContent={"space-between"}
           width={"100%"}
+          gap={theme.spacing(1)}
         >
           <Stack
             direction={"row"}
@@ -90,7 +91,12 @@ const HashtagContentHeader: React.FC<HashtagContentHeaderProps> = ({
             <IconHash size={"50px"} color={theme.palette.primary.main} />
             <Typography
               variant={"h4"}
-              sx={{ marginBlockStart: theme.spacing(0.5) }}
+              sx={{
+                marginBlockStart: theme.spacing(0.5),
+                maxWidth: "80%",
+                wordWrap: "break-word",
+                whiteSpace: "normal",
+              }}
             >
               {hashtag}
             </Typography>
