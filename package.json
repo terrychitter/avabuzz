@@ -42,7 +42,8 @@
     "remark-deflist": "^1.0.0",
     "remark-emoji": "^5.0.1",
     "remark-gfm": "^4.0.0",
-    "remark-parse": "^11.0.0"
+    "remark-parse": "^11.0.0",
+    "use-long-press": "^3.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.1.0",

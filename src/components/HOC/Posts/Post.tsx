@@ -8,16 +8,17 @@ import {
   Stack,
   useTheme,
 } from "@mui/material";
-import { IconEye, IconHeart, IconMessage } from "@tabler/icons-react";
+import { IconEye, IconMessage } from "@tabler/icons-react";
 import React from "react";
+import { formatDate, formatNumber } from "../../../utils/formatters";
 import Link from "../../CustomComponents/CustomLink";
+import LikePostButton from "../../CustomComponents/LikePostButton";
 import PostActionKit from "../PostActionKit";
 import ProfilePictureKit from "../ProfilePictureKit";
 import UsernameKit from "../UsernameKit";
-import PostHashtagsGroup from "./PostHashtagsGroup";
 import GeneralPost from "./GeneralPost";
 import ImagePost from "./ImagePost";
-import { formatNumber, formatDate } from "../../../utils/formatters";
+import PostHashtagsGroup from "./PostHashtagsGroup";
 
 export interface PostProps {
   post: {
@@ -120,7 +121,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
             alignContent={"center"}
             alignItems={"center"}
           >
-            <IconHeart />
+            <LikePostButton />
             <Box component={"span"} fontSize={theme.typography.body1.fontSize}>
               {formatNumber(post.likeCount)}
             </Box>
