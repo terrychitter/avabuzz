@@ -103,5 +103,9 @@ export const ChatNavItem = () => (
 );
 
 export const ProfileNavItem = () => (
-  <NavItem to="/profile" activeIcon={IconUserFilled} inactiveIcon={IconUser} />
+  <NavItem
+    to="/profile/XXX-XXX"
+    activeIcon={IconUserFilled}
+    inactiveIcon={IconUser}
+  />
 );

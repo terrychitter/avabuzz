@@ -143,7 +143,7 @@ function App() {
 
           {/* Profile */}
           <Route
-            path="profile"
+            path="profile/:public_id"
             element={
               <>
                 <MainNavBar />

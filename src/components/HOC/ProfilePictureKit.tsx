@@ -11,7 +11,7 @@ interface ProfilePictureKitProps {
 const ProfilePictureKit: React.FC<ProfilePictureKitProps> = ({
   pictureWidth = { xs: "6rem", md: "8rem", lg: "9rem" },
   pictureUrl = "",
-  link = "/profile",
+  link = "/profile/XXX-XXX",
 }) => {
   return (
     <Link to={link}>

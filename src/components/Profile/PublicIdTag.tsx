@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import AvakinLifeLogo from "/icons/avakin-logo.webp";
 
 interface PublicIdTagProps {
   children?: React.ReactNode;
@@ -50,10 +51,14 @@ const PublicIdTag: React.FC<PublicIdTagProps> = ({ children }) => {
   };
 
   return (
-    <Stack direction={"column"} gap={theme.spacing(0)}>
-      <Typography fontSize={"0.5rem"} textAlign={"right"}>
-        Public ID
-      </Typography>
+    <Stack direction={"row"} gap={theme.spacing(1)} alignItems={"center"}>
+      <Box>
+        <img
+          src={AvakinLifeLogo}
+          alt="Avakin Life"
+          style={{ width: "1rem", height: "1.2rem", marginBlockStart: 4 }}
+        />
+      </Box>
       <MotionBox
         sx={{
           display: "inline-flex",

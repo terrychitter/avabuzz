@@ -41,7 +41,7 @@ const PostList = () => {
       hashtags: ["grass", "tastes", "bad"],
       viewCount: 100,
       saved: true,
-      reactCount: 1000000,
+      reactCount: 90000,
       commentCount: 10000,
       reactions: ["cool", "shock"],
       userReaction: {

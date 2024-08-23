@@ -10,6 +10,7 @@ import SexualOrientationSelect from "./SexualOrientationSelect";
 import CountrySelect from "./CountrySelect";
 import { useTheme } from "@mui/material";
 import AnimatedButton from "../../CustomComponents/AnimatedButton";
+import AvakinLifeFriendCodeInput from "./AvakinLifeFriendCodeInput";
 
 const ProfileInformationForm = () => {
   const theme = useTheme();
@@ -40,11 +41,17 @@ const ProfileInformationForm = () => {
               </Box>
             </Stack>
             <Stack width={{ xs: "100%", lg: "75%" }}>
-              <UsernameInput
-                register={methods.register}
-                errors={methods.formState.errors}
-                tooltip={false}
-              />
+              <Box>
+                <UsernameInput
+                  register={methods.register}
+                  errors={methods.formState.errors}
+                  tooltip={false}
+                />
+                <AvakinLifeFriendCodeInput
+                  register={methods.register}
+                  errors={methods.formState.errors}
+                />
+              </Box>
               <Box marginBlock={theme.spacing(3)}>
                 <GenderSelect />
                 <SexualOrientationSelect />

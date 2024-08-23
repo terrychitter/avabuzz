@@ -16,7 +16,7 @@ const UserItem: React.FC<UserItemProps> = ({ actionButton }) => {
       alignItems="center"
       marginBlockEnd={1}
     >
-      <Link to="/profile" sx={{ flexGrow: 1 }}>
+      <Link to="/profile/XXX-XXX" sx={{ flexGrow: 1 }}>
         <Stack direction={"row"} gap={2} alignItems="center">
           <ProfilePictureKit pictureWidth={50} />
           <Stack direction={"column"} gap={1} flexGrow={1} overflow="hidden">
