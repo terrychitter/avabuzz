@@ -56,8 +56,8 @@ const NavItem = ({
           </linearGradient>
         </defs>
       </svg>
-      <Link to={to}>
-        <AnimatedIconButton>
+      <AnimatedIconButton>
+        <Link to={to}>
           {isActive ? (
             <ActiveIcon
               size={iconSize}
@@ -72,8 +72,8 @@ const NavItem = ({
               color={nonActiveColor}
             />
           )}
-        </AnimatedIconButton>
-      </Link>
+        </Link>
+      </AnimatedIconButton>
     </>
   );
 };

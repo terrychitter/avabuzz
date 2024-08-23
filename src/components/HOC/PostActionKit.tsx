@@ -8,16 +8,20 @@ import {
 } from "@mui/material";
 import {
   IconBookmark,
+  IconBookmarkFilled,
   IconDotsVertical,
   IconFlag3,
   IconShare,
 } from "@tabler/icons-react";
 import { useState } from "react";
 import FollowButton from "../CustomComponents/FollowButton";
+import { usePostContext } from "./Posts/Post";
 
 const PostActionKit = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const { post, setPost } = usePostContext();
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,8 +32,7 @@ const PostActionKit = () => {
   };
 
   const handleShare = () => {
-    console.log("Share button clicked!");
-    handleMenuClose(); // Close the menu immediately
+    handleMenuClose();
 
     if (navigator.share) {
       navigator
@@ -57,6 +60,15 @@ const PostActionKit = () => {
     }
   };
 
+  const handleSave = () => {
+    handleMenuClose();
+
+    setPost((prevPost) => ({
+      ...prevPost,
+      saved: !prevPost.saved,
+    }));
+  };
+
   const ShareButton = () => {
     return (
       <Box display={"flex"} alignItems={"center"} gap={1}>
@@ -69,8 +81,8 @@ const PostActionKit = () => {
   const SaveButton = () => {
     return (
       <Box display={"flex"} alignItems={"center"} gap={1}>
-        <IconBookmark />
-        Save
+        {post.saved ? <IconBookmarkFilled color="#FFDB6C" /> : <IconBookmark />}
+        {post.saved ? "Saved" : "Save"}
       </Box>
     );
   };
@@ -105,7 +117,7 @@ const PostActionKit = () => {
         <MenuItem onClick={handleShare}>
           <ShareButton />
         </MenuItem>
-        <MenuItem onClick={handleMenuClose}>
+        <MenuItem onClick={handleSave}>
           <SaveButton />
         </MenuItem>
         <MenuItem onClick={handleMenuClose}>

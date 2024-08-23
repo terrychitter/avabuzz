@@ -78,7 +78,7 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
         top={0}
         zIndex={100}
         sx={{
-          backgroundColor: { xs: "background.default", md: "background.paper" },
+          backgroundColor: { xs: "background.default", sm: "background.paper" },
         }}
       >
         <Tabs value={value} onChange={handleChange}>
