@@ -7,6 +7,8 @@ import { loadable } from "./utils/loadable";
 import Debug from "./Debug";
 import Startup from "./components/CustomComponents/Startup/Startup";
 import OfflinePage from "./OfflinePage";
+import UpdatedAvailable from "./UpdateAvailable/UpdateAvailable";
+import { useRegisterSW } from "virtual:pwa-register/react";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -115,8 +117,20 @@ const Search = loadable(() => import("./components/Home/Search"), {
 });
 
 function App() {
+  // Update service worker every hour
+  const updateInterval = 60 * 60 * 1000;
+  useRegisterSW({
+    onRegistered(r) {
+      r &&
+        setInterval(() => {
+          r.update();
+        }, updateInterval);
+    },
+  });
+
   return (
     <StandaloneProvider>
+      <UpdatedAvailable />
       <Router>
         <Routes>
           <Route path="/startup" element={<Startup />} />

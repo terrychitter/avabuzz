@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "types": [
-      "vite-plugin-pwa/client"
-    ]
+    "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
   },
   "files": [],
   "references": [
