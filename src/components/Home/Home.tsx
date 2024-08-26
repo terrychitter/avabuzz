@@ -9,6 +9,7 @@ import FollowingFeedSkeleton from "./Following/FollowingFeedSkeleton";
 import HomeFeed from "./HomeFeed";
 import PostSearchBox from "./PostSearchBox";
 import TabNavigation from "../CustomComponents/TabNavigation";
+import EventFeed from "./Events/EventFeed";
 
 // Dynamically import FollowingFeed
 const FollowingFeed = loadable(() => import("./Following/FollowingFeed"), {
@@ -38,7 +39,7 @@ const Home = () => {
   const tabs = [
     { label: "Following", component: <FollowingFeed /> },
     { label: "Home", component: <HomeFeed /> },
-    { label: "Events", component: <div>Events Content</div> },
+    { label: "Events", component: <EventFeed /> },
   ];
 
   return (

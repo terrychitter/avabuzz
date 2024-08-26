@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 
 const StyledMarkdown = styled("div")(({ theme }) => ({
   "& .custom-color.c": {
-    color: "inherit",
+    color: "black",
   },
   "& .custom-color.bc": {
     backgroundColor: "inherit",
@@ -46,7 +46,7 @@ const StyledMarkdown = styled("div")(({ theme }) => ({
     marginBlockEnd: theme.spacing(2),
   },
   "& a": {
-    color: theme.palette.secondary.main,
+    color: theme.palette.primary.main,
     textDecoration: "none",
     "&::before": {
       content: '"🔗"' /* Add the link emoji */,
