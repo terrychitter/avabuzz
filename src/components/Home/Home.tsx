@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <Page>
-      <MainContentContainer>
+      <MainContentContainer pullToRefresh={false}>
         <Box paddingInline={{ xs: 1, md: 2 }} paddingBlockStart={2}>
           <Stack width={"100%"} padding={0}>
             <Box

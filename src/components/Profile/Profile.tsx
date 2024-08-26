@@ -48,7 +48,10 @@ const Profile = () => {
 
   return (
     <AnimatedPage>
-      <MainContentContainer asideContent={<ProfileAsideContent />}>
+      <MainContentContainer
+        pullToRefresh
+        asideContent={<ProfileAsideContent />}
+      >
         <Stack direction={"column"} gap={{ xs: 0, md: 1 }} height={"100%"}>
           {/* Profile Banner */}
           <ProfileBanner background={bannerUrl} />

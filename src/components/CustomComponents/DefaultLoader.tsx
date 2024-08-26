@@ -1,5 +1,5 @@
 import React from "react";
-import { waveform, helix } from "ldrs";
+import { waveform, helix, squircle } from "ldrs";
 import { Box, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
@@ -10,10 +10,11 @@ interface DefaultLoaderProps {
 
 const DefaultLoader: React.FC<DefaultLoaderProps> = ({
   loadingText,
-  type = "waveform",
+  type = "squircle",
 }) => {
   waveform.register();
   helix.register();
+  squircle.register();
 
   const theme = useTheme();
 
@@ -27,6 +28,11 @@ const DefaultLoader: React.FC<DefaultLoaderProps> = ({
 
   const helixSize = 45;
   const helixSpeed = 2.5;
+
+  const squircleSize = 45;
+  const squircleSpeed = 1;
+  const squircleStroke = 3.5;
+  const squircleBgOpacity = 0.1;
 
   return (
     <Stack
@@ -56,6 +62,16 @@ const DefaultLoader: React.FC<DefaultLoaderProps> = ({
           speed={helixSpeed}
           color={loaderColor}
         ></l-helix>
+      )}
+
+      {type === "squircle" && (
+        <l-squircle
+          size={squircleSize}
+          speed={squircleSpeed}
+          stroke={squircleStroke}
+          bg-opacity={squircleBgOpacity}
+          color={loaderColor}
+        ></l-squircle>
       )}
       <Box>{loadingText && <Typography>{loadingText}</Typography>}</Box>
     </Stack>
