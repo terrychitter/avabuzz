@@ -45,7 +45,17 @@ const ReactionsGroup: React.FC<ReactionsGroupProps> = ({
   return (
     <>
       {orderedReactions.length > 0 && (
-        <AvatarGroup max={3} onClick={handleReactionGroupClick}>
+        <AvatarGroup
+          max={3}
+          onClick={handleReactionGroupClick}
+          slotProps={{
+            additionalAvatar: {
+              style: {
+                display: "none",
+              },
+            },
+          }}
+        >
           {orderedReactions.map((reaction, index) =>
             reaction === priorityReaction ? (
               <motion.div
