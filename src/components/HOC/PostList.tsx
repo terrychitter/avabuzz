@@ -29,6 +29,27 @@ const Post: React.FC<PostProps> = loadable(() => import("./Posts/Post"), {
 
 export const posts = [
   {
+    userPublicId: "AAA-AAA",
+    profilePictureUrl: "/profile_picture.jpg",
+    profileBadgeUrl: "/salad_badge.png",
+    postId: 0,
+    username: "txrry_x",
+    date: new Date(2023, 7, 24),
+    type: "image",
+    text: "Me and Mel 😎",
+    hashtags: ["bff", "besties"],
+    viewCount: 1000,
+    saved: false,
+    reactCount: 320,
+    commentCount: 45,
+    reactions: ["cool", "love"],
+    userReaction: {
+      reacted: false,
+      reaction: "",
+    },
+    mediaUrls: ["/bestie.png"],
+  },
+  {
     userPublicId: "XXX-XXX",
     profilePictureUrl: "/profile_picture.jpg",
     profileBadgeUrl: "/salad_badge.png",
