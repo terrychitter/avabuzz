@@ -41,14 +41,14 @@ const UpdatedAvailable = () => {
   return (
     <>
       <Dialog open={open}>
-        <DialogTitle>Update Available</DialogTitle>
+        <DialogTitle>New Content Available</DialogTitle>
         <DialogContent
           sx={{
             textAlign: "left",
           }}
         >
           <Stack direction={"column"} gap={2}>
-            <Typography>An update is available.</Typography>
+            <Typography>Cool new content is avaiable</Typography>
             <Box>
               <img
                 src={updateImg}
