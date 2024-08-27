@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import AnimatedButton from "../components/CustomComponents/AnimatedButton";
 import updateImg from "./updated_img.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRegisterSW } from "virtual:pwa-register/react";
 
 const UpdatedAvailable = () => {
@@ -28,7 +28,13 @@ const UpdatedAvailable = () => {
     },
   });
 
-  const [open, setOpen] = useState(needRefresh);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (needRefresh) {
+      setOpen(true);
+    }
+  }, [needRefresh]);
 
   const closeDialog = () => {
     setOpen(false);
@@ -48,7 +54,7 @@ const UpdatedAvailable = () => {
           }}
         >
           <Stack direction={"column"} gap={2}>
-            <Typography>Cool new content is avaiable</Typography>
+            <Typography>Cool new content is available! Wohoo 🥳🎈</Typography>
             <Box>
               <img
                 src={updateImg}
@@ -62,7 +68,7 @@ const UpdatedAvailable = () => {
               />
             </Box>
             <Typography>
-              This update includes new features, improvements and bug fixes.
+              This update includes new features, improvements, and bug fixes.
             </Typography>
           </Stack>
         </DialogContent>
