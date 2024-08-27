@@ -44,7 +44,7 @@ const ItemList: React.FC<ItemListProps> = ({
             item
             {...getGridItemProps()}
             key={index}
-            paddingInline={1}
+            marginInlineStart={pullToRefresh ? 1 : 0.5}
             paddingBlockEnd={1}
           >
             {child}
