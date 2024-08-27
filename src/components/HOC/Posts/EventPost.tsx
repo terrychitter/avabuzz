@@ -109,6 +109,27 @@ const EventPost = () => {
     );
   };
 
+  const StartingSoonChip = () => {
+    return (
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        marginInlineStart={theme.spacing(-0.5)}
+      >
+        <IconPointFilled size={20} color={theme.palette.warning.main} />
+        <Typography
+          color={theme.palette.warning.main}
+          sx={{
+            marginBlockStart: theme.spacing(0.5),
+          }}
+        >
+          Starting soon
+        </Typography>
+      </Stack>
+    );
+  };
+
   return (
     <>
       <Stack direction={"row"} justifyContent={"space-between"}>
@@ -144,6 +165,22 @@ const EventPost = () => {
             <Chip
               label={<EndedChip />}
               color="error"
+              size="small"
+              sx={{
+                marginInlineStart: theme.spacing(1.7),
+                borderRadius: "10px",
+                borderBottomLeftRadius: 0,
+                borderBottomRightRadius: 0,
+                "&.MuiChip-root": {
+                  backgroundColor: "transparent",
+                },
+              }}
+            />
+          )) ||
+          (post.event?.status === "starting soon" && (
+            <Chip
+              label={<StartingSoonChip />}
+              color="warning"
               size="small"
               sx={{
                 marginInlineStart: theme.spacing(1.7),

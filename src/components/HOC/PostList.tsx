@@ -82,7 +82,7 @@ export const posts = [
       title: "Salad Making Contest",
       startDate: new Date(2024, 7, 24),
       endDate: new Date(2024, 7, 25),
-      status: "ended",
+      status: "starting soon",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWt4a3ZlbWk0bTJiaXV1amVydzVhaWRlbnhjbWs3dzJuZGQ1ODkxNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bsfUpZfjw8pBr2QKUg/giphy.gif",
     },
@@ -153,7 +153,7 @@ export const posts = [
       title: "Vegan Dessert Challenge",
       startDate: new Date(2024, 8, 1),
       endDate: new Date(2024, 8, 2),
-      status: "ongoing",
+      status: "ended",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTdpOTM0M2ExNHMwZ3RpZThkNWFsb201cXd0bzdxNnY0dTY5cmZmaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MCnHCAjsYbIYl5Yf9I/giphy.gif",
     },
