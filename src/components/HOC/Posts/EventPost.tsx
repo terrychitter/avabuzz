@@ -24,6 +24,7 @@ import UsernameKit from "../UsernameKit";
 import { usePostContext } from "./Post";
 import PostActions from "./PostActions";
 import PostHashtagsGroup from "./PostHashtagsGroup";
+import ZoomableImage from "../../ZoomableImage";
 
 const EventPost = () => {
   const theme = useTheme();
@@ -176,9 +177,9 @@ const EventPost = () => {
             padding: 0,
           }}
         >
-          <Link to={`/posts/${post.postId}`}>
-            <Stack direction={"column"}>
-              <Box position={"relative"}>
+          <Stack direction={"column"}>
+            <Box position={"relative"}>
+              <ZoomableImage>
                 <img
                   src={post.event?.bannerUrl}
                   alt={"Event Banner"}
@@ -189,26 +190,28 @@ const EventPost = () => {
                     objectPosition: "center",
                   }}
                 />
-                <Box
-                  position={"absolute"}
-                  left={theme.spacing(1)}
-                  top={theme.spacing(1)}
-                  zIndex={2}
-                >
-                  <Stack>
-                    <IconConfetti color="white" />
-                  </Stack>
-                </Box>
-                <Box
-                  position={"absolute"}
-                  bottom={theme.spacing(1.2)}
-                  left={theme.spacing(0.5)}
-                  zIndex={2}
-                >
-                  <EventDateChip />
-                </Box>
+              </ZoomableImage>
+              <Box
+                position={"absolute"}
+                left={theme.spacing(1)}
+                top={theme.spacing(1)}
+                zIndex={2}
+              >
+                <Stack>
+                  <IconConfetti color="white" />
+                </Stack>
               </Box>
-              <Box paddingInline={1}>
+              <Box
+                position={"absolute"}
+                bottom={theme.spacing(1.2)}
+                left={theme.spacing(0.5)}
+                zIndex={2}
+              >
+                <EventDateChip />
+              </Box>
+            </Box>
+            <Box paddingInline={1}>
+              <Link to={`/posts/${post.postId}`}>
                 <Typography
                   display={"-webkit-box"}
                   overflow={"hidden"}
@@ -230,9 +233,9 @@ const EventPost = () => {
                   </Typography>
                   <ThemedMarkdown>{post.text}</ThemedMarkdown>
                 </Typography>
-              </Box>
-            </Stack>
-          </Link>
+              </Link>
+            </Box>
+          </Stack>
         </CardContent>
         <PostHashtagsGroup hashtags={post.hashtags} />
         <CardActions

@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomCarousel from "../../CustomComponents/CustomCarousel";
 import Link from "../../CustomComponents/CustomLink";
+import ZoomableImage from "../../ZoomableImage";
 import ThemedMarkdown from "../ThemedMarkdown";
 import ImageError from "./ImageError";
 
@@ -32,13 +33,15 @@ const ImagePost: React.FC<ImagePostProperties> = ({
             ) : (
               images.map((image, index) => (
                 <Box key={index} sx={{ aspectRatio: 1 }}>
-                  <img
-                    src={image}
-                    alt="Random"
-                    width="100%"
-                    style={{ aspectRatio: 1, objectFit: "contain" }}
-                    onError={handleImageError}
-                  />
+                  <ZoomableImage>
+                    <img
+                      src={image}
+                      alt="Random"
+                      width="100%"
+                      style={{ aspectRatio: 1, objectFit: "contain" }}
+                      onError={handleImageError}
+                    />
+                  </ZoomableImage>
                 </Box>
               ))
             )}
@@ -49,12 +52,14 @@ const ImagePost: React.FC<ImagePostProperties> = ({
           {imgError ? (
             <ImageError key="error" />
           ) : (
-            <img
-              src={images[0]}
-              alt="Random"
-              width="100%"
-              onError={handleImageError}
-            />
+            <ZoomableImage>
+              <img
+                src={images[0]}
+                alt="Random"
+                width="100%"
+                onError={handleImageError}
+              />
+            </ZoomableImage>
           )}
         </Box>
       )}

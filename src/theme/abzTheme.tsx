@@ -219,6 +219,11 @@ const baseThemeOptions: ThemeOptions = {
         },
       },
     },
+    MuiCardActionArea: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
   },
 };
 
