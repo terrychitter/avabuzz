@@ -1,16 +1,13 @@
 import {
-  Box,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Stack,
   Typography,
 } from "@mui/material";
-import AnimatedButton from "../components/CustomComponents/AnimatedButton";
-import updateImg from "./updated_img.png";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRegisterSW } from "virtual:pwa-register/react";
+import AnimatedButton from "../components/CustomComponents/AnimatedButton";
 
 const UpdatedAvailable = () => {
   const {
@@ -46,37 +43,51 @@ const UpdatedAvailable = () => {
 
   return (
     <>
-      <Dialog open={open}>
-        <DialogTitle>New Content Available</DialogTitle>
+      <style>
+        {`
+        .dialog-title {
+          background: rgb(45,122,195);
+          background: -moz-linear-gradient(90deg, rgba(45,122,195,1) 0%, rgba(205,101,240,1) 50%, rgba(205,28,191,1) 100%);
+          background: -webkit-linear-gradient(90deg, rgba(45,122,195,1) 0%, rgba(205,101,240,1) 50%, rgba(205,28,191,1) 100%);
+          background: linear-gradient(90deg, rgba(45,122,195,1) 0%, rgba(205,101,240,1) 50%, rgba(205,28,191,1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2d7ac3",endColorstr="#cd1cbf",GradientType=1);
+        }
+
+        .gradient-text {
+          background: rgb(45,122,195);
+          background: -moz-linear-gradient(90deg, rgba(45,122,195,1) 0%, rgba(205,101,240,1) 50%, rgba(205,28,191,1) 100%);
+          background: -webkit-linear-gradient(90deg, rgba(45,122,195,1) 0%, rgba(205,101,240,1) 50%, rgba(205,28,191,1) 100%);
+          background: linear-gradient(90deg, rgba(45,122,195,1) 0%, rgba(205,101,240,1) 50%, rgba(205,28,191,1) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+        `}
+      </style>
+      <Dialog open={open} maxWidth={"xs"}>
+        <DialogTitle className="dialog-title" color={"white"}>
+          <Typography variant={"h5"} component={"h2"}>
+            NEW CONTENT AVAILABLE
+          </Typography>
+        </DialogTitle>
         <DialogContent
           sx={{
-            textAlign: "left",
+            marginBlockStart: 4,
           }}
         >
-          <Stack direction={"column"} gap={2}>
-            <Typography>Cool new content is available! Woohoo! 🥳🎈</Typography>
-            <Box>
-              <img
-                src={updateImg}
-                alt="update"
-                style={{
-                  width: "100%",
-                  height: "50px",
-                  objectFit: "cover",
-                  borderRadius: 10,
-                }}
-              />
-            </Box>
-            <Typography>
-              This update includes new features, improvements, and bug fixes.
-            </Typography>
-          </Stack>
+          <Typography fontSize={"0.9rem"}>
+            Cool new content is available! 🎊 We've made some changes to the app
+            that we think you'll love.
+          </Typography>
         </DialogContent>
         <DialogActions>
           <AnimatedButton color="inherit" onClick={closeDialog}>
             Later
           </AnimatedButton>
-          <AnimatedButton onClick={handleUpdate}>Reload</AnimatedButton>
+          <AnimatedButton className="gradient-text" onClick={handleUpdate}>
+            Reload
+          </AnimatedButton>
         </DialogActions>
       </Dialog>
     </>
