@@ -54,7 +54,7 @@ const UpdatedAvailable = () => {
           }}
         >
           <Stack direction={"column"} gap={2}>
-            <Typography>Cool new content is available! Wohoo 🥳🎈</Typography>
+            <Typography>Cool new content is available! Woohoo! 🥳🎈</Typography>
             <Box>
               <img
                 src={updateImg}
