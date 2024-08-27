@@ -91,7 +91,14 @@ const ItemList: React.FC<ItemListProps> = ({
   };
 
   return (
-    <Grid container spacing={1} sx={{ ...sx }}>
+    <Grid
+      container
+      spacing={1}
+      sx={{
+        paddingBlockStart: pullToRefresh ? 1 : 0,
+        ...sx,
+      }}
+    >
       {pullToRefresh ? (
         <CustomPullToRefresh>
           <GridContent />

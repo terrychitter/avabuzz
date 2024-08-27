@@ -12,6 +12,7 @@ const Followers = () => {
         <NakedContentContainer title="Followers">
           <ItemList
             noItemsMessage="No followers to show"
+            pullToRefresh
             sx={{ gap: 2, paddingInline: 1 }}
           >
             {/* Call UserList as a function and spread the resulting array */}

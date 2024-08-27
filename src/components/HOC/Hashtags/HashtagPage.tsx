@@ -148,7 +148,7 @@ const HashtagPage: React.FC = () => {
       label: "Trending",
       component: (
         <Box paddingInline={1}>
-          <ItemList>{PostList()}</ItemList>
+          <ItemList pullToRefresh>{PostList()}</ItemList>
         </Box>
       ),
     },
@@ -156,7 +156,7 @@ const HashtagPage: React.FC = () => {
       label: "Recent",
       component: (
         <Box paddingInline={1}>
-          <ItemList>{PostList()}</ItemList>
+          <ItemList pullToRefresh>{PostList()}</ItemList>
         </Box>
       ),
     },

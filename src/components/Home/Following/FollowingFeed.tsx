@@ -33,7 +33,9 @@ const FollowingFeed = () => {
           {HashtagList()}
         </ItemList>
       </Box>
-      <ItemList noItemsMessage="Nothing to show">{PostList()}</ItemList>
+      <ItemList noItemsMessage="Nothing to show" pullToRefresh>
+        {PostList()}
+      </ItemList>
     </>
   );
 };

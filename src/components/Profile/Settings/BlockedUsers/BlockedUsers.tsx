@@ -8,7 +8,7 @@ const BlockedUsers = () => {
   return (
     <MainContentContainer>
       <NakedContentContainer title="Blocked Users">
-        <ItemList sx={{ paddingInline: 2, gap: 2 }}>
+        <ItemList sx={{ paddingInline: 2, gap: 2 }} pullToRefresh>
           {/* Call UserList as a function and spread the resulting array */}
           {...UserList(() => <Button>Unblock</Button>)}
         </ItemList>
