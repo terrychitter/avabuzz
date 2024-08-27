@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import MainNavBar from "./components/Navbar/MainNavBar";
@@ -133,6 +138,9 @@ function App() {
       <UpdatedAvailable />
       <Router>
         <Routes>
+          {/* Redirect from '/' to '/home' */}
+          <Route path="/" element={<Navigate to="/home" replace />} />
+
           <Route path="/startup" element={<Startup />} />
           <Route path="/offline" element={<OfflinePage />} />
           <Route
@@ -171,14 +179,7 @@ function App() {
           </Route>
 
           {/* Profile Edit */}
-          <Route
-            path="profile-edit"
-            element={
-              <>
-                <EditProfile />
-              </>
-            }
-          />
+          <Route path="profile-edit" element={<EditProfile />} />
 
           {/* Settings */}
           <Route
