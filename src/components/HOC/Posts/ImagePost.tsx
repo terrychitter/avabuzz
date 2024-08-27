@@ -2,9 +2,18 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomCarousel from "../../CustomComponents/CustomCarousel";
 import Link from "../../CustomComponents/CustomLink";
-import ZoomableImage from "../../ZoomableImage";
 import ThemedMarkdown from "../ThemedMarkdown";
 import ImageError from "./ImageError";
+import { loadable } from "../../../utils/loadable";
+import DefaultLoader from "../../CustomComponents/DefaultLoader";
+import { ZoomableImageProps } from "../../../components/CustomComponents/ZoomableImage";
+
+const ZoomableImage: React.FC<ZoomableImageProps> = loadable(
+  () => import("../../../components/CustomComponents/ZoomableImage"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
 
 interface ImagePostProperties {
   postText: string;

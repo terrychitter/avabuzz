@@ -24,7 +24,16 @@ import UsernameKit from "../UsernameKit";
 import { usePostContext } from "./Post";
 import PostActions from "./PostActions";
 import PostHashtagsGroup from "./PostHashtagsGroup";
-import ZoomableImage from "../../ZoomableImage";
+import { ZoomableImageProps } from "../../../components/CustomComponents/ZoomableImage";
+import { loadable } from "../../../utils/loadable";
+import DefaultLoader from "../../CustomComponents/DefaultLoader";
+
+const ZoomableImage: React.FC<ZoomableImageProps> = loadable(
+  () => import("../../../components/CustomComponents/ZoomableImage"),
+  {
+    fallback: <DefaultLoader />,
+  }
+);
 
 const EventPost = () => {
   const theme = useTheme();

@@ -30,7 +30,7 @@ const ZoomableImageContent = React.forwardRef<
   </QuickPinchZoom>
 ));
 
-interface ZoomableImageProps {
+export interface ZoomableImageProps {
   children: React.ReactElement<HTMLImageElement>;
 }
 
