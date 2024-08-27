@@ -32,6 +32,7 @@ export interface PostProps {
       startDate: Date;
       endDate: Date;
       bannerUrl: string;
+      status: string;
     };
     text: string;
     hashtags: string[];
@@ -62,6 +63,7 @@ export interface PostType {
     startDate: Date;
     endDate: Date;
     bannerUrl: string;
+    status: string;
   };
   text: string;
   hashtags: string[];

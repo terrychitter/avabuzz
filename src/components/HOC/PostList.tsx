@@ -82,6 +82,7 @@ export const posts = [
       title: "Salad Making Contest",
       startDate: new Date(2024, 7, 24),
       endDate: new Date(2024, 7, 25),
+      status: "ended",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWt4a3ZlbWk0bTJiaXV1amVydzVhaWRlbnhjbWs3dzJuZGQ1ODkxNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bsfUpZfjw8pBr2QKUg/giphy.gif",
     },
@@ -152,6 +153,7 @@ export const posts = [
       title: "Vegan Dessert Challenge",
       startDate: new Date(2024, 8, 1),
       endDate: new Date(2024, 8, 2),
+      status: "ongoing",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTdpOTM0M2ExNHMwZ3RpZThkNWFsb201cXd0bzdxNnY0dTY5cmZmaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MCnHCAjsYbIYl5Yf9I/giphy.gif",
     },
@@ -180,6 +182,7 @@ export const posts = [
       title: "Smoothie Making Marathon",
       startDate: new Date(2024, 8, 7),
       endDate: new Date(2024, 8, 8),
+      status: "ongoing",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnlsazJjYXhncWc3Y3RkNmR2bmFkMnhlM2FlY3RxYjM0OXBlNGMxeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiQytOEqr2U33lYkg/giphy.gif",
     },
@@ -208,6 +211,7 @@ export const posts = [
       title: "Fruit Carving Competition",
       startDate: new Date(2024, 8, 14),
       endDate: new Date(2024, 8, 15),
+      status: "ongoing",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXIycWxpOGQwMWNua3pjMDFianZxenYzMXdsb29keHQ4cjEwdXJ5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lojcMSaiZ3kIntMHPk/giphy.gif",
     },
@@ -236,6 +240,7 @@ export const posts = [
       title: "Best Avocado Toast Contest",
       startDate: new Date(2024, 8, 21),
       endDate: new Date(2024, 8, 22),
+      status: "ongoing",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGVoeXVwdTdxaXpnMWgyZmY2Ympid2Nrd2k3ZG50MWxuZHE3a3p0dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7bufB2gMeaRFfumY/giphy.gif",
     },
@@ -264,6 +269,7 @@ export const posts = [
       title: "Creative Salad Dressing Contest",
       startDate: new Date(2024, 8, 28),
       endDate: new Date(2024, 8, 29),
+      status: "ongoing",
       bannerUrl:
         "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTV3NHA5ZzNjY2NzY3lhejBsM3gwNDBwaHVoNjIxaDZnNXVrdnNkaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3PVoBMTySLbtcaQap2/giphy-downsized-large.gif",
     },
