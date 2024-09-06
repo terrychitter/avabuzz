@@ -1,6 +1,5 @@
 import {
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardHeader,
@@ -130,22 +129,20 @@ const Post: React.FC<PostProps> = ({ post }) => {
           action={<PostActionKit />}
           subheader={formatDate(post.date)}
         />
-        <CardActionArea>
-          <CardContent sx={{ padding: 0 }}>
-            {post.type === "general" ? (
-              <GeneralPost
-                postText={post.text}
-                link={`/posts/${post.postId.toString()}`}
-              />
-            ) : post.type === "image" ? (
-              <ImagePost
-                images={post.mediaUrls}
-                postText={post.text}
-                link={`/posts/${post.postId.toString()}`}
-              />
-            ) : null}
-          </CardContent>
-        </CardActionArea>
+        <CardContent sx={{ padding: 0 }}>
+          {post.type === "general" ? (
+            <GeneralPost
+              postText={post.text}
+              link={`/posts/${post.postId.toString()}`}
+            />
+          ) : post.type === "image" ? (
+            <ImagePost
+              images={post.mediaUrls}
+              postText={post.text}
+              link={`/posts/${post.postId.toString()}`}
+            />
+          ) : null}
+        </CardContent>
         <PostHashtagsGroup hashtags={post.hashtags} />
         <CardActions
           sx={{

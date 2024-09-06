@@ -5,18 +5,18 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import AvakinLifeLogo from "/icons/avakin-logo.webp";
 
-interface PublicIdTagProps {
-  children?: React.ReactNode;
+interface FriendCodeTagProps {
+  code?: string;
 }
 
 const MotionBox = motion(Box);
 
-const PublicIdTag: React.FC<PublicIdTagProps> = ({ children }) => {
+const FriendCodeTag: React.FC<FriendCodeTagProps> = ({ code }) => {
   const [copied, setCopied] = useState(false);
   const theme = useTheme();
 
   const handleCopyClick = () => {
-    const textToCopy = typeof children === "string" ? children : "";
+    const textToCopy = typeof code === "string" ? code : "";
 
     if (navigator.clipboard) {
       navigator.clipboard
@@ -51,56 +51,60 @@ const PublicIdTag: React.FC<PublicIdTagProps> = ({ children }) => {
   };
 
   return (
-    <Stack direction={"row"} gap={theme.spacing(1)} alignItems={"center"}>
-      <Box>
-        <img
-          src={AvakinLifeLogo}
-          alt="Avakin Life"
-          style={{ width: "1rem", height: "1.2rem", marginBlockStart: 4 }}
-        />
-      </Box>
-      <MotionBox
-        sx={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={handleCopyClick}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography
-            component="span"
-            sx={{ display: "flex", alignItems: "center" }}
+    <>
+      {code && (
+        <Stack direction={"row"} gap={theme.spacing(1)} alignItems={"center"}>
+          <Box>
+            <img
+              src={AvakinLifeLogo}
+              alt="Avakin Life"
+              style={{ width: "1rem", height: "1.2rem", marginBlockStart: 4 }}
+            />
+          </Box>
+          <MotionBox
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleCopyClick}
           >
-            {children}
-            <Tooltip
-              title={copied ? "Copied!" : "Copy public ID"}
-              arrow
-              enterDelay={500}
-              leaveDelay={200}
-            >
-              {copied ? (
-                <IconCheck
-                  color={theme.palette.success.main}
-                  style={{ cursor: "pointer", marginLeft: 5 }}
-                  aria-label="Copied"
-                  size={"1rem"}
-                />
-              ) : (
-                <IconCopy
-                  style={{ cursor: "pointer", marginLeft: 5 }}
-                  aria-label="Copy public ID"
-                  size={"1rem"}
-                />
-              )}
-            </Tooltip>
-          </Typography>
-        </Box>
-      </MotionBox>
-    </Stack>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                component="span"
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                {code}
+                <Tooltip
+                  title={copied ? "Copied!" : "Copy public ID"}
+                  arrow
+                  enterDelay={500}
+                  leaveDelay={200}
+                >
+                  {copied ? (
+                    <IconCheck
+                      color={theme.palette.success.main}
+                      style={{ cursor: "pointer", marginLeft: 5 }}
+                      aria-label="Copied"
+                      size={"1rem"}
+                    />
+                  ) : (
+                    <IconCopy
+                      style={{ cursor: "pointer", marginLeft: 5 }}
+                      aria-label="Copy public ID"
+                      size={"1rem"}
+                    />
+                  )}
+                </Tooltip>
+              </Typography>
+            </Box>
+          </MotionBox>
+        </Stack>
+      )}
+    </>
   );
 };
 
-export default PublicIdTag;
+export default FriendCodeTag;

@@ -1,19 +1,23 @@
+import { ErrorBoundary } from "react-error-boundary";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import {
   Navigate,
   Route,
   BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
+import { useRegisterSW } from "virtual:pwa-register/react";
 import "./App.css";
+import AppErrorPage from "./components/ErrorHandling/AppErrorPage";
 import DefaultLoader from "./components/CustomComponents/DefaultLoader";
+import Startup from "./components/CustomComponents/Startup/Startup";
 import MainNavBar from "./components/Navbar/MainNavBar";
 import { StandaloneProvider } from "./components/StandaloneContext";
-import { loadable } from "./utils/loadable";
 import Debug from "./Debug";
-import Startup from "./components/CustomComponents/Startup/Startup";
 import OfflinePage from "./OfflinePage";
 import UpdatedAvailable from "./UpdateAvailable/UpdateAvailable";
-import { useRegisterSW } from "virtual:pwa-register/react";
+import { loadable } from "./utils/loadable";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
   fallback: <DefaultLoader />,
@@ -133,80 +137,84 @@ function App() {
     },
   });
 
+  // Create a QueryClient instance
+  const queryClient = new QueryClient();
+
   return (
-    <StandaloneProvider>
-      <UpdatedAvailable />
-      <Router>
-        <Routes>
-          {/* Redirect from '/' to '/home' */}
-          <Route path="/" element={<Navigate to="/home" replace />} />
-
-          <Route path="/startup" element={<Startup />} />
-          <Route path="/offline" element={<OfflinePage />} />
-          <Route
-            path="/home"
-            element={
-              <>
-                <MainNavBar />
-                <Home />
-              </>
-            }
-          />
-          <Route path="debug" element={<Debug />} />
-          <Route path="login" element={<Login />} />
-          <Route path="create-account" element={<Signup />} />
-
-          {/* Search */}
-          <Route path="/search" element={<Search />} />
-
-          {/* Hashtags */}
-          <Route path="/followed-hashtags" element={<FollowedHashtags />} />
-          <Route path="/hashtags/:hashtag" element={<HashtagPage />} />
-
-          {/* Profile */}
-          <Route
-            path="profile/:public_id"
-            element={
-              <>
-                <MainNavBar />
-                <ProfileRoute />
-              </>
-            }
-          >
-            <Route index element={<Profile />} />
-            <Route path="followers" element={<Followers />} />
-            <Route path="following" element={<Following />} />
-          </Route>
-
-          {/* Profile Edit */}
-          <Route path="profile-edit" element={<EditProfile />} />
-
-          {/* Settings */}
-          <Route
-            path="settings/*"
-            element={
-              <SettingsLayout>
-                <Routes>
-                  <Route index element={<ProfileSettings />} />
-                  <Route path="appearance" element={<AppearanceSettings />} />
-                  <Route
-                    path="notifications"
-                    element={<NotificationSettings />}
-                  />
-                  <Route path="privacy" element={<PrivacySettings />} />
-                  <Route path="blocked-users" element={<BlockedUsers />} />
-                  {/* Catch-all for 404 inside settings */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </SettingsLayout>
-            }
-          />
-
-          {/* Catch-all for 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </StandaloneProvider>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <StandaloneProvider>
+        <UpdatedAvailable />
+        <Router>
+          <ErrorBoundary FallbackComponent={AppErrorPage}>
+            <Routes>
+              {/* Redirect from '/' to '/home' */}
+              <Route path="/" element={<Navigate to="/home" replace />} />
+              <Route path="/startup" element={<Startup />} />
+              <Route path="/offline" element={<OfflinePage />} />
+              <Route
+                path="/home"
+                element={
+                  <>
+                    <MainNavBar />
+                    <Home />
+                  </>
+                }
+              />
+              <Route path="debug" element={<Debug />} />
+              <Route path="login" element={<Login />} />
+              <Route path="create-account" element={<Signup />} />
+              {/* Search */}
+              <Route path="/search" element={<Search />} />
+              {/* Hashtags */}
+              <Route path="/followed-hashtags" element={<FollowedHashtags />} />
+              <Route path="/hashtags/:hashtag" element={<HashtagPage />} />
+              {/* Profile */}
+              <Route
+                path="profile/:public_id"
+                element={
+                  <>
+                    <MainNavBar />
+                    <ProfileRoute />
+                  </>
+                }
+              >
+                <Route index element={<Profile />} />
+                <Route path="followers" element={<Followers />} />
+                <Route path="following" element={<Following />} />
+              </Route>
+              {/* Profile Edit */}
+              <Route path="profile-edit" element={<EditProfile />} />
+              {/* Settings */}
+              <Route
+                path="settings/*"
+                element={
+                  <SettingsLayout>
+                    <Routes>
+                      <Route index element={<ProfileSettings />} />
+                      <Route
+                        path="appearance"
+                        element={<AppearanceSettings />}
+                      />
+                      <Route
+                        path="notifications"
+                        element={<NotificationSettings />}
+                      />
+                      <Route path="privacy" element={<PrivacySettings />} />
+                      <Route path="blocked-users" element={<BlockedUsers />} />
+                      {/* Catch-all for 404 inside settings */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </SettingsLayout>
+                }
+              />
+              {/* Catch-all for 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </ErrorBoundary>
+        </Router>
+      </StandaloneProvider>
+    </QueryClientProvider>
   );
 }
 

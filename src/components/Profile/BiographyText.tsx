@@ -1,16 +1,20 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { IconBook } from "@tabler/icons-react";
+import { useProfile } from "../../Context/ProfileContext";
 
 const BiographyText = () => {
   const theme = useTheme();
 
-  const text = `My Awesome Biography! 🚀`;
+  // Get biography from context
+  const { biography } = useProfile().profile;
 
   return (
     <Box display={"inline-flex"} alignItems={"center"}>
       <IconBook
         size={theme.typography.h6.fontSize}
-        color={theme.palette.text.secondary}
+        color={
+          biography ? theme.palette.text.secondary : theme.palette.text.disabled
+        }
         style={{
           marginInlineEnd: theme.spacing(1),
           marginBlockStart: theme.spacing(-0.5),
@@ -19,9 +23,11 @@ const BiographyText = () => {
       <Typography
         component={"span"}
         fontWeight={100}
-        color={theme.palette.text.secondary}
+        color={
+          biography ? theme.palette.text.secondary : theme.palette.text.disabled
+        }
       >
-        {text}
+        {biography || "No biography..."}
       </Typography>
     </Box>
   );

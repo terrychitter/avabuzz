@@ -12,14 +12,9 @@ import AnimatedButton from "../components/CustomComponents/AnimatedButton";
 const UpdatedAvailable = () => {
   const {
     needRefresh: [needRefresh],
-    offlineReady: [offlineReady],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegisteredSW(r) {
-      console.log("SW Registered: ", r);
-      console.log("Need Refresh? ", needRefresh);
-      console.log("Offline Ready? ", offlineReady);
-    },
+    onRegisteredSW(_r) {},
     onRegisterError(e) {
       console.log("SW Register Error: ", e);
     },

@@ -4,13 +4,23 @@ import SexualityIcon from "./SexualityIcon";
 import { useTheme } from "@mui/material/styles";
 import GenderIcon from "./GenderIcon";
 
-const GenConSexGroup = () => {
+interface GenConSexGroupProps {
+  country?: string;
+  sexuality?: string;
+  gender?: string;
+}
+
+const GenConSexGroup: React.FC<GenConSexGroupProps> = ({
+  country,
+  sexuality,
+  gender,
+}) => {
   const theme = useTheme();
   return (
     <Stack direction={"row"} gap={theme.spacing(0.5)}>
-      <CountryIcon>south-africa</CountryIcon>
-      <SexualityIcon>gay</SexualityIcon>
-      <GenderIcon>male</GenderIcon>
+      {country && <CountryIcon>{country}</CountryIcon>}
+      {sexuality && <SexualityIcon>{sexuality}</SexualityIcon>}
+      {gender && <GenderIcon>{gender}</GenderIcon>}
     </Stack>
   );
 };

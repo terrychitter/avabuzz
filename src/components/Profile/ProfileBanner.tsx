@@ -4,6 +4,7 @@ import ProfilePictureKit from "../HOC/ProfilePictureKit";
 import EditProfileButton from "./EditProfileButton";
 import MyItemsButton from "./MyItemsButton";
 import SettingsButton from "./SettingsButton";
+import { useProfile } from "../../Context/ProfileContext";
 
 interface ProfileBannerProps {
   background?: string;
@@ -11,6 +12,9 @@ interface ProfileBannerProps {
 
 const ProfileBanner: React.FC<ProfileBannerProps> = ({ background }) => {
   const theme = useTheme();
+
+  // Get profile picture from context
+  const { profile_picture_url } = useProfile().profile;
 
   return (
     <>
@@ -32,7 +36,7 @@ const ProfileBanner: React.FC<ProfileBannerProps> = ({ background }) => {
         }}
       >
         <Stack direction={"row"} justifyContent={"space-between"}>
-          <ProfilePictureKit />
+          <ProfilePictureKit pictureUrl={profile_picture_url} />
           <Stack
             direction={"column"}
             justifyContent={"space-between"}

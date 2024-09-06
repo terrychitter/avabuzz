@@ -1,8 +1,14 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Link from "../CustomComponents/CustomLink";
+import { useProfile } from "../../Context/ProfileContext";
+import { formatNumber } from "../../utils/formatters";
 
 const ProfileStats = () => {
   const theme = useTheme();
+
+  // use profile stats from context
+  const { follower_count, following_count, post_count } =
+    useProfile().profile.user_stats;
 
   return (
     <Stack
@@ -18,7 +24,9 @@ const ProfileStats = () => {
           borderRight: `1px solid ${theme.palette.divider}`,
         }}
       >
-        <Typography sx={{ fontWeight: "bold" }}>0</Typography>
+        <Typography sx={{ fontWeight: "bold" }}>
+          {formatNumber(post_count)}
+        </Typography>
         <Typography component="p" sx={{ fontSize: "0.9rem" }}>
           Posts
         </Typography>
@@ -32,7 +40,9 @@ const ProfileStats = () => {
         }}
       >
         <Link to="followers">
-          <Typography sx={{ fontWeight: "bold" }}>0</Typography>
+          <Typography sx={{ fontWeight: "bold" }}>
+            {formatNumber(follower_count)}
+          </Typography>
           <Typography component="p" sx={{ fontSize: "0.9rem" }}>
             Followers
           </Typography>
@@ -46,7 +56,9 @@ const ProfileStats = () => {
         }}
       >
         <Link to="following">
-          <Typography sx={{ fontWeight: "bold" }}>0</Typography>
+          <Typography sx={{ fontWeight: "bold" }}>
+            {formatNumber(following_count)}
+          </Typography>
           <Typography component="p" sx={{ fontSize: "0.9rem" }}>
             Following
           </Typography>
