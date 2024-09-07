@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import CustomPullToRefresh from "../CustomComponents/CustomPullToRefresh";
 
 interface ItemListProps {
-  children?: React.ReactNode | React.ReactNode[];
+  items?: React.ReactNode | React.ReactNode[]; // Allow single or multiple ReactNodes
   noItemsMessage?: string;
   showEndDivider?: boolean;
   pullToRefresh?: boolean;
@@ -19,7 +19,7 @@ interface ItemListProps {
 }
 
 const ItemList: React.FC<ItemListProps> = ({
-  children,
+  items = [],
   noItemsMessage = "No items",
   columns = { xs: 1 },
   showEndDivider = true,
@@ -37,17 +37,17 @@ const ItemList: React.FC<ItemListProps> = ({
   };
 
   const GridContent = () => {
-    return React.Children.count(children) > 0 ? (
+    const itemsArray = items ? React.Children.toArray(items) : [];
+    return itemsArray.length > 0 && itemsArray.length !== 0 ? (
       <>
-        {React.Children.map(children, (child, index) => (
+        {itemsArray.map((item, index) => (
           <Grid
             item
             {...getGridItemProps()}
             key={index}
             marginInlineStart={pullToRefresh ? 1 : 0.5}
-            paddingBlockEnd={1}
           >
-            {child}
+            {item}
           </Grid>
         ))}
         {showEndDivider && (
@@ -90,23 +90,27 @@ const ItemList: React.FC<ItemListProps> = ({
     );
   };
 
-  return (
-    <Grid
-      container
-      spacing={1}
-      sx={{
-        paddingBlockStart: pullToRefresh ? 1 : 0,
-        ...sx,
-      }}
-    >
-      {pullToRefresh ? (
-        <CustomPullToRefresh>
-          <GridContent />
-        </CustomPullToRefresh>
-      ) : (
+  const ItemGrid = () => {
+    return (
+      <Grid
+        container
+        spacing={1}
+        sx={{
+          marginInlineStart: pullToRefresh ? 0 : -1.5,
+          ...sx,
+        }}
+      >
         <GridContent />
-      )}
-    </Grid>
+      </Grid>
+    );
+  };
+
+  return pullToRefresh ? (
+    <CustomPullToRefresh>
+      <ItemGrid />
+    </CustomPullToRefresh>
+  ) : (
+    <ItemGrid />
   );
 };
 

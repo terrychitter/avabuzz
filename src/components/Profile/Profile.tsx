@@ -9,8 +9,8 @@ import {
 import { useErrorBoundary } from "react-error-boundary";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { fetchUser } from "../../api/userApi";
-import { ProfileProvider } from "../../Context/ProfileContext";
+import { fetchUser } from "../../api/user/userApi";
+import { UserProvider } from "../../Context/UserContext";
 import { loadable } from "../../utils/loadable";
 import DefaultLoader from "../CustomComponents/DefaultLoader";
 import AnimatedPage from "../HOC/AnimatedPage";
@@ -52,9 +52,11 @@ const Profile = () => {
   // Get user ID from the URL
   const { public_id = "" } = useParams();
 
-  const { isLoading, data, error } = useQuery("userData", () =>
-    fetchUser(public_id)
-  );
+  const {
+    isLoading,
+    data: userData,
+    error,
+  } = useQuery("userData", () => fetchUser(public_id));
 
   if (isLoading) {
     return <DefaultLoader />;
@@ -65,10 +67,8 @@ const Profile = () => {
     return null;
   }
 
-  console.log(data);
-
   return (
-    <ProfileProvider profileData={data}>
+    <UserProvider userData={userData}>
       <AnimatedPage>
         <MainContentContainer
           pullToRefresh
@@ -77,7 +77,7 @@ const Profile = () => {
           <Stack direction={"column"} gap={{ xs: 0, md: 1 }} height={"100%"}>
             {/* Profile Banner */}
             <ProfileBanner
-              background={data.active_accessories.active_banner_url}
+              background={userData.active_accessories.active_banner_url}
             />
             {/* Profile Content */}
             <Stack
@@ -92,15 +92,15 @@ const Profile = () => {
                 alignContent={"center"}
               >
                 <UsernameTag
-                  badgeUrl={data.active_accessories.active_badge_url}
-                  username={data.username}
+                  badgeUrl={userData.active_accessories.active_badge_url}
+                  username={userData.username}
                 ></UsernameTag>
-                <FriendCodeTag code={data.friend_code} />
+                <FriendCodeTag code={userData.friend_code} />
               </Stack>
               <GenConSexGroup
-                country={data.country}
-                sexuality={data.orientation}
-                gender={data.gender}
+                country={userData.country}
+                sexuality={userData.orientation}
+                gender={userData.gender}
               />
               <Biography />
               <Box marginBlock={theme.spacing(2)}>
@@ -116,7 +116,7 @@ const Profile = () => {
           </Stack>
         </MainContentContainer>
       </AnimatedPage>
-    </ProfileProvider>
+    </UserProvider>
   );
 };
 

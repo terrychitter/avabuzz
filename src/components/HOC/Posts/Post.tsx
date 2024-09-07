@@ -1,113 +1,28 @@
 import {
+  Box,
   Card,
   CardActions,
   CardContent,
   CardHeader,
   useTheme,
 } from "@mui/material";
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React from "react";
+import { PostProvider, PostType } from "../../../Context/PostContext";
 import { formatDate } from "../../../utils/formatters";
 import PostActionKit from "../PostActionKit";
 import ProfilePictureKit from "../ProfilePictureKit";
-import { ThemedContent } from "../ThemedContent";
 import UsernameKit from "../UsernameKit";
-import EventPost from "./EventPost";
 import GeneralPost from "./GeneralPost";
 import ImagePost from "./ImagePost";
 import PostActions from "./PostActions";
 import PostHashtagsGroup from "./PostHashtagsGroup";
 
-export interface PostProps {
-  post: {
-    userPublicId: string;
-    profilePictureUrl: string;
-    profileBadgeUrl: string;
-    postId: number;
-    username: string;
-    date: Date;
-    type: string;
-    event?: {
-      title: string;
-      startDate: Date;
-      endDate: Date;
-      bannerUrl: string;
-      status: string;
-    };
-    text: string;
-    hashtags: string[];
-    viewCount: number;
-    saved: boolean;
-    reactCount: number;
-    reactions: string[];
-    userReaction: {
-      reacted: boolean;
-      reaction: string;
-    };
-    commentCount: number;
-    mediaUrls: string[];
-  };
+interface PostProps {
+  post: PostType;
 }
-
-// Define the type for the post
-export interface PostType {
-  userPublicId: string;
-  profilePictureUrl: string;
-  profileBadgeUrl: string;
-  postId: number;
-  username: string;
-  date: Date;
-  type: string;
-  event?: {
-    title: string;
-    startDate: Date;
-    endDate: Date;
-    bannerUrl: string;
-    status: string;
-  };
-  text: string;
-  hashtags: string[];
-  viewCount: number;
-  saved: boolean;
-  reactCount: number;
-  reactions: string[];
-  userReaction: {
-    reacted: boolean;
-    reaction: string;
-  };
-  commentCount: number;
-  mediaUrls: string[];
-}
-
-const PostContext = createContext<
-  | {
-      post: PostType;
-      setPost: React.Dispatch<React.SetStateAction<PostType>>;
-    }
-  | undefined
->(undefined);
-
-export const PostProvider: React.FC<{
-  value: {
-    post: PostType;
-    setPost: React.Dispatch<React.SetStateAction<PostType>>;
-  };
-  children: ReactNode;
-}> = ({ value, children }) => {
-  return <PostContext.Provider value={value}>{children}</PostContext.Provider>;
-};
-
-export const usePostContext = () => {
-  const context = useContext(PostContext);
-  if (context === undefined) {
-    throw new Error("usePostContext must be used within a PostProvider");
-  }
-  return context;
-};
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const theme = useTheme();
-
-  const [currentPost, setCurrentPost] = useState(post);
 
   const DefaultPostLayout = () => {
     return (
@@ -115,31 +30,31 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <CardHeader
           avatar={
             <ProfilePictureKit
-              link={`/profile/${post.userPublicId}`}
+              link={`/profile/${post.poster.public_user_id}`}
               pictureWidth={{ xs: "3rem" }}
-              pictureUrl={post.profilePictureUrl}
+              pictureUrl={post.poster.profile_picture_url}
             />
           }
           title={
             <UsernameKit
-              username={post.username}
-              badgeUrl={post.profileBadgeUrl}
+              username="fjnmdkdmn"
+              badgeUrl={post.poster.active_accessories.active_badge_url}
             />
           }
           action={<PostActionKit />}
-          subheader={formatDate(post.date)}
+          subheader={formatDate(new Date(post.created_at))}
         />
         <CardContent sx={{ padding: 0 }}>
-          {post.type === "general" ? (
+          {post.type === "post" ? (
             <GeneralPost
-              postText={post.text}
-              link={`/posts/${post.postId.toString()}`}
+              postText={post.caption}
+              link={`/posts/${post.id.toString()}`}
             />
           ) : post.type === "image" ? (
             <ImagePost
-              images={post.mediaUrls}
-              postText={post.text}
-              link={`/posts/${post.postId.toString()}`}
+              images={post.media}
+              postText={post.caption}
+              link={`/posts/${post.id.toString()}`}
             />
           ) : null}
         </CardContent>
@@ -158,17 +73,16 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
   return (
     <>
-      <PostContext.Provider
-        value={{ post: currentPost, setPost: setCurrentPost }}
-      >
-        {post.type !== "event" ? (
-          <DefaultPostLayout />
-        ) : (
-          <ThemedContent imageUrl={post.event?.bannerUrl || ""}>
-            <EventPost />
-          </ThemedContent>
-        )}
-      </PostContext.Provider>
+      <PostProvider postData={post}>
+        <Box marginBlockEnd={1}>
+          {
+            post.type !== "event" ? <DefaultPostLayout /> : null
+            // <ThemedContent imageUrl={post.event?.bannerUrl || ""}>
+            //   <EventPost />
+            // </ThemedContent>
+          }
+        </Box>
+      </PostProvider>
     </>
   );
 };

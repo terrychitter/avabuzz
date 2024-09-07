@@ -2,12 +2,13 @@ import { Box, Stack, useTheme } from "@mui/material";
 import { IconEye, IconMessage } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { formatNumber } from "../../../utils/formatters";
-import { usePostContext } from "./Post";
+import { usePost } from "../../../Context/PostContext";
 import PostLikeSection from "./PostLikeSection";
 
 const PostActions = () => {
-  const { post } = usePostContext();
+  const { post } = usePost();
   const theme = useTheme();
+
   return (
     <>
       <Stack
@@ -18,7 +19,7 @@ const PostActions = () => {
       >
         <IconEye color={theme.palette.action.disabled} />
         <Box color={theme.palette.action.disabled}>
-          {formatNumber(post.viewCount)}
+          {formatNumber(post.view_count)}
         </Box>
       </Stack>
       <Stack
@@ -35,12 +36,12 @@ const PostActions = () => {
           alignItems={"center"}
         >
           <Box marginBlockStart="7px !important">
-            <Link to={`/posts/${post.postId}#comments`}>
+            <Link to={`/posts/${post.id}#comments`}>
               <IconMessage color={theme.palette.text.primary} />
             </Link>
           </Box>
           <Box component={"span"} fontSize={theme.typography.body1.fontSize}>
-            {formatNumber(post.commentCount)}
+            {formatNumber(1)}
           </Box>
         </Stack>
         <PostLikeSection />

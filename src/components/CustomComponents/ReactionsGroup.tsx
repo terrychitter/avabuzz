@@ -1,13 +1,13 @@
 import { Avatar, AvatarGroup } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { IconHeartFilled } from "@tabler/icons-react";
-import React from "react";
 import { motion } from "framer-motion";
-import { usePostContext } from "../HOC/Posts/Post";
+import React from "react";
+import { PostType } from "../../Context/PostContext";
 
 interface ReactionsGroupProps {
   priorityReaction?: string;
-  reactions?: string[];
+  reactions: PostType["reactions"];
 }
 
 const ReactionsGroup: React.FC<ReactionsGroupProps> = ({
@@ -15,31 +15,29 @@ const ReactionsGroup: React.FC<ReactionsGroupProps> = ({
   reactions = [],
 }) => {
   const theme = useTheme();
-  const { post, setPost } = usePostContext();
-
-  // Check if the user reacted
-  const reacted = post.userReaction.reacted;
 
   // Create a list with priorityReaction first, then the rest of the reactions
   const orderedReactions = [
     ...(priorityReaction ? [priorityReaction] : []),
-    ...reactions.filter((reaction) => reaction !== priorityReaction),
+    ...reactions.filter(
+      (reaction) => reaction.type !== priorityReaction && reaction.count > 0
+    ),
   ];
 
   const handleReactionGroupClick = () => {
-    if (reacted) {
-      // Update the post context
-      setPost((prevPost) => {
-        return {
-          ...prevPost,
-          userReaction: {
-            reacted: false,
-            reaction: "",
-          },
-          reactCount: prevPost.reactCount - 1,
-        };
-      });
-    }
+    // if (reacted) {
+    //   // Update the post context
+    //   setPost((prevPost) => {
+    //     return {
+    //       ...prevPost,
+    //       userReaction: {
+    //         reacted: false,
+    //         reaction: "",
+    //       },
+    //       reactCount: prevPost.reactCount - 1,
+    //     };
+    //   });
+    // }
   };
 
   return (
@@ -96,10 +94,9 @@ const ReactionsGroup: React.FC<ReactionsGroupProps> = ({
             ) : (
               <Avatar
                 key={index}
-                alt={reaction}
                 src={
-                  reaction !== "like"
-                    ? `/post_reactions/${reaction}.png`
+                  typeof reaction !== "string" && reaction.type
+                    ? `/post_reactions/${reaction.type}.png`
                     : undefined
                 }
                 sx={{

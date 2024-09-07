@@ -1,12 +1,12 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { IconBook } from "@tabler/icons-react";
-import { useProfile } from "../../Context/ProfileContext";
+import { useUser } from "../../Context/UserContext";
 
 const BiographyText = () => {
   const theme = useTheme();
 
   // Get biography from context
-  const { biography } = useProfile().profile;
+  const { biography } = useUser().user;
 
   return (
     <Box display={"inline-flex"} alignItems={"center"}>

@@ -1,7 +1,5 @@
-import { Box } from "@mui/material";
 import NakedContentContainer from "../../CustomComponents/NakedContentContainer";
 import AnimatedPage from "../../HOC/AnimatedPage";
-import HashtagList from "../../HOC/HashtagList";
 import ItemList from "../../HOC/ItemList";
 import MainContentContainer from "../../HOC/MainContentContainer";
 
@@ -10,9 +8,7 @@ const FollowedHashtags = () => {
     <AnimatedPage>
       <MainContentContainer>
         <NakedContentContainer title="Followed Hashtags">
-          <ItemList>
-            <Box paddingInline={1}>{HashtagList()}</Box>
-          </ItemList>
+          <ItemList items={null}></ItemList>
         </NakedContentContainer>
       </MainContentContainer>
     </AnimatedPage>

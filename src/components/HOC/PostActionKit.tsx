@@ -6,22 +6,15 @@ import {
   Stack,
   useTheme,
 } from "@mui/material";
-import {
-  IconBookmark,
-  IconBookmarkFilled,
-  IconDotsVertical,
-  IconFlag3,
-  IconShare,
-} from "@tabler/icons-react";
+import { IconDotsVertical, IconFlag3, IconShare } from "@tabler/icons-react";
 import { useState } from "react";
 import FollowButton from "../CustomComponents/FollowButton";
-import { usePostContext } from "./Posts/Post";
 
 const PostActionKit = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const { post, setPost } = usePostContext();
+  // const { post, updatePost } = usePost();
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -63,10 +56,10 @@ const PostActionKit = () => {
   const handleSave = () => {
     handleMenuClose();
 
-    setPost((prevPost) => ({
-      ...prevPost,
-      saved: !prevPost.saved,
-    }));
+    // setPost((prevPost) => ({
+    //   ...prevPost,
+    //   saved: !prevPost.saved,
+    // }));
   };
 
   const ShareButton = () => {
@@ -81,8 +74,8 @@ const PostActionKit = () => {
   const SaveButton = () => {
     return (
       <Box display={"flex"} alignItems={"center"} gap={1}>
-        {post.saved ? <IconBookmarkFilled color="#FFDB6C" /> : <IconBookmark />}
-        {post.saved ? "Saved" : "Save"}
+        {/* {post.saved ? <IconBookmarkFilled color="#FFDB6C" /> : <IconBookmark />}
+        {post.saved ? "Saved" : "Save"} */}
       </Box>
     );
   };

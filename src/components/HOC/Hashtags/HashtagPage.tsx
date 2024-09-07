@@ -1,15 +1,14 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
-import NakedContentContainer from "../../CustomComponents/NakedContentContainer";
-import MainContentContainer from "../MainContentContainer";
 import { Box, Stack, Typography } from "@mui/material";
-import { IconCheck, IconHash, IconPlus, IconShare } from "@tabler/icons-react";
 import { useTheme } from "@mui/material/styles";
-import AnimatedPage from "../AnimatedPage";
+import { IconCheck, IconHash, IconPlus, IconShare } from "@tabler/icons-react";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import AnimatedButton from "../../CustomComponents/AnimatedButton";
+import NakedContentContainer from "../../CustomComponents/NakedContentContainer";
 import TabNavigation from "../../CustomComponents/TabNavigation";
-import PostList from "../PostList";
+import AnimatedPage from "../AnimatedPage";
 import ItemList from "../ItemList";
+import MainContentContainer from "../MainContentContainer";
 
 interface ButtonProps {
   onClick: () => void;
@@ -148,7 +147,7 @@ const HashtagPage: React.FC = () => {
       label: "Trending",
       component: (
         <Box paddingInline={1}>
-          <ItemList pullToRefresh>{PostList()}</ItemList>
+          <ItemList pullToRefresh items={null}></ItemList>
         </Box>
       ),
     },
@@ -156,7 +155,7 @@ const HashtagPage: React.FC = () => {
       label: "Recent",
       component: (
         <Box paddingInline={1}>
-          <ItemList pullToRefresh>{PostList()}</ItemList>
+          <ItemList pullToRefresh items={null}></ItemList>
         </Box>
       ),
     },

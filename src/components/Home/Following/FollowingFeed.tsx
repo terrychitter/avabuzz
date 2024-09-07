@@ -1,10 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import ItemList from "../../HOC/ItemList";
-import PostList from "../../HOC/PostList";
-import HashtagList from "../../HOC/HashtagList";
-import Link from "../../CustomComponents/CustomLink";
 import { IconArrowBadgeRightFilled } from "@tabler/icons-react";
+import Link from "../../CustomComponents/CustomLink";
+import ItemList from "../../HOC/ItemList";
 
 const FollowingFeed = () => {
   const theme = useTheme();
@@ -29,13 +27,17 @@ const FollowingFeed = () => {
             />
           </Stack>
         </Stack>
-        <ItemList noItemsMessage="No hashtags to show" showEndDivider={false}>
-          {HashtagList()}
-        </ItemList>
+        <ItemList
+          noItemsMessage="No hashtags to show"
+          showEndDivider={false}
+          items={null}
+        ></ItemList>
       </Box>
-      <ItemList noItemsMessage="Nothing to show" pullToRefresh>
-        {PostList()}
-      </ItemList>
+      <ItemList
+        noItemsMessage="Nothing to show"
+        pullToRefresh
+        items={null}
+      ></ItemList>
     </>
   );
 };

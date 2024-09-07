@@ -7,6 +7,7 @@ import ImageError from "./ImageError";
 import { loadable } from "../../../utils/loadable";
 import DefaultLoader from "../../CustomComponents/DefaultLoader";
 import { ZoomableImageProps } from "../../../components/CustomComponents/ZoomableImage";
+import { PostType } from "../../../Context/PostContext";
 
 const ZoomableImage: React.FC<ZoomableImageProps> = loadable(
   () => import("../../../components/CustomComponents/ZoomableImage"),
@@ -17,7 +18,7 @@ const ZoomableImage: React.FC<ZoomableImageProps> = loadable(
 
 interface ImagePostProperties {
   postText: string;
-  images: string[];
+  images: PostType["media"];
   link: string;
 }
 
@@ -44,7 +45,7 @@ const ImagePost: React.FC<ImagePostProperties> = ({
                 <Box key={index} sx={{ aspectRatio: 1 }}>
                   <ZoomableImage>
                     <img
-                      src={image}
+                      src={image.url}
                       alt="Random"
                       width="100%"
                       style={{ aspectRatio: 1, objectFit: "contain" }}
@@ -63,7 +64,7 @@ const ImagePost: React.FC<ImagePostProperties> = ({
           ) : (
             <ZoomableImage>
               <img
-                src={images[0]}
+                src={images[0].url}
                 alt="Random"
                 width="100%"
                 onError={handleImageError}

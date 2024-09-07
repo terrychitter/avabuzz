@@ -1,21 +1,6 @@
 import { Dialog, DialogContent, DialogTitle, Stack } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePostContext } from "../HOC/Posts/Post";
-import Angry from "/post_reactions/angry.png";
-import Cool from "/post_reactions/cool.png";
-import Cry from "/post_reactions/cry.png";
-import Laugh from "/post_reactions/laugh.png";
-import Love from "/post_reactions/love.png";
-import Shock from "/post_reactions/shock.png";
-
-const reactions = [
-  { src: Angry, name: "angry" },
-  { src: Cool, name: "cool" },
-  { src: Cry, name: "cry" },
-  { src: Laugh, name: "laugh" },
-  { src: Love, name: "love" },
-  { src: Shock, name: "shock" },
-];
+import { usePost } from "../../Context/PostContext";
 
 const ReactionDialog = ({
   open,
@@ -25,7 +10,11 @@ const ReactionDialog = ({
   onClose: () => void;
 }) => {
   // Get the post context
-  const { setPost } = usePostContext();
+  const { post } = usePost();
+
+  // Get reactions
+  const reactions = post.reactions;
+  console.log("Reactions:", reactions);
 
   const ReactionIcon = ({
     src,
@@ -46,18 +35,18 @@ const ReactionDialog = ({
     );
   };
 
-  const handleReactionClick = (name: string) => {
+  const handleReactionClick = (_name: string) => {
     navigator.vibrate(10);
 
     // Update the post context
-    setPost((prevPost) => ({
-      ...prevPost,
-      userReaction: {
-        reacted: true,
-        reaction: name,
-      },
-      reactCount: prevPost.reactCount ? prevPost.reactCount + 1 : 1,
-    }));
+    // setPost((prevPost) => ({
+    //   ...prevPost,
+    //   userReaction: {
+    //     reacted: true,
+    //     reaction: name,
+    //   },
+    //   reactCount: prevPost.reactCount ? prevPost.reactCount + 1 : 1,
+    // }));
 
     onClose();
   };
@@ -87,21 +76,23 @@ const ReactionDialog = ({
           sx={{ flexWrap: "wrap" }}
         >
           <AnimatePresence>
-            {reactions.map((reaction, index) => (
-              <motion.div
-                key={index}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 50, opacity: 0 }}
-                transition={{ delay: index * 0.03, duration: 0.5 }}
-                style={{ margin: 2 }}
-              >
-                <ReactionIcon
-                  src={reaction.src}
-                  onReactionClick={() => handleReactionClick(reaction.name)}
-                />
-              </motion.div>
-            ))}
+            {reactions
+              .filter((reaction) => reaction.type !== "like")
+              .map((reaction, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: index * 0.03, duration: 0.5 }}
+                  style={{ margin: 2 }}
+                >
+                  <ReactionIcon
+                    src={`/post_reactions/${reaction.type}.png`}
+                    onReactionClick={() => handleReactionClick(reaction.type)}
+                  />
+                </motion.div>
+              ))}
           </AnimatePresence>
         </Stack>
       </DialogContent>
