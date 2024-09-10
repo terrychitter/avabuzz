@@ -30,8 +30,6 @@ const user = {
 
 // Fetch user function
 export const fetchUser = async (publicUserId: string) => {
-  // print environment
-  console.log(import.meta.env.VITE_ENVIRONMENT)
     if (import.meta.env.VITE_ENVIRONMENT === "development") {
       const response = await apiClient.get(`/users/${publicUserId}`);
     return response.data;

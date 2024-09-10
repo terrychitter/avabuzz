@@ -1,35 +1,98 @@
 import { Stack, useTheme } from "@mui/material";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Button from "./AnimatedButton";
 import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
+import { AxiosError } from "axios";
+import { useState } from "react";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+import { FieldValues, useForm } from "react-hook-form";
+import { useQuery } from "react-query";
+import { login } from "../../api/auth/login";
+import { useErrorPopup } from "../../Context/ErrorPopupContext";
+import Button from "./AnimatedButton";
+import Link from "./CustomLink";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import TmCnCheck from "./TmCnCheck";
-import Link from "./CustomLink";
-import { FieldValues, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  // Access the theme
   const theme = useTheme();
+  const signIn = useSignIn();
+  const navigate = useNavigate();
+  const { showError } = useErrorPopup();
+
+  const [loginData, setLoginData] = useState<FieldValues | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Use react hook form
   const {
     register,
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     reset,
   } = useForm();
 
   // Handle form submission
-  const onSubmit = async (data: FieldValues) => {
-    // TODO: Submit to API
-    console.log("data", data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  const onSubmit = (data: FieldValues) => {
+    setIsSubmitting(true);
+    setLoginData(data);
+  };
 
+  const onSettled = () => {
+    setIsSubmitting(false);
     reset();
   };
+
+  const handleSuccess = (accessToken: string) => {
+    if (
+      signIn({
+        auth: {
+          token: accessToken,
+          type: "Bearer",
+        },
+        userState: {
+          email: loginData?.email,
+        },
+      })
+    ) {
+      // Navigate to the home page
+      navigate("/");
+    } else {
+      showError("An error occurred while logging in");
+    }
+  };
+
+  const handleLoginError = (message: string) => {
+    setIsSubmitting(false);
+    showError(message);
+  };
+
+  // Use react query
+  useQuery({
+    queryKey: ["login", loginData],
+    queryFn: () => login(loginData?.email, loginData?.password),
+    enabled: !!loginData,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    onSettled: () => {
+      onSettled();
+    },
+    onSuccess: (data) => {
+      setIsSubmitting(false);
+      handleSuccess(data.data.access_token);
+    },
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        if (error.response?.status === 404) {
+          handleLoginError("Incorrect email or password");
+        }
+      } else {
+        handleLoginError("An error occurred while logging in");
+      }
+    },
+  });
 
   return (
     <>
@@ -58,7 +121,7 @@ const LoginForm = () => {
               fullWidth
               type="submit"
               variant="contained"
-              sx={{ marginTop: theme.spacing(7) }}
+              sx={{ marginTop: theme.spacing(7), borderRadius: 1 }}
               startIcon={isSubmitting && <CircularProgress size={24} />}
             >
               {isSubmitting ? null : "Login"}

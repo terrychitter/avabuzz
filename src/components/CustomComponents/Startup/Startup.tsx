@@ -5,6 +5,7 @@ import Link from "../CustomLink";
 
 const Startup = () => {
   const theme = useTheme();
+
   return (
     <Box
       sx={{

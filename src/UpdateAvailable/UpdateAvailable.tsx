@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import AnimatedButton from "../components/CustomComponents/AnimatedButton";
 
-const UpdatedAvailable = () => {
+const UpdateAvailable = () => {
   const {
     needRefresh: [needRefresh],
     updateServiceWorker,
@@ -89,4 +89,4 @@ const UpdatedAvailable = () => {
   );
 };
 
-export default UpdatedAvailable;
+export default UpdateAvailable;

@@ -1,5 +1,5 @@
+import RequireAuth from "@auth-kit/react-router/RequireAuth";
 import { ErrorBoundary } from "react-error-boundary";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import {
   Navigate,
@@ -9,14 +9,14 @@ import {
 } from "react-router-dom";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import "./App.css";
-import AppErrorPage from "./components/ErrorHandling/AppErrorPage";
 import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import Startup from "./components/CustomComponents/Startup/Startup";
+import AppErrorPage from "./components/ErrorHandling/AppErrorPage";
 import MainNavBar from "./components/Navbar/MainNavBar";
-import { StandaloneProvider } from "./components/StandaloneContext";
+import { ErrorPopupProvider } from "./Context/ErrorPopupContext";
 import Debug from "./Debug";
 import OfflinePage from "./OfflinePage";
-import UpdatedAvailable from "./UpdateAvailable/UpdateAvailable";
+import UpdateAvailable from "./UpdateAvailable/UpdateAvailable";
 import { loadable } from "./utils/loadable";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
@@ -137,18 +137,14 @@ function App() {
     },
   });
 
-  // Create a QueryClient instance
-  const queryClient = new QueryClient();
-
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <ReactQueryDevtools initialIsOpen={false} />
-      <StandaloneProvider>
-        <UpdatedAvailable />
-        <Router>
-          <ErrorBoundary FallbackComponent={AppErrorPage}>
+      <UpdateAvailable />
+      <Router>
+        <ErrorBoundary FallbackComponent={AppErrorPage}>
+          <ErrorPopupProvider>
             <Routes>
-              {/* Redirect from '/' to '/home' */}
               <Route path="/" element={<Navigate to="/home" replace />} />
               <Route path="/startup" element={<Startup />} />
               <Route path="/offline" element={<OfflinePage />} />
@@ -173,48 +169,64 @@ function App() {
               <Route
                 path="profile/:public_id"
                 element={
-                  <>
-                    <MainNavBar />
-                    <ProfileRoute />
-                  </>
+                  <RequireAuth fallbackPath="/login">
+                    <>
+                      <MainNavBar />
+                      <ProfileRoute />
+                    </>
+                  </RequireAuth>
                 }
               >
                 <Route index element={<Profile />} />
                 <Route path="followers" element={<Followers />} />
                 <Route path="following" element={<Following />} />
               </Route>
+
               {/* Profile Edit */}
-              <Route path="profile-edit" element={<EditProfile />} />
+              <Route
+                path="profile-edit"
+                element={
+                  <RequireAuth fallbackPath="/login">
+                    <EditProfile />
+                  </RequireAuth>
+                }
+              />
+
               {/* Settings */}
               <Route
                 path="settings/*"
                 element={
-                  <SettingsLayout>
-                    <Routes>
-                      <Route index element={<ProfileSettings />} />
-                      <Route
-                        path="appearance"
-                        element={<AppearanceSettings />}
-                      />
-                      <Route
-                        path="notifications"
-                        element={<NotificationSettings />}
-                      />
-                      <Route path="privacy" element={<PrivacySettings />} />
-                      <Route path="blocked-users" element={<BlockedUsers />} />
-                      {/* Catch-all for 404 inside settings */}
-                      <Route path="*" element={<NotFound />} />
-                    </Routes>
-                  </SettingsLayout>
+                  <RequireAuth fallbackPath="/login">
+                    <SettingsLayout>
+                      <Routes>
+                        <Route index element={<ProfileSettings />} />
+                        <Route
+                          path="appearance"
+                          element={<AppearanceSettings />}
+                        />
+                        <Route
+                          path="notifications"
+                          element={<NotificationSettings />}
+                        />
+                        <Route path="privacy" element={<PrivacySettings />} />
+                        <Route
+                          path="blocked-users"
+                          element={<BlockedUsers />}
+                        />
+                        {/* Catch-all for 404 inside settings */}
+                        <Route path="*" element={<NotFound />} />
+                      </Routes>
+                    </SettingsLayout>
+                  </RequireAuth>
                 }
               />
               {/* Catch-all for 404 */}
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </ErrorBoundary>
-        </Router>
-      </StandaloneProvider>
-    </QueryClientProvider>
+          </ErrorPopupProvider>
+        </ErrorBoundary>
+      </Router>
+    </>
   );
 }
 
