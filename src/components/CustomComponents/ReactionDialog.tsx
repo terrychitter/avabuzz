@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogTitle, Stack } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import { usePost } from "../../Context/PostContext";
+import { usePost } from "../../context/PostContext";
 
 const ReactionDialog = ({
   open,
@@ -14,7 +14,6 @@ const ReactionDialog = ({
 
   // Get reactions
   const reactions = post.reactions;
-  console.log("Reactions:", reactions);
 
   const ReactionIcon = ({
     src,

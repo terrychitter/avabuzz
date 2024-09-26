@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useRegisterSW } from "virtual:pwa-register/react";
-import AnimatedButton from "../components/CustomComponents/AnimatedButton";
+import AnimatedButton from "../AnimatedButton";
 
 const UpdateAvailable = () => {
   const {

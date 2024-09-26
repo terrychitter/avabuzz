@@ -28,8 +28,8 @@ export interface UserType {
 
 // Define the shape of the context value
 interface UserContextType {
-  user: UserType;
-  updateUser: (newData: Partial<UserType>) => void;
+  user: UserType | null;
+  updateUser: (newData: Partial<UserType> | null) => void;
 }
 
 // Create the context with a default value of undefined
@@ -38,15 +38,19 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 // Define the provider props type
 interface UserProviderProps {
   children: ReactNode;
-  userData: UserType;
+  userData: UserType | null;
 }
 
 // Create the provider component
 const UserProvider: React.FC<UserProviderProps> = ({ children, userData }) => {
-  const [user, setUser] = useState<UserType>(userData);
+  const [user, setUser] = useState<UserType | null>(userData);
 
-  const updateUser = (newData: Partial<UserType>) => {
-    setUser((prevUser) => ({ ...prevUser, ...newData }));
+  const updateUser = (newData: Partial<UserType> | null) => {
+    if (newData === null) {
+      setUser(null);
+    } else {
+      setUser((prevUser) => (prevUser ? { ...prevUser, ...newData } : null));
+    }
   };
 
   return (

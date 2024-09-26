@@ -1,4 +1,3 @@
-import RequireAuth from "@auth-kit/react-router/RequireAuth";
 import { ErrorBoundary } from "react-error-boundary";
 import { ReactQueryDevtools } from "react-query/devtools";
 import {
@@ -11,12 +10,13 @@ import { useRegisterSW } from "virtual:pwa-register/react";
 import "./App.css";
 import DefaultLoader from "./components/CustomComponents/DefaultLoader";
 import Startup from "./components/CustomComponents/Startup/Startup";
+import UpdateAvailable from "./components/CustomComponents/UpdateAvailable/UpdateAvailable";
 import AppErrorPage from "./components/ErrorHandling/AppErrorPage";
 import MainNavBar from "./components/Navbar/MainNavBar";
-import { ErrorPopupProvider } from "./Context/ErrorPopupContext";
+import { ErrorPopupProvider } from "./context/ErrorPopupContext";
 import Debug from "./Debug";
 import OfflinePage from "./OfflinePage";
-import UpdateAvailable from "./UpdateAvailable/UpdateAvailable";
+import ProtectedRoute from "./components/CustomComponents/ProtectedRoute";
 import { loadable } from "./utils/loadable";
 
 const Profile = loadable(() => import("./components/Profile/Profile"), {
@@ -166,58 +166,47 @@ function App() {
               <Route path="/followed-hashtags" element={<FollowedHashtags />} />
               <Route path="/hashtags/:hashtag" element={<HashtagPage />} />
               {/* Profile */}
-              <Route
-                path="profile/:public_id"
-                element={
-                  <RequireAuth fallbackPath="/login">
+              <Route element={<ProtectedRoute redirectPath="/login" />}>
+                <Route
+                  path="my-profile"
+                  element={
                     <>
                       <MainNavBar />
                       <ProfileRoute />
                     </>
-                  </RequireAuth>
-                }
-              >
-                <Route index element={<Profile />} />
-                <Route path="followers" element={<Followers />} />
-                <Route path="following" element={<Following />} />
+                  }
+                >
+                  {/* Nested routes under "my-profile" */}
+                  <Route index element={<Profile />} />
+                  <Route path="followers" element={<Followers />} />
+                  <Route path="following" element={<Following />} />
+                </Route>
               </Route>
 
               {/* Profile Edit */}
-              <Route
-                path="profile-edit"
-                element={
-                  <RequireAuth fallbackPath="/login">
-                    <EditProfile />
-                  </RequireAuth>
-                }
-              />
+              <Route path="profile-edit" element={<EditProfile />} />
 
               {/* Settings */}
               <Route
                 path="settings/*"
                 element={
-                  <RequireAuth fallbackPath="/login">
-                    <SettingsLayout>
-                      <Routes>
-                        <Route index element={<ProfileSettings />} />
-                        <Route
-                          path="appearance"
-                          element={<AppearanceSettings />}
-                        />
-                        <Route
-                          path="notifications"
-                          element={<NotificationSettings />}
-                        />
-                        <Route path="privacy" element={<PrivacySettings />} />
-                        <Route
-                          path="blocked-users"
-                          element={<BlockedUsers />}
-                        />
-                        {/* Catch-all for 404 inside settings */}
-                        <Route path="*" element={<NotFound />} />
-                      </Routes>
-                    </SettingsLayout>
-                  </RequireAuth>
+                  <SettingsLayout>
+                    <Routes>
+                      <Route index element={<ProfileSettings />} />
+                      <Route
+                        path="appearance"
+                        element={<AppearanceSettings />}
+                      />
+                      <Route
+                        path="notifications"
+                        element={<NotificationSettings />}
+                      />
+                      <Route path="privacy" element={<PrivacySettings />} />
+                      <Route path="blocked-users" element={<BlockedUsers />} />
+                      {/* Catch-all for 404 inside settings */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </SettingsLayout>
                 }
               />
               {/* Catch-all for 404 */}

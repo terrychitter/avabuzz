@@ -3,12 +3,9 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 import { AxiosError } from "axios";
-import { useState } from "react";
-import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { FieldValues, useForm } from "react-hook-form";
-import { useQuery } from "react-query";
-import { login } from "../../api/auth/login";
-import { useErrorPopup } from "../../Context/ErrorPopupContext";
+import { useLogin } from "../../hooks/useAuth";
+import AppErrorPopup from "../ErrorHandling/AppErrorPopup";
 import Button from "./AnimatedButton";
 import Link from "./CustomLink";
 import EmailInput from "./EmailInput";
@@ -17,14 +14,10 @@ import TmCnCheck from "./TmCnCheck";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const theme = useTheme();
-  const signIn = useSignIn();
+  // Use useLogin hook
+  const { mutate: login, isLoading, error } = useLogin();
   const navigate = useNavigate();
-  const { showError } = useErrorPopup();
-
-  const [loginData, setLoginData] = useState<FieldValues | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const theme = useTheme();
   // Use react hook form
   const {
     register,
@@ -36,66 +29,36 @@ const LoginForm = () => {
 
   // Handle form submission
   const onSubmit = (data: FieldValues) => {
-    setIsSubmitting(true);
-    setLoginData(data);
-  };
+    const loginData = {
+      email: data.email,
+      password: data.password,
+    };
+    login(loginData, {
+      onSuccess: () => {
+        navigate("/");
+      },
+    });
 
-  const onSettled = () => {
-    setIsSubmitting(false);
-    reset();
-  };
-
-  const handleSuccess = (accessToken: string) => {
-    if (
-      signIn({
-        auth: {
-          token: accessToken,
-          type: "Bearer",
-        },
-        userState: {
-          email: loginData?.email,
-        },
-      })
-    ) {
-      // Navigate to the home page
-      navigate("/");
-    } else {
-      showError("An error occurred while logging in");
+    if (error) {
+      reset();
     }
   };
 
-  const handleLoginError = (message: string) => {
-    setIsSubmitting(false);
-    showError(message);
-  };
-
-  // Use react query
-  useQuery({
-    queryKey: ["login", loginData],
-    queryFn: () => login(loginData?.email, loginData?.password),
-    enabled: !!loginData,
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-    onSettled: () => {
-      onSettled();
-    },
-    onSuccess: (data) => {
-      setIsSubmitting(false);
-      handleSuccess(data.data.access_token);
-    },
-    onError: (error) => {
-      if (error instanceof AxiosError) {
-        if (error.response?.status === 404) {
-          handleLoginError("Incorrect email or password");
-        }
-      } else {
-        handleLoginError("An error occurred while logging in");
-      }
-    },
-  });
-
   return (
     <>
+      {error && (
+        <>
+          {error instanceof AxiosError ? (
+            error.response?.status === 401 ? (
+              <AppErrorPopup message="Incorrect Email or Password" />
+            ) : (
+              <AppErrorPopup message="An unexpected error occurred. Please try again later." />
+            )
+          ) : (
+            <AppErrorPopup message="An unexpected error occurred. Please try again later." />
+          )}
+        </>
+      )}
       <Stack
         direction="column"
         justifyContent="space-between"
@@ -117,14 +80,14 @@ const LoginForm = () => {
             />
             <TmCnCheck control={control} errors={errors} />
             <Button
-              disabled={isSubmitting}
+              disabled={isLoading}
               fullWidth
               type="submit"
               variant="contained"
               sx={{ marginTop: theme.spacing(7), borderRadius: 1 }}
-              startIcon={isSubmitting && <CircularProgress size={24} />}
+              startIcon={isLoading && <CircularProgress size={24} />}
             >
-              {isSubmitting ? null : "Login"}
+              {isLoading ? null : "Login"}
             </Button>
           </form>
         </Box>

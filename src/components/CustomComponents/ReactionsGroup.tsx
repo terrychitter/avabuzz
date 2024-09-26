@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { IconHeartFilled } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 import React from "react";
-import { PostType } from "../../Context/PostContext";
+import { PostType } from "../../context/PostContext";
 
 interface ReactionsGroupProps {
   priorityReaction?: string;

@@ -4,37 +4,30 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { IconHeart, IconMessage2, IconPhoto } from "@tabler/icons-react";
 import React from "react";
-import { useQuery } from "react-query";
 import SwipeableViews from "react-swipeable-views";
-import { fetchUserPosts } from "../../api/posts/postApi";
-import { useUser } from "../../Context/UserContext";
 import ItemList from "../HOC/ItemList";
 import Panel from "../HOC/Panel";
 import PostList from "../HOC/PostList";
-import { PostType } from "../../Context/PostContext";
+import { useFetchUserPosts } from "../../hooks/usePost";
+import { useErrorBoundary } from "react-error-boundary";
+import DefaultLoader from "../CustomComponents/DefaultLoader";
 
 const UserContent = () => {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const { showBoundary } = useErrorBoundary();
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  // Get posts using hook
+  const { data: posts, error, isLoading } = useFetchUserPosts("V6K-7V9");
 
-  // Get the private user id from the context
-  const { public_user_id } = useUser().user;
-  // Fetch the user's posts
-  const { data: posts = [] } = useQuery({
-    queryKey: ["userPosts", public_user_id],
-    queryFn: () => fetchUserPosts(public_user_id),
-    enabled: !!public_user_id,
-  });
+  if (error) {
+    showBoundary("Failed to fetch posts");
+  }
 
-  if (posts) {
-    // Add the user context to post.user
-    posts.forEach((post: PostType) => {
-      post.poster = { ...useUser().user };
-    });
-    console.log("posts", posts);
+  if (isLoading) {
+    return <DefaultLoader />;
   }
 
   return (
@@ -66,11 +59,13 @@ const UserContent = () => {
         style={{ height: "100% !important" }}
       >
         <Panel value={value} index={0} sx={{ height: "100%" }}>
-          <ItemList
-            columns={{ xs: 1 }}
-            noItemsMessage="No posts to show"
-            items={posts.length > 0 ? <PostList posts={posts} /> : null}
-          />
+          {posts && (
+            <ItemList
+              columns={{ xs: 1 }}
+              noItemsMessage="No posts to show"
+              items={posts.length > 0 ? <PostList posts={posts} /> : null}
+            />
+          )}
         </Panel>
 
         {/* Comments Panel */}
@@ -84,11 +79,13 @@ const UserContent = () => {
 
         {/* Favourites Panel */}
         <Panel value={value} index={2} sx={{ height: "100%" }}>
-          <ItemList
-            columns={{ xs: 1, sm: 2, lg: 3 }}
-            items={posts.length > 0 ? <PostList posts={posts} /> : null}
-            noItemsMessage="No favorites to show"
-          />
+          {posts && (
+            <ItemList
+              columns={{ xs: 1, sm: 2, lg: 3 }}
+              items={posts.length > 0 ? <PostList posts={posts} /> : null}
+              noItemsMessage="No favorites to show"
+            />
+          )}
         </Panel>
       </SwipeableViews>
     </Box>

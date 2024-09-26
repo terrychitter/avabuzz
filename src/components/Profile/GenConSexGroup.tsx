@@ -5,9 +5,9 @@ import { useTheme } from "@mui/material/styles";
 import GenderIcon from "./GenderIcon";
 
 interface GenConSexGroupProps {
-  country?: string;
-  sexuality?: string;
-  gender?: string;
+  country?: string | null;
+  sexuality?: string | null;
+  gender?: string | null;
 }
 
 const GenConSexGroup: React.FC<GenConSexGroupProps> = ({

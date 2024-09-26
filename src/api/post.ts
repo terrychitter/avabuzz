@@ -1,4 +1,4 @@
-import apiClient from "../apiClient";
+import { AxiosInstance } from "axios";
 
 const posts = [
   {
@@ -253,7 +253,7 @@ const posts = [
 ];
 
 // Fetch post function
-export const fetchUserPosts = async (publicUserId: string) => {
+export const fetchUserPosts = async (apiClient: AxiosInstance, publicUserId: string) => {
   if (import.meta.env.VITE_ENVIRONMENT === "development") {
     const response = await apiClient.get(`/posts/${publicUserId}`);
     return response.data;

@@ -2,7 +2,7 @@ import { Box, Stack, useTheme } from "@mui/material";
 import { IconEye, IconMessage } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { formatNumber } from "../../../utils/formatters";
-import { usePost } from "../../../Context/PostContext";
+import { usePost } from "../../../context/PostContext";
 import PostLikeSection from "./PostLikeSection";
 
 const PostActions = () => {

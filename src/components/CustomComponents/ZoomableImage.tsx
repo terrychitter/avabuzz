@@ -40,7 +40,6 @@ const ZoomableImage: React.FC<ZoomableImageProps> = ({ children }) => {
 
   const handleOpen = () => {
     setOpen(true);
-    console.log("Image clicked");
   };
 
   const handleClose = () => {

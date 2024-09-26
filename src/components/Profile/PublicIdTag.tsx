@@ -1,15 +1,22 @@
 import { Box, Stack, Tooltip, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { IconCheck, IconCopy } from "@tabler/icons-react";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import React, { useState } from "react";
 import AvakinLifeLogo from "/icons/avakin-logo.webp";
 
-interface FriendCodeTagProps {
-  code?: string;
-}
+// Create a MotionBox type extending both MotionProps and the props of Box
+type MotionBoxProps = MotionProps & React.ComponentProps<typeof Box>;
 
-const MotionBox = motion(Box);
+const MotionBox = motion(
+  React.forwardRef<HTMLDivElement, MotionBoxProps>((props, ref) => (
+    <Box {...props} ref={ref} />
+  ))
+); // Wrap Box with forwardRef and then with motion
+
+interface FriendCodeTagProps {
+  code?: string | null;
+}
 
 const FriendCodeTag: React.FC<FriendCodeTagProps> = ({ code }) => {
   const [copied, setCopied] = useState(false);

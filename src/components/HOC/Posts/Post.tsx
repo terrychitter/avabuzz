@@ -7,7 +7,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import { PostProvider, PostType } from "../../../Context/PostContext";
+import { PostProvider, PostType } from "../../../context/PostContext";
 import { formatDate } from "../../../utils/formatters";
 import PostActionKit from "../PostActionKit";
 import ProfilePictureKit from "../ProfilePictureKit";

@@ -1,14 +1,17 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import Link from "../CustomComponents/CustomLink";
-import { useUser } from "../../Context/UserContext";
+import { useUser } from "../../context/UserContext";
 import { formatNumber } from "../../utils/formatters";
 
 const ProfileStats = () => {
   const theme = useTheme();
 
   // use profile stats from context
-  const { follower_count, following_count, post_count } =
-    useUser().user.user_stats;
+  const {
+    follower_count = 0,
+    following_count = 0,
+    post_count = 0,
+  } = useUser().user?.user_stats || {};
 
   return (
     <Stack

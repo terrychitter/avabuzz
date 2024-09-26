@@ -7,10 +7,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { useErrorBoundary } from "react-error-boundary";
-import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
-import { fetchUser } from "../../api/user/userApi";
-import { UserProvider } from "../../Context/UserContext";
+import { UserProvider } from "../../context/UserContext";
+import { usefetchLoggedInUser } from "../../hooks/useUser";
 import { loadable } from "../../utils/loadable";
 import DefaultLoader from "../CustomComponents/DefaultLoader";
 import AnimatedPage from "../HOC/AnimatedPage";
@@ -49,26 +47,18 @@ const Profile = () => {
   const theme = useTheme();
   const { showBoundary } = useErrorBoundary();
 
-  // Get user ID from the URL
-  const { public_id = "" } = useParams();
+  const { data: userData, error, isLoading } = usefetchLoggedInUser();
 
-  const {
-    isLoading,
-    data: userData,
-    error,
-  } = useQuery("userData", () => fetchUser(public_id));
+  if (error) {
+    showBoundary("Could not get your profile");
+  }
 
   if (isLoading) {
     return <DefaultLoader />;
   }
 
-  if (error) {
-    showBoundary(error);
-    return null;
-  }
-
   return (
-    <UserProvider userData={userData}>
+    <UserProvider userData={userData ?? null}>
       <AnimatedPage>
         <MainContentContainer
           pullToRefresh
@@ -76,9 +66,11 @@ const Profile = () => {
         >
           <Stack direction={"column"} gap={{ xs: 0, md: 1 }} height={"100%"}>
             {/* Profile Banner */}
-            <ProfileBanner
-              background={userData.active_accessories.active_banner_url}
-            />
+            {userData && (
+              <ProfileBanner
+                background={userData.active_accessories.active_banner_url}
+              />
+            )}
             {/* Profile Content */}
             <Stack
               direction={"column"}
@@ -91,17 +83,21 @@ const Profile = () => {
                 justifyContent={"space-between"}
                 alignContent={"center"}
               >
-                <UsernameTag
-                  badgeUrl={userData.active_accessories.active_badge_url}
-                  username={userData.username}
-                ></UsernameTag>
-                <FriendCodeTag code={userData.friend_code} />
+                {userData && (
+                  <UsernameTag
+                    badgeUrl={userData.active_accessories.active_badge_url}
+                    username={userData.username}
+                  ></UsernameTag>
+                )}
+                {userData && <FriendCodeTag code={userData.friend_code} />}
               </Stack>
-              <GenConSexGroup
-                country={userData.country}
-                sexuality={userData.orientation}
-                gender={userData.gender}
-              />
+              {userData && (
+                <GenConSexGroup
+                  country={userData.country}
+                  sexuality={userData.orientation}
+                  gender={userData.gender}
+                />
+              )}
               <Biography />
               <Box marginBlock={theme.spacing(2)}>
                 <ProfileStats />

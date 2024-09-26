@@ -3,7 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { formatNumber } from "../../../utils/formatters";
 import LikePostButton from "../../CustomComponents/LikePostButton";
 import ReactionsGroup from "../../CustomComponents/ReactionsGroup";
-import { usePost } from "../../../Context/PostContext";
+import { usePost } from "../../../context/PostContext";
 
 const PostLikeSection = () => {
   const theme = useTheme();

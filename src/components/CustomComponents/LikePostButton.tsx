@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useLongPress } from "use-long-press";
 import ReactionDialog from "./ReactionDialog";
-import { usePost } from "../../Context/PostContext";
+import { usePost } from "../../context/PostContext";
 import { IconHeart } from "@tabler/icons-react";
 
 const LikePostButton = () => {

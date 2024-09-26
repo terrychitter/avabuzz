@@ -56,8 +56,8 @@ const NavItem = ({
           </linearGradient>
         </defs>
       </svg>
-      <AnimatedIconButton>
-        <Link to={to}>
+      <Link to={to}>
+        <AnimatedIconButton>
           {isActive ? (
             <ActiveIcon
               size={iconSize}
@@ -72,8 +72,8 @@ const NavItem = ({
               color={nonActiveColor}
             />
           )}
-        </Link>
-      </AnimatedIconButton>
+        </AnimatedIconButton>
+      </Link>
     </>
   );
 };
@@ -104,7 +104,7 @@ export const ChatNavItem = () => (
 
 export const ProfileNavItem = () => (
   <NavItem
-    to="/profile/XXX-XXX"
+    to="/my-profile"
     activeIcon={IconUserFilled}
     inactiveIcon={IconUser}
   />

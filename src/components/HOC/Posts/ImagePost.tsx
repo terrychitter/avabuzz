@@ -7,7 +7,7 @@ import ImageError from "./ImageError";
 import { loadable } from "../../../utils/loadable";
 import DefaultLoader from "../../CustomComponents/DefaultLoader";
 import { ZoomableImageProps } from "../../../components/CustomComponents/ZoomableImage";
-import { PostType } from "../../../Context/PostContext";
+import { PostType } from "../../../context/PostContext";
 
 const ZoomableImage: React.FC<ZoomableImageProps> = loadable(
   () => import("../../../components/CustomComponents/ZoomableImage"),

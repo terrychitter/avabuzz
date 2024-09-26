@@ -4,7 +4,7 @@ import ProfilePictureKit from "../HOC/ProfilePictureKit";
 import EditProfileButton from "./EditProfileButton";
 import MyItemsButton from "./MyItemsButton";
 import SettingsButton from "./SettingsButton";
-import { useUser } from "../../Context/UserContext";
+import { useUser } from "../../context/UserContext";
 
 interface ProfileBannerProps {
   background?: string;
@@ -14,7 +14,8 @@ const ProfileBanner: React.FC<ProfileBannerProps> = ({ background }) => {
   const theme = useTheme();
 
   // Get profile picture from context
-  const { profile_picture_url } = useUser().user;
+  const user = useUser().user;
+  const profile_picture_url = user ? user.profile_picture_url : "";
 
   return (
     <>

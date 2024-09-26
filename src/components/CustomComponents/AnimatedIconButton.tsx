@@ -1,15 +1,14 @@
 import React from "react";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
-import { motion, MotionProps } from "framer-motion";
+import { motion } from "framer-motion";
+import { HTMLMotionProps } from "framer-motion";
 
-// Create a MotionIconButton by combining Button's props with MotionProps
-const MotionIconButton = motion(IconButton) as React.FC<
-  IconButtonProps & MotionProps
->;
+type MotionIconButtonProps = IconButtonProps & HTMLMotionProps<"button">;
 
-const AnimatedIconButton: React.FC<IconButtonProps & MotionProps> = (props) => {
+const MotionIconButton: React.FC<MotionIconButtonProps> = (props) => {
   return (
-    <MotionIconButton
+    <IconButton
+      component={motion.button}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       {...props}
@@ -17,4 +16,4 @@ const AnimatedIconButton: React.FC<IconButtonProps & MotionProps> = (props) => {
   );
 };
 
-export default AnimatedIconButton;
+export default MotionIconButton;

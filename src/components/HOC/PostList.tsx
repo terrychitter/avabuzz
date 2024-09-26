@@ -1,6 +1,6 @@
 import { Skeleton, Stack } from "@mui/material";
 import { loadable } from "../../utils/loadable";
-import { PostType } from "../../Context/PostContext";
+import { PostType } from "../../context/PostContext";
 
 const PostSkeleton = () => {
   return (
